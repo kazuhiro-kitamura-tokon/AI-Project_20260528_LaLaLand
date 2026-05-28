@@ -159,7 +159,7 @@ body{font-family:var(--fj);background:var(--bg);color:var(--tx);line-height:1.85
 <div class="hero-arr"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
 </section>
 
-<nav class="toc" id="toc"><div class="toc-in"><a href="#s1">テーマ一覧</a><a href="#s2">詳細設計</a><a href="#s3">優先順位</a><a href="#s4">次のステップ</a></div></nav>
+<nav class="toc" id="toc"><div class="toc-in"><a href="#s1">テーマ一覧</a><a href="#s2">詳細設計</a><a href="#corpora">Why Corpora</a><a href="#s3">優先順位</a><a href="#s4">次のステップ</a></div></nav>
 
 <!-- ==================== 01: THEME INDEX ==================== -->
 <section id="s1" class="sec">
@@ -198,19 +198,38 @@ body{font-family:var(--fj);background:var(--bg);color:var(--tx);line-height:1.85
 
 <div class="dtl">
 
-<div class="dc rv" id="d1"><div class="dc-bar" style="background:var(--r6)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#01</div><div class="dc-dept">経営</div></div><h3>コアコンセプト構築（法人格AI / Corpora）</h3>
+<div class="dc rv" id="d1"><div class="dc-bar" style="background:var(--r6)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#01</div><div class="dc-dept">経営</div></div><h3>コアコンセプト構築 — Corpora Essential OS</h3>
+
 <div class="sp">
-<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>LaLaLandグループとしての考え方・理念・判断基準・価値観を、AIが理解し参照できる形に構造化したデータ（<strong>「Corpora」</strong>と呼びます）です。代表者・経営陣へのインタビューを通じて、頭の中にある暗黙知——「うちはこう考える」「これは絶対やらない」「大切にしていること」——を言語化・整理し、全てのAI活用の土台となる<strong>「LaLaLand AI脳」</strong>を構築します。</p></div>
-<div class="sp-block"><div class="sp-label">構築の流れ</div>
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>LaLaLandグループとしての思想・美学・禁忌・判断軸・語り口を、AIに渡せる<strong>「企業人格OS」</strong>として構造化したデータセットです。4回の採掘インタビューを通じて、経営者の頭の中にある暗黙知——「うちはこう考える」「これは絶対やらない」「大切にしていること」——を引き出し、AIが「LaLaLandらしく」考え・語り・判断するための土台を構築します。</p></div>
+
+<div class="sp-block"><div class="sp-label">構築の流れ</div><p>全5回のセッション（各2時間）で構築します。</p>
 <div class="sp-steps">
-<div class="sp-step"><span class="sp-step-num">1</span><span><strong>代表者・経営陣インタビュー（全8回）</strong>— 2ヶ月間にわたり、各回2時間のインタビューセッションを実施。LaLaLandとしての理念、判断基準、事業ごとの考え方、「やること／やらないこと」、実際のエピソードを引き出します。</span></div>
-<div class="sp-step"><span class="sp-step-num">2</span><span><strong>蒸留・構造化</strong>— インタビュー内容を分析し、AIが参照できる構造化データ（Corpora JSON）に変換します。思想体系＋エピソードチャンクの2層構造で構築。「法人格」（グループ全体）に加え、「事業人格」（保育/飲食等）も必要に応じて分離構築します。</span></div>
-<div class="sp-step"><span class="sp-step-num">3</span><span><strong>検証・調整</strong>— 構造化したデータを元にAIに回答させ、「LaLaLandらしさ」が再現されているかを確認。違和感がある部分は調整します。</span></div>
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>第1回：起源・目的・Core Value</strong>— 会社がなぜ生まれたのか。何を成し遂げたいのか。何を絶対に裏切りたくないのか。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>第2回：文化・行動様式・禁忌</strong>— 日常の行動、判断、言葉の中にある「うちっぽさ」。暗黙のルール、模範となる人、絶対にやらないこと。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>第3回：美意識・修養・倫理観</strong>— 経営者の奥にある美意識と倫理観。企業人格の深層にある「良心OS」を可視化。</span></div>
+<div class="sp-step"><span class="sp-step-num">4</span><span><strong>第4回：価値衝突・揺らぎ・判断軸</strong>— 価値観が現実とぶつかった時、どう迷い、何を選ぶのか。AIに渡すべき「迷った時の優先順位」を抽出。</span></div>
+<div class="sp-step"><span class="sp-step-num">5</span><span><strong>第5回：AI Calibration（調整MTG）</strong>— 構築した企業人格OSを元にAIに出力させ、「らしい／らしくない」を一緒に確認・調整。</span></div>
 </div></div>
-<div class="sp-block"><div class="sp-label">設計思想</div><p>このテーマは技術構築ではなく<strong>「人の思考を構造化する」作業</strong>です。構築したCorporaは、#08（コンテンツ生成＋企画壁打ち）をはじめ、今後構築する全てのAIの人格的基盤として機能します。</p></div>
-<div class="sp-cost"><div><div class="sp-cost-main">¥550,000<small>（税別）</small></div><div class="sp-cost-sub">インタビュー ¥50,000×8回 ＋ JSON構造化 ¥150,000</div></div></div>
-<div class="sp-note">※ 2ヶ月間のプロジェクト。事業人格（保育/飲食等）の分離構築を含みます。</div>
+
+<div class="sp-block"><div class="sp-label">納品物</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>Raw Log</strong>— 4回分のインタビュー記録</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>Evidence Log Lite</strong>— 重要発言・価値観・判断軸・禁忌の根拠台帳</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>Corpora Essential Canvas</strong>— 企業人格の地図（CORE / AEST / TABO / TENS / BDNA / TONE）</span></div>
+<div class="sp-step"><span class="sp-step-num">4</span><span><strong>Corpora Essential OS JSON</strong>— AIに渡すための企業人格OSデータ</span></div>
+<div class="sp-step"><span class="sp-step-num">5</span><span><strong>AI Test Samples</strong>— AIへ人格OSを渡した場合の出力サンプル</span></div>
+<div class="sp-step"><span class="sp-step-num">6</span><span><strong>OS README</strong>— JSONの見方・使い方・注意点の説明書</span></div>
+</div></div>
+
+<div class="sp-block"><div class="sp-label">設計思想</div><p>インタビューでは、抽象的な答えで終わらせず、必ず具体的な出来事・発言・判断場面に戻します。「いつのことですか？」「誰がいましたか？」「何に迷いましたか？」——そこまで掘ることで初めて、AIに渡せる人格の核が見えてきます。</p></div>
+
+<div class="sp-block"><div class="sp-label">他テーマとの関係</div><p>本テーマの成果物は以下に直接波及します：<br><strong>#08 コンテンツ生成＋企画壁打ちAI</strong> → 文章・企画の品質に直結<br><strong>#07 就業規則FAQ</strong> → 回答のトーンと判断基準に影響<br><strong>将来的な広報AI・採用AI・保護者対応AI</strong> → 全ての人格的基盤</p></div>
+
+<div class="sp-cost"><div><div class="sp-cost-main">¥800,000<small>（税別）</small></div><div class="sp-cost-sub">インタビュー4回 ＋ AI Calibration 1回 ＋ 構造化・納品物一式</div></div></div>
+<div class="sp-note">※ 1〜1.5ヶ月間のプロジェクト。各回2時間。</div>
 </div>
+
 </div></div>
 
 <div class="dc rv" id="d2"><div class="dc-bar" style="background:var(--dbx)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#02</div><div class="dc-dept">全社共通</div></div><h3>Dropbox内データの対話型AI検索</h3>
@@ -361,6 +380,42 @@ body{font-family:var(--fj);background:var(--bg);color:var(--tx);line-height:1.85
 </div>
 
 <div class="mb rv"><p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>各テーマの概算費用はヒアリング後に確定いたします。複数テーマを同時にご発注いただく場合は、技術基盤の共有によりトータルコストの最適化が可能です。</p></div>
+</section>
+
+
+<!-- ==================== CORPORA PHILOSOPHY ==================== -->
+<section id="corpora" class="sec" style="padding-bottom:48px">
+<div class="rv">
+<div class="sec-l">Why Corpora</div>
+<h2 class="sec-t">なぜ今、「企業人格OS」が必要なのか</h2>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+
+<div class="rv" style="background:linear-gradient(135deg,#F9F7F3,#F3EFF9);border-radius:var(--rd);padding:32px;border:1px solid rgba(139,110,192,0.1)">
+<p style="font-size:15px;line-height:2.1;color:var(--ts)">AIが文章を書き、AIが問い合わせに答え、AIがブランドの言葉を生成する時代になりました。<br><br>しかし、多くの企業がAIに渡しているのは<strong style="color:var(--tx)">「情報」であって「人格」ではありません。</strong><br><br>情報は検索できます。しかし、人格は構造化しなければ再現できません。理念は書けます。しかし、判断はエピソードからしか掘れません。ブランドトーンは整えられます。しかし、美学と禁忌がなければ、言葉は空洞になります。</p>
+</div>
+
+<div class="rv" style="background:var(--sf);border-radius:var(--rd);padding:32px;border:1px solid var(--bd)">
+<p style="font-size:13px;font-weight:600;color:var(--r6);letter-spacing:1px;margin-bottom:16px;font-family:var(--fo)">PERSONA VS CORPORA</p>
+<p style="font-size:15px;line-height:2.1;color:var(--ts)">従来のマーケティングでは<strong style="color:var(--tx)">「ペルソナ」</strong>——「誰に向けるか」が重視されてきました。どんな顧客に届けるか。どんな人材に来てほしいか。<br><br>しかしAI時代に必要なのは、それに加えて<strong style="color:var(--tx)">「自分たちは何者として語るのか」</strong>です。<br><br>AIが御社の言葉を生成するとき、相手の設計だけでは不十分です。御社自身の人格が定義されていなければ、誰に向けても同じ汎用的な言葉しか出てきません。</p>
+<div style="display:flex;gap:20px;margin-top:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:200px;background:var(--sw);border-radius:var(--rs);padding:20px;text-align:center"><p style="font-size:12px;color:var(--tl);margin-bottom:4px;font-weight:600">Persona</p><p style="font-size:15px;font-weight:600;color:var(--tx)">誰に向かうか</p><p style="font-size:12px;color:var(--tl);margin-top:4px">外向きの対象設計</p></div>
+<div style="flex:1;min-width:200px;background:linear-gradient(135deg,#F3EFF9,#FAEDF2);border-radius:var(--rs);padding:20px;text-align:center;border:1px solid rgba(139,110,192,0.12)"><p style="font-size:12px;color:var(--r6);margin-bottom:4px;font-weight:600">Corpora</p><p style="font-size:15px;font-weight:600;color:var(--tx)">自分たちは何者か</p><p style="font-size:12px;color:var(--r6);margin-top:4px">内側の人格OS</p></div>
+</div>
+</div>
+
+<div class="rv" style="background:linear-gradient(135deg,#F9F7F3,#FDF3EC);border-radius:var(--rd);padding:32px;border:1px solid rgba(192,122,74,0.1)">
+<p style="font-size:13px;font-weight:600;color:var(--crp);letter-spacing:1px;margin-bottom:16px;font-family:var(--fo)">THE HEART OF CORPORA</p>
+<p style="font-size:15px;line-height:2.1;color:var(--ts)">Corporaの中心には、三つの要素があります。<br><br><strong style="color:var(--tx)">美学</strong>——御社が「美しい」と感じる仕事や振る舞い。どんな仕事を誇れるか。どんな関わり方に品格を感じるか。美学は、御社が目指す姿です。<br><br><strong style="color:var(--tx)">禁忌</strong>——「これをやったら自分たちではない」と感じる赤線。どれだけ成果が出ても、やらないこと。どれだけ効率的でも、踏み越えない線。禁忌は、企業人格の境界線です。<br><br><strong style="color:var(--tx)">揺らぎ</strong>——美学と現実がぶつかった時の迷い方。スピードと丁寧さがぶつかった時、どう裁くのか。売上と信頼がぶつかった時、どちらを選ぶのか。揺らぎがあるから、人格はきれいごとで終わりません。<br><br>本当に企業らしさが出るのは、<strong style="color:var(--tx)">価値観が現実とぶつかった瞬間</strong>です。その時に、どう迷い、何を選び、何を手放すのか。そこに企業人格の核が現れます。</p>
+</div>
+
+<div class="rv" style="background:var(--sf);border-radius:var(--rd);padding:32px;border:1px solid var(--bd)">
+<p style="font-size:13px;font-weight:600;color:var(--ac);letter-spacing:1px;margin-bottom:16px;font-family:var(--fo)">CORPORA AS INFRASTRUCTURE</p>
+<p style="font-size:15px;line-height:2.1;color:var(--ts)">Corporaは単なるAI用のプロンプトではありません。<strong style="color:var(--tx)">企業の人格を、未来へ渡すためのOS</strong>です。<br><br>このOSがあれば、AIによるコンテンツ生成、社内FAQ、採用メッセージ、保護者対応、広報発信まで、すべてが「LaLaLandらしく」動き始めます。<br><br>人が読める。AIが使える。組織が継承できる。判断と言葉がぶれにくくなる。<br><br>それが、Corporaの役割です。</p>
+</div>
+
+</div>
 </section>
 
 <div class="dv"><hr></div>
