@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaLaLand様 AI実装支援 — 第2回 お打ち合わせ共有資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#fff;--bg2:#FDFBF8;--sf:#fff;--sw:#F9F7F3;--tx:#1A1A1A;--ts:#5C5C5C;--tl:#9A9A9A;
+--r1:#E8637A;--r2:#F5A623;--r3:#F7D154;--r4:#6EC5A0;--r5:#5BA4D9;--r6:#8B6EC0;
+--ac:#E8637A;--acs:#F4B8C2;--acb:#FEF2F4;--bd:#EBEBEB;
+--eco:#4A8B6E;--ecob:#EDF6F1;--lab:#5A7BBF;--labb:#EDF2FA;
+--inf:#8B6EC0;--infb:#F3EFF9;--crp:#C07A4A;--crpb:#FDF3EC;
+--mkt:#BF5A7B;--mktb:#FAEDF2;--edu:#5BA4D9;--edub:#EDF6FA;
+--dbx:#0061FF;--dbxb:#EDF2FF;
+--slf:#9B8B5A;--slfb:#F7F5EC;
+--tel:#E07A3A;--telb:#FDF0E8;
+--sub:#7B8B9A;--subb:#EFF2F5;
+--rd:14px;--rs:8px;
+--sh:0 1px 4px rgba(0,0,0,.03),0 6px 20px rgba(0,0,0,.025);
+--shh:0 4px 12px rgba(0,0,0,.06),0 16px 40px rgba(0,0,0,.04);
+--fe:'Quicksand','Outfit',sans-serif;--fo:'Outfit',sans-serif;--fj:'Noto Sans JP',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fj);background:var(--bg);color:var(--tx);line-height:1.85;font-size:15px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.rl{height:4px;background:linear-gradient(90deg,var(--r1),var(--r2),var(--r3),var(--r4),var(--r5),var(--r6))}
+.pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--r1),var(--r2),var(--r4),var(--r5));background-size:300% 100%;animation:gs 4s ease infinite;z-index:200;width:0%;border-radius:0 2px 2px 0}
+@keyframes gs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px 60px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;pointer-events:none}
+.hero-logo{margin-bottom:24px;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .2s;z-index:1;position:relative}
+.hero-logo img{height:64px;width:auto}
+.hero-badge{display:inline-block;font-family:var(--fo);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r5);background:var(--edub);border:1px solid rgba(91,164,217,.2);border-radius:20px;padding:6px 18px;margin-bottom:24px;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .35s;z-index:1;position:relative}
+.hero-lbl{font-family:var(--fe);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--tl);margin-bottom:28px;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .45s;z-index:1;position:relative}
+.hero h1{font-size:clamp(24px,4.2vw,44px);font-weight:700;line-height:1.45;letter-spacing:-.3px;margin-bottom:24px;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .6s;z-index:1;position:relative}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--acs) 62%);padding-bottom:2px}
+.hero-sub{font-size:15px;color:var(--ts);max-width:560px;line-height:2;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .75s;z-index:1;position:relative}
+.hero-meta{margin-top:48px;display:flex;flex-wrap:wrap;justify-content:center;gap:40px;opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards .9s;z-index:1;position:relative}
+.hero-meta dt{font-family:var(--fe);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--ac);margin-bottom:4px}
+.hero-meta dd{font-size:13px;color:var(--ts)}
+.hero-arr{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);opacity:0;animation:fu .9s cubic-bezier(.23,1,.32,1) forwards 1.3s,hf 2.5s ease-in-out infinite 2.2s;z-index:1}
+@keyframes hf{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* TOC */
+.toc{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);padding:0 24px;overflow-x:auto;transition:box-shadow .3s}
+.toc.sc{box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.toc-in{max-width:960px;margin:0 auto;display:flex;gap:2px;white-space:nowrap;padding:8px 0}
+.toc a{display:block;padding:8px 16px;font-size:13px;font-weight:500;color:var(--ts);text-decoration:none;border-radius:8px;transition:all .25s}
+.toc a:hover,.toc a.on{color:var(--ac);background:var(--acb)}
+.toc::-webkit-scrollbar{height:0}
+
+/* SECTION */
+.sec{max-width:840px;margin:0 auto;padding:88px 24px}
+.sec-l{font-family:var(--fo);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:12px}
+.sec-t{font-size:clamp(22px,3.5vw,34px);font-weight:700;line-height:1.5;margin-bottom:16px;letter-spacing:-.3px}
+.sec-p{font-size:15px;color:var(--ts);max-width:640px;line-height:2;margin-bottom:52px}
+.dv{max-width:840px;margin:0 auto;padding:0 24px}
+.dv hr{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent)}
+
+/* ICON BOX */
+.ib{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s cubic-bezier(.23,1,.32,1)}
+.ib svg{width:22px;height:22px}
+
+/* ===== 01: THEME INDEX CARDS ===== */
+.idx{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.ic{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rd);padding:22px;box-shadow:var(--sh);transition:all .4s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;cursor:pointer}
+.ic::after{content:'';position:absolute;inset:0;border-radius:var(--rd);opacity:0;transition:opacity .4s;pointer-events:none;background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),rgba(232,99,122,.04),transparent 60%)}
+.ic:hover{box-shadow:var(--shh);transform:translateY(-3px);border-color:var(--acs)}
+.ic:hover::after{opacity:1}
+.ic:hover .ib{transform:scale(1.1) rotate(-4deg)}
+.ic-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.ic-dept{font-size:11px;font-weight:600;color:var(--tl);background:var(--sw);border-radius:10px;padding:3px 10px}
+.ic-new{font-family:var(--fo);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--r1);border-radius:8px;padding:3px 8px;line-height:1}
+.ic h3{font-size:14px;font-weight:600;line-height:1.5}
+.ic-num{font-family:var(--fe);font-size:11px;font-weight:700;color:var(--tl);margin-left:auto}
+
+/* ===== 02: DETAIL SPECS ===== */
+.dtl{display:flex;flex-direction:column;gap:28px}
+.dc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rd);box-shadow:var(--sh);overflow:hidden;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.dc:hover{box-shadow:var(--shh)}
+.dc-bar{height:4px}
+.dc-body{padding:28px 28px 24px}
+.dc-top{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.dc-dept{font-size:11px;font-weight:600;color:var(--tl);background:var(--sw);border-radius:10px;padding:3px 10px}
+.dc-new{font-family:var(--fo);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--r1);border-radius:8px;padding:3px 8px;line-height:1}
+.dc-num{font-family:var(--fe);font-size:11px;font-weight:700;color:var(--tl)}
+.dc h3{font-size:18px;font-weight:700;margin-bottom:12px;line-height:1.5}
+.dc>p,.dc-body>p{font-size:14px;color:var(--ts);line-height:1.95;margin-bottom:16px}
+.dc-spec{border:2px dashed var(--bd);border-radius:var(--rs);padding:24px;font-size:13px;color:var(--tl);text-align:center;line-height:1.7}
+.dc-spec svg{display:block;margin:0 auto 8px}
+
+/* Filled spec sections */
+.sp{margin-top:20px;display:flex;flex-direction:column;gap:16px}
+.sp-block{background:var(--sw);border-radius:var(--rs);padding:20px 22px}
+.sp-label{font-family:var(--fo);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ac);margin-bottom:8px}
+.sp-block p{font-size:13.5px;color:var(--ts);line-height:1.95}
+.sp-block p strong{color:var(--tx);font-weight:600}
+.sp-steps{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.sp-step{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ts);line-height:1.8}
+.sp-step-num{font-family:var(--fe);font-size:11px;font-weight:700;color:var(--ac);background:var(--acb);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.sp-option{background:var(--edub);border-radius:var(--rs);padding:16px 20px;font-size:13px;color:var(--ts);line-height:1.85;border-left:3px solid var(--r5)}
+.sp-option strong{color:var(--tx);font-weight:600}
+.sp-cost{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:20px 22px;display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.sp-cost-main{font-family:var(--fe);font-size:28px;font-weight:700;color:var(--tx);letter-spacing:-1px}
+.sp-cost-main small{font-size:12px;font-weight:500;color:var(--tl);letter-spacing:0;margin-left:4px}
+.sp-cost-sub{font-size:13px;color:var(--ts);line-height:1.7}
+.sp-note{font-size:12px;color:var(--tl);line-height:1.8;margin-top:4px}
+
+/* ===== 03: PRIORITY ===== */
+.pri{display:flex;flex-direction:column;gap:12px}
+.pri-item{display:flex;gap:16px;align-items:flex-start;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rd);padding:24px 28px;box-shadow:var(--sh);transition:all .4s cubic-bezier(.23,1,.32,1)}
+.pri-item:hover{box-shadow:var(--shh);transform:translateX(4px);border-color:var(--acs)}
+.pri-num{font-family:var(--fe);font-size:13px;font-weight:700;color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.pri-item:nth-child(1) .pri-num{background:var(--r1)}
+.pri-item:nth-child(2) .pri-num{background:var(--r2)}
+.pri-item:nth-child(3) .pri-num{background:var(--r4)}
+.pri-item:nth-child(4) .pri-num{background:var(--r5)}
+.pri-item:nth-child(5) .pri-num{background:var(--r6)}
+.pri-item p{font-size:14px;line-height:1.9}.pri-item strong{font-weight:600}
+
+/* NEXT STEPS */
+.nsl{display:flex;flex-direction:column;gap:12px}
+.nsi{display:flex;gap:16px;align-items:flex-start;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rd);padding:22px 28px;box-shadow:var(--sh);transition:all .4s cubic-bezier(.23,1,.32,1)}
+.nsi:hover{box-shadow:var(--shh);transform:translateX(4px);border-color:var(--acs)}
+.nsn{font-family:var(--fe);font-size:13px;font-weight:700;color:var(--ac);background:var(--acb);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .3s}
+.nsi:hover .nsn{background:var(--ac);color:#fff}
+.nsi p{font-size:14px;line-height:1.9}.nsi strong{font-weight:600}
+.ns-who{display:inline-block;font-size:11px;font-weight:600;color:var(--r5);background:var(--edub);border-radius:10px;padding:2px 8px;margin-left:4px}
+
+.mb{background:var(--sw);border-radius:var(--rd);padding:28px 32px;margin-top:28px;border-left:3px solid var(--acs)}
+.mb p{font-size:14px;line-height:1.95}
+.ft{text-align:center;padding:40px 24px;font-size:12px;color:var(--tl);border-top:1px solid var(--bd)}
+
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.rv.v{opacity:1;transform:translateY(0)}
+.rvs{transition-delay:calc(var(--i,0)*.06s)}
+
+@media(max-width:600px){.sec{padding:60px 20px}.idx{grid-template-columns:1fr}.dc-body{padding:22px 20px 20px}.hero-meta{gap:20px}}
+</style>
+</head>
+<body>
+<div class="rl"></div>
+<div class="pb" id="pB"></div>
+
+<section class="hero">
+<canvas id="hC"></canvas>
+<div class="hero-logo"><img src="data:image/webp;base64,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" alt="LaLaLand" style="height:64px;width:auto"></div>
+<div class="hero-badge">2nd Meeting</div>
+<div class="hero-lbl">Meeting Summary — Shared Document</div>
+<h1>各部門の声と<br><em>具体的な解決策</em>の方向性</h1>
+<p class="hero-sub">第2回ミーティングでは、各部門のご担当者様から具体的な業務課題をお聞かせいただきました。AI活用による解決策の方向性を整理してお伝えします。</p>
+<dl class="hero-meta"><div><dt>Date</dt><dd>2026年5月25日</dd></div><div><dt>Prepared by</dt><dd>TOKON</dd></div><div><dt>Status</dt><dd>具体化フェーズ</dd></div></dl>
+<div class="hero-arr"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+</section>
+
+<nav class="toc" id="toc"><div class="toc-in"><a href="#s1">テーマ一覧</a><a href="#s2">詳細設計</a><a href="#s3">優先順位</a><a href="#s4">次のステップ</a></div></nav>
+
+<!-- ==================== 01: THEME INDEX ==================== -->
+<section id="s1" class="sec">
+<div class="rv"><div class="sec-l">01 — Theme Index</div><h2 class="sec-t">ミーティングで確認できたテーマ一覧</h2><p class="sec-p">第1回・第2回のミーティングを通じて浮かび上がった全13テーマです。各テーマの詳細設計は次のセクションに記載しています。</p></div>
+
+<div class="idx">
+<a class="ic rv rvs" style="--i:0" href="#d1"><div class="ic-top"><div class="ib" style="background:var(--infb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--inf)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="9"/><path d="M12 3c2.2 3.2 3.4 6.5 3.4 9s-1.2 5.8-3.4 9"/><path d="M12 3c-2.2 3.2-3.4 6.5-3.4 9s1.2 5.8 3.4 9"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><div class="ic-dept">経営</div><div class="ic-num">#01</div></div><h3>コアコンセプト構築（法人格AI）</h3></a>
+
+<a class="ic rv rvs" style="--i:1" href="#d2"><div class="ic-top"><div class="ib" style="background:var(--dbxb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--dbx)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><div class="ic-dept">全社共通</div><div class="ic-num">#02</div></div><h3>Dropbox対話型AI検索</h3></a>
+
+<a class="ic rv rvs" style="--i:2" href="#d3"><div class="ic-top"><div class="ib" style="background:var(--edub);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--edu)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div class="ic-dept">人材育成</div><div class="ic-num">#03</div></div><h3>全社AI研修＋導入プログラム</h3></a>
+
+<a class="ic rv rvs" style="--i:3" href="#d4"><div class="ic-top"><div class="ib" style="background:var(--ecob);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--eco)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div><div class="ic-dept">経理</div><div class="ic-num">#04</div></div><h3>紙→仕訳→MF CSV 一気通貫</h3></a>
+
+<a class="ic rv rvs" style="--i:4" href="#d5"><div class="ic-top"><div class="ib" style="background:var(--ecob);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--eco)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="ic-dept">経理</div><div class="ic-num">#05</div></div><h3>領収書・レシート写真→金額読取</h3></a>
+
+<a class="ic rv rvs" style="--i:5" href="#d6"><div class="ic-top"><div class="ib" style="background:var(--infb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--inf)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="ic-dept">エデュケーション管理</div><div class="ic-new">NEW</div><div class="ic-num">#06</div></div><h3>PL（損益計算書）自動化</h3></a>
+
+<a class="ic rv rvs" style="--i:6" href="#d7"><div class="ic-top"><div class="ib" style="background:var(--labb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--lab)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="ic-dept">労務</div><div class="ic-num">#07</div></div><h3>就業規則FAQチャットボット</h3></a>
+
+<a class="ic rv rvs" style="--i:7" href="#d8"><div class="ic-top"><div class="ib" style="background:linear-gradient(135deg,var(--mktb),var(--slfb));width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mkt)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="ic-dept">広報 / 企画</div><div class="ic-num">#08</div></div><h3>コンテンツ生成＋企画壁打ちAI</h3></a>
+
+<a class="ic rv rvs" style="--i:8" href="#d9"><div class="ic-top"><div class="ib" style="background:var(--crpb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--crp)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 010 4H8"/><path d="M12 18V6"/></svg></div><div class="ic-dept">新規事業</div><div class="ic-new">NEW</div><div class="ic-num">#09</div></div><h3>Gem構築講座（補助金＋市場分析）</h3></a>
+
+<a class="ic rv rvs" style="--i:9" href="#d10"><div class="ic-top"><div class="ib" style="background:var(--edub);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--r5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg></div><div class="ic-dept">選抜育成</div><div class="ic-num">#10</div></div><h3>エンジニアチーム育成コーチング</h3></a>
+
+<a class="ic rv rvs" style="--i:10" href="#d11"><div class="ic-top"><div class="ib" style="background:var(--telb);width:36px;height:36px;border-radius:10px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--tel)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.11 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="ic-dept">現場運営</div><div class="ic-new">NEW</div><div class="ic-num">#11</div></div><h3>電話受付AI自動化（多言語）</h3></a>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- ==================== 02: DETAIL SPECS ==================== -->
+<section id="s2" class="sec">
+<div class="rv"><div class="sec-l">02 — Detail & Specification</div><h2 class="sec-t">各テーマの詳細設計・構築の流れ</h2><p class="sec-p">各テーマについて、課題の背景・技術的な解決アプローチ・成果物の仕様・概算工数と費用を記載します。</p></div>
+
+<div class="dtl">
+
+<div class="dc rv" id="d1"><div class="dc-bar" style="background:var(--r6)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#01</div><div class="dc-dept">経営</div></div><h3>コアコンセプト構築（法人格AI / Corpora）</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>LaLaLandグループとしての考え方・理念・判断基準・価値観を、AIが理解し参照できる形に構造化したデータ（<strong>「Corpora」</strong>と呼びます）です。代表者・経営陣へのインタビューを通じて、頭の中にある暗黙知——「うちはこう考える」「これは絶対やらない」「大切にしていること」——を言語化・整理し、全てのAI活用の土台となる<strong>「LaLaLand AI脳」</strong>を構築します。</p></div>
+<div class="sp-block"><div class="sp-label">構築の流れ</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>代表者・経営陣インタビュー（全8回）</strong>— 2ヶ月間にわたり、各回2時間のインタビューセッションを実施。LaLaLandとしての理念、判断基準、事業ごとの考え方、「やること／やらないこと」、実際のエピソードを引き出します。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>蒸留・構造化</strong>— インタビュー内容を分析し、AIが参照できる構造化データ（Corpora JSON）に変換します。思想体系＋エピソードチャンクの2層構造で構築。「法人格」（グループ全体）に加え、「事業人格」（保育/飲食等）も必要に応じて分離構築します。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>検証・調整</strong>— 構造化したデータを元にAIに回答させ、「LaLaLandらしさ」が再現されているかを確認。違和感がある部分は調整します。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>このテーマは技術構築ではなく<strong>「人の思考を構造化する」作業</strong>です。構築したCorporaは、#08（コンテンツ生成＋企画壁打ち）をはじめ、今後構築する全てのAIの人格的基盤として機能します。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥550,000<small>（税別）</small></div><div class="sp-cost-sub">インタビュー ¥50,000×8回 ＋ JSON構造化 ¥150,000</div></div></div>
+<div class="sp-note">※ 2ヶ月間のプロジェクト。事業人格（保育/飲食等）の分離構築を含みます。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d2"><div class="dc-bar" style="background:var(--dbx)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#02</div><div class="dc-dept">全社共通</div></div><h3>Dropbox内データの対話型AI検索</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>Webブラウザで開ける検索画面です。「去年の運動会の企画書はどこ？」「経理の月次報告テンプレートを探して」——<strong>普段の言葉で質問するだけ</strong>で、Dropbox内にある膨大な資料の中からAIが該当するファイルを探し出して案内します。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>Dropbox内の資料を取得</strong>— Dropbox APIを使い、指定フォルダ内のファイル一覧を取得。テキスト抽出してGoogleスプレッドシートにインデックス化します。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>裏側の処理エンジン（Google Apps Script）</strong>— 検索画面から質問が来ると、インデックスの中から関連するファイル・箇所を検索し、AIに渡して回答を生成します。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>検索画面（Firebase Hosting）</strong>— LaLaLandポータルに組み込むチャット型の検索画面です。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">Googleドライブ移行も視野に</div><p><strong>推奨はGoogleドライブ環境</strong>での構築です。Dropbox APIでの構築も技術的に対応可能ですが、Googleドライブの方がシンプルです。全社的な移行は#03（全社AI導入＋研修）と合わせて段階的に検討いただく形が理想的です。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥100,000〜¥200,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：5〜10日間</div></div></div>
+<div class="sp-note">※ Dropbox API連携の場合、技術検証（PoC）が必要になる可能性があります。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d3"><div class="dc-bar" style="background:var(--edu)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#03</div><div class="dc-dept">人材育成</div></div><h3>全社AI研修プログラム（全社AI導入を含む）</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>御社のメンバー全員がAIを日常的に使える状態を作る<strong>全社研修プログラム</strong>です。「知る→育てる→作る」の3段階で習得します。全社AI導入（Geminiプラン選定・環境設計）も本プログラム内で実施します。</p></div>
+<div class="sp-block"><div class="sp-label">研修プログラム（全3回）</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>第1回：AIでできることを知る</strong>— ChatGPT / Claude / Gemini のUI理解＋機能理解。NotebookLMの接続と活用。Geminiプラン選定・Workspace連動の設計・Excel→スプレッドシート移行ガイドもこの回で扱います。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>第2回：AIを自分仕様に育てる</strong>— メタプロンプトの日常化。Agent.MDの概念で「自分専用のAI」を育てる方法を学びます。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>第3回：AIで日常業務を変える</strong>— 資料作成の自動化、自分でアプリを作る体験、APIの基本理解、HTMLでの共有方法（GitHub Pages、Google Apps Script）。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">AIガバナンス強化研修（別途1回）</div><p>ハルシネーション対策、機密情報の取り扱い、著作権への配慮、出典確認の習慣化など、<strong>安全にAIを使うためのルールと考え方</strong>を全社で共有します。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥350,000<small>（税別・総額）</small></div><div class="sp-cost-sub">全社研修 ¥100,000×3回 ＋ ガバナンス研修 ¥50,000×1回</div></div></div>
+<div class="sp-note">※ 人数無制限。月1回ペースを推奨。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d4"><div class="dc-bar" style="background:var(--eco)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#04</div><div class="dc-dept">経理</div></div><h3>紙資料 → 仕訳 → Money Forward CSV 一気通貫</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>各園から届く紙の資料やExcelファイルを、画面にドラッグ＆ドロップするだけで、AIが中身を読み取り、御社の仕訳ルールに沿って自動的に科目・金額・園名・日付を振り分けてくれる<strong>業務アプリ</strong>です。最後に「確定」ボタンを押すと、Money Forwardにそのまま取り込めるCSVファイルがダウンロードされます。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>画面（フロントエンド）</strong>— ドラッグ＆ドロップ入口、確認・修正テーブル、CSV出力ボタン。スマホでもPCでも使えます。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>裏側の処理エンジン（Google Apps Script）</strong>— 仕訳ルールはGoogleスプレッドシートで管理。<strong>御社側でルールの追加・変更がいつでも可能</strong>です。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>AIの読み取り</strong>— AI（Claude / Gemini 等）が科目名・金額・日付・園名を抽出します。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>AIに任せるのは<strong>「読み取り」と「科目の推定」だけ</strong>。合計金額の計算やCSV変換はプログラムが確実に処理。<strong>計算は機械に、判断は人間に、読み取りはAIに。</strong></p></div>
+<div class="sp-block"><div class="sp-label">アプリの置き場所</div><p><strong>Firebase Hosting</strong>に設置。他の業務アプリもまとめて<strong>「LaLaLandポータル」として一元化</strong>する拡張も可能です。</p></div>
+<div class="sp-option"><strong>統合オプション：</strong> #05「領収書読み取り」と統合して1つのアプリ内の別画面として構築可能。統合する場合、個別より費用を抑えられます。</div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥150,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：5〜9日間</div></div></div>
+<div class="sp-note">※ 入力フォーマットのパターン数により変動します。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d5"><div class="dc-bar" style="background:var(--eco)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#05</div><div class="dc-dept">経理</div></div><h3>領収書・レシート写真からの金額自動読み取り</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>スマホで領収書やレシートを撮影、またはPCから画像をドラッグ＆ドロップするだけで、AIが金額・日付・店名・品目を自動読み取り。確認・修正後、Excel/CSVでダウンロードできます。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div><p>#04と同じ3つの部品で構成。仕訳ルール照合がないぶん、よりシンプルです。</p></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>#04と同じく、AIに任せるのは<strong>「読み取り」だけ</strong>。計算はプログラムが確実に処理します。</p></div>
+<div class="sp-option"><strong>統合オプション：</strong> #04と統合して1つのアプリに。統合する場合、2つ合わせて¥200,000（税別）。個別合計¥250,000より費用を抑えられます。</div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥100,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：3〜5日間</div></div></div>
+<div class="sp-note">※ 統合構築費（#04とセット）：¥200,000（税別）</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d6"><div class="dc-bar" style="background:var(--inf)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#06</div><div class="dc-dept">エデュケーション管理</div><div class="dc-new">NEW</div></div><h3>PL（損益計算書）作成の自動化</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>会計ソフトのデータを画面にドロップするだけで、御社独自のPLフォーマットに自動変換。科目マッピングをアプリが記憶。手作業コピペが不要に。</p></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>入力が構造化データ（Excel/CSV）のため、<strong>AIを使わずプログラム処理だけで完結できる可能性</strong>が高い。変換精度はほぼ100%です。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥100,000〜¥150,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：4〜7日間</div></div></div>
+<div class="sp-note">※ 科目マッピングのパターン数により変動します。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d7"><div class="dc-bar" style="background:var(--lab)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#07</div><div class="dc-dept">労務</div></div><h3>就業規則・労務規定FAQチャットボット</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>チャット画面で質問すると、御社の就業規則・賃金規定・社内ルールに基づいてAIが回答。一般論ではなく<strong>「LaLaLandではこうです」という回答</strong>が返ります。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>資料の投入口（Googleドライブ or Dropbox）</strong>— PDFやWordを所定のフォルダに入れるだけ。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>テキスト変換エンジン</strong>— AIが読み取り、Googleスプレッドシートに一覧化。人間が確認・修正可能。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>処理エンジン（GAS）</strong>— 質問に関連する箇所を検索→AIに渡して回答生成。</span></div>
+<div class="sp-step"><span class="sp-step-num">4</span><span><strong>チャット画面（Firebase）</strong>— LaLaLandポータルに組み込み。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>AIが参照する情報は<strong>スプレッドシート上に「人間が読める状態」</strong>で管理。<strong>Googleドライブ（推奨）</strong>またはDropboxに対応。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥50,000〜¥100,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：3〜6日間</div></div></div>
+<div class="sp-note">※ 読み込ませる資料の量により変動します。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d8"><div class="dc-bar" style="background:linear-gradient(90deg,var(--mkt),var(--slf))"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#08</div><div class="dc-dept">広報 / 企画</div></div><h3>コンテンツ生成＋企画壁打ちAI</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>1つのアプリで<strong>「コンテンツ生成」と「企画壁打ち」の2つのモード</strong>を切り替えて使える対話型AIです。<br><br><strong>コンテンツ生成モード：</strong>メモや思いつきを投げるだけで、LaLaLandらしいブログ記事やSNS投稿のドラフトが返ってきます。写真を添えるとその内容も読み取って反映。「ブログ用」「X用」「Instagram用」「保護者向け」など、プラットフォーム別に最適化された文体で出力されます。過去の記事やキャッチコピーを全て把握しているので、被りのない新鮮な切り口や続編シリーズの提案も行います。<br><br><strong>企画壁打ちモード：</strong>「こういう企画を考えて」と投げると、過去の企画・イベント・キャッチコピーを全て把握した上で、それらと被らない独自のアイデアを提案し続ける壁打ちパートナーになります。「そこ知ってるよ」という回答が出ない設計です。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>過去データの投入・管理</strong>— 過去のブログ記事、キャッチコピー、企画書、イベント実績、パンフレット等をフォルダに投入。#07と同じ仕組みでGoogleスプレッドシートにテキスト化され、人間が確認・修正できます。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>対話型UI（Firebase Hosting）</strong>— テキスト入力＋画像添付ができ、モード（コンテンツ生成/企画壁打ち）とプラットフォーム（ブログ/X/Instagram等）をボタンで切り替えられます。LaLaLandポータルに組み込み。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>裏側の処理エンジン（GAS）</strong>— スプレッドシートから関連データを検索し、システムプロンプト（LaLaLandの人格＋「過去と被るものは出すな」制約＋用途別テンプレート）と合わせてAIに渡します。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>#07のRAG基盤（過去データ参照）と#01のCorpora（人格・トーン）を組み合わせた構成です。<strong>#01のコアコンセプト構築と連動</strong>することで、「LaLaLandらしさ」と「斬新さ」を両立します。#01が先に進むほど品質が上がります。</p></div>
+<div class="sp-option"><strong>#01との関係：</strong> 本テーマは#01「コアコンセプト構築（法人格AI）」の成果物を直接活用します。#01と合わせてのご発注を推奨いたします。</div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥150,000<small>（税別）</small></div><div class="sp-cost-sub">想定工数：5〜8日間</div></div></div>
+<div class="sp-note">※ #01（コアコンセプト構築）の費用は別途。過去データの量と用途テンプレートの数により変動します。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d9"><div class="dc-bar" style="background:linear-gradient(90deg,var(--crp),var(--r2))"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#09</div><div class="dc-dept">新規事業</div><div class="dc-new">NEW</div></div><h3>AIエージェント（Gems / GPTs）構築講座</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>御社のメンバーが自分の手でAIエージェントを構築できるようになる<strong>実践型の講座</strong>です。2時間で「補助金最適化アドバイザーGem」と「新規出店市場分析Gem」の2つを作ります。</p></div>
+<div class="sp-block"><div class="sp-label">講座の流れ</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>汎用業務Gemの基礎</strong>— システムプロンプトの書き方、「AIに人格と役割を与える」考え方。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>補助金アドバイザーGemを作る</strong>— Web検索連動で常に最新の補助金情報を参照。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>市場分析Gemを作る</strong>— ディープリサーチ機能で競合・価格帯調査。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">なぜ講座形式なのか</div><p>補助金・市場データは<strong>公開情報が情報源</strong>。AI標準機能を活かす方が効果的。構築方法を習得すれば、今後<strong>自分たちでAIエージェントを増やしていける</strong>。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥18,000<small>/人（税別）</small></div><div class="sp-cost-sub">所要時間：2時間</div></div></div>
+<div class="sp-note">※ 最小催行人数や会場等はご相談ください。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d10"><div class="dc-bar" style="background:linear-gradient(90deg,var(--r5),var(--r6))"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#10</div><div class="dc-dept">選抜メンバー育成</div></div><h3>社内エンジニアチーム育成コーチング</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>選抜された少人数メンバー（2〜4名推奨）を、<strong>「AIで本格的にアプリを作り、社内ツールを自分たちで保守・改良できるエンジニア」</strong>に育てる専門伴走コーチングです。</p></div>
+<div class="sp-block"><div class="sp-label">コーチングで扱うテーマ</div>
+<p><strong>マインドセット</strong><br>分からない→まずAIに聞く。エラー→AIに貼る。全スキルの土台。</p>
+<p><strong>基礎理解</strong><br>CLIの概念、ターミナル操作、ファイルパス、Git / GitHubの基礎。</p>
+<p><strong>開発ツール</strong><br>Claude Code / Codex / Antigravity のインストールと使い方。対話型AIとCLIの使い分け。AIへの指示設計。</p>
+<p><strong>中級〜実践</strong><br>Skills（スキルファイル）の設計・活用。リモートコントロール。Firebase deploy。セキュリティ基礎。</p>
+<p><strong>実務直結</strong><br>本プロジェクトで構築したコードを読む・直す・改良する。デバッグの考え方。</p></div>
+<div class="sp-block"><div class="sp-label">設計思想</div><p>ゴールは<strong>「外注が不要になる状態」</strong>。構築したツールを「教材」に、保守・改善を自分たちでできるチームを育てます。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">¥100,000<small>/月（税別）</small></div><div class="sp-cost-sub">月2回×2時間セッション ＋ チャットサポート</div></div></div>
+<div class="sp-note">※ 少人数制（2〜4名推奨）。最低契約期間3ヶ月〜。</div>
+</div>
+</div></div>
+
+<div class="dc rv" id="d11"><div class="dc-bar" style="background:var(--tel)"></div><div class="dc-body"><div class="dc-top"><div class="dc-num">#11</div><div class="dc-dept">現場運営</div><div class="dc-new">NEW</div></div><h3>5部門の電話受付AI自動化（多言語対応）</h3>
+<div class="sp">
+<div class="sp-block"><div class="sp-label">成果物イメージ</div><p>電話をAIが自動で受け、用件を聞き取り、<strong>担当部門への転送、自動回答、伝言記録</strong>を行います。日本語と英語に対応。</p></div>
+<div class="sp-block"><div class="sp-label">構築・構成の概要</div>
+<div class="sp-steps">
+<div class="sp-step"><span class="sp-step-num">1</span><span><strong>電話回線の入口（Twilio）</strong>— 日本の050/03番号を取得。既存番号からの転送も可能。</span></div>
+<div class="sp-step"><span class="sp-step-num">2</span><span><strong>会話AI（Google Conversational Agents）</strong>— 音声認識→用件判断→応答。<strong>振り分けルールはノーコードで設定可能</strong>。</span></div>
+<div class="sp-step"><span class="sp-step-num">3</span><span><strong>振り分け先の設定</strong>— 5部門への転送、営業電話の自動処理、伝言通知。</span></div>
+</div></div>
+<div class="sp-block"><div class="sp-label">ランニングコスト</div><p><strong>合計：月額約1万円前後</strong>（通話量により変動）。初回$600分のクレジットあり。</p></div>
+<div class="sp-block"><div class="sp-label">注意事項</div><p>保護者への心象に配慮した応答設計を行います。<strong>本番導入前にPoC（技術検証）</strong>を推奨します。</p></div>
+<div class="sp-cost"><div><div class="sp-cost-main">応相談</div><div class="sp-cost-sub">想定工数：応相談</div></div></div>
+<div class="sp-note">※ PoC後に正式見積りをご提示します。</div>
+</div>
+</div></div>
+
+</div>
+
+<div class="mb rv"><p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>各テーマの概算費用はヒアリング後に確定いたします。複数テーマを同時にご発注いただく場合は、技術基盤の共有によりトータルコストの最適化が可能です。</p></div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- ==================== 03: PRIORITY ==================== -->
+<section id="s3" class="sec">
+<div class="rv"><div class="sec-l">03 — Priority Order</div><h2 class="sec-t">プロジェクトにおける優先順位イメージ</h2><p class="sec-p">ミーティング内で整理された5つの柱です。これに沿って具体的な提案をパッケージ化いたします。</p></div>
+<div class="pri">
+<div class="pri-item rv" style="transition-delay:.05s"><span class="pri-num">1</span><p><strong>全社共通AIの導入</strong><br>全員がアクセスできるAI環境を整備。Gemini（Workspace連動）を基盤とし、AI格差を生まない状態をつくる。</p></div>
+<div class="pri-item rv" style="transition-delay:.1s"><span class="pri-num">2</span><p><strong>Dropboxの対話型検索</strong><br>全社員がDropboxの情報を簡単に検索・参照できるインターフェースを構築。必要な資料にすぐたどり着ける環境に。</p></div>
+<div class="pri-item rv" style="transition-delay:.15s"><span class="pri-num">3</span><p><strong>コアコンセプトの構築</strong><br>代表者・経営陣へのヒアリングを通じて、LaLaLandの考え方・判断基準・理念を言語化・構造化。</p></div>
+<div class="pri-item rv" style="transition-delay:.2s"><span class="pri-num">4</span><p><strong>部門別プロジェクトの組成</strong><br>経理・労務を筆頭に、各部門の担当者をPMとして配置。現場主導でピンポイント支援。</p></div>
+<div class="pri-item rv" style="transition-delay:.25s"><span class="pri-num">5</span><p><strong>内製化人材の育成研修</strong><br>AIでアプリを自作できる人材を社内に育成。プロンプト技術・Claude活用を個別レクチャー。</p></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- ==================== 04: NEXT STEPS ==================== -->
+<section id="s4" class="sec">
+<div class="rv"><div class="sec-l">04 — Next Steps</div><h2 class="sec-t">今後の進め方</h2><p class="sec-p">本日の内容を踏まえ、以下のアクションで具体化を進めてまいります。</p></div>
+<div class="nsl">
+<div class="nsi rv" style="transition-delay:.05s"><span class="nsn">1</span><p><strong>全プロジェクトの可視化＋提案書の作成</strong><br>本日出た全てのテーマに設計仕様・解決ステップ・概算費用を添えた提案書をお送りします。<span class="ns-who">TOKON</span></p></div>
+<div class="nsi rv" style="transition-delay:.1s"><span class="nsn">2</span><p><strong>各部署からの課題収集・整理</strong><br>各部門から自動化を希望する業務や具体的な要件をヒアリング・取りまとめ。<span class="ns-who">LaLaLand様</span></p></div>
+<div class="nsi rv" style="transition-delay:.15s"><span class="nsn">3</span><p><strong>Dropbox検索機能の具体的提案</strong><br>大量のDropboxデータを対話型で検索可能にするための技術的な提案をまとめてお送りします。<span class="ns-who">TOKON</span></p></div>
+<div class="nsi rv" style="transition-delay:.2s"><span class="nsn">4</span><p><strong>全社AI導入プランの提示</strong><br>Workspace連動のGemini導入を軸に、契約形態・コスト・使い分けの推奨プランをご提案。<span class="ns-who">TOKON</span></p></div>
+<div class="nsi rv" style="transition-delay:.25s"><span class="nsn">5</span><p><strong>プロジェクトメンバーの検討</strong><br>社内で意欲のある方を募り、プロジェクト体制を社内で協議。<span class="ns-who">LaLaLand様</span></p></div>
+</div>
+
+<div class="mb rv"><p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>追加のご要望がございましたら随時お知らせください。提案書に反映してお渡しいたします。</p></div>
+</section>
+
+<footer class="ft"><p>TOKON<br>本資料は方向性の共有を目的としたものであり、正式なお見積りや契約内容を含むものではありません。</p></footer>
+<div class="rl"></div>
+
+<script>
+var O=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(e){O.observe(e)});
+var toc=document.getElementById('toc'),tl=toc.querySelectorAll('a'),ss=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',function(){toc.classList.toggle('sc',window.scrollY>100);var h=document.documentElement;document.getElementById('pB').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';var c='';ss.forEach(function(s){if(window.scrollY>=s.offsetTop-200)c=s.id});tl.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c)})},{passive:true});
+document.querySelectorAll('.ic').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+!function(){var c=document.getElementById('hC'),x=c.getContext('2d'),cl=['#E8637A','#F5A623','#F7D154','#6EC5A0','#5BA4D9','#8B6EC0'],ps=[],w,h,d;function rz(){d=window.devicePixelRatio||1;w=c.parentElement.offsetWidth;h=c.parentElement.offsetHeight;c.width=w*d;c.height=h*d;c.style.width=w+'px';c.style.height=h+'px';x.scale(d,d)}function init(){rz();ps=[];for(var i=0,n=Math.min(Math.floor(w*h/14000),70);i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2.8+.8,vx:(Math.random()-.5)*.25,vy:-Math.random()*.2-.04,c:cl[Math.floor(Math.random()*cl.length)],a:Math.random()*.2+.08,p:Math.random()*Math.PI*2})}var t=0;function dr(){x.clearRect(0,0,w,h);t+=.004;ps.forEach(function(p){p.x+=p.vx+Math.sin(t+p.p)*.12;p.y+=p.vy;if(p.y<-10){p.y=h+10;p.x=Math.random()*w}if(p.x<-10)p.x=w+10;if(p.x>w+10)p.x=-10;var a=p.a*(.6+.4*Math.sin(t*1.8+p.p));x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=p.c+('0'+Math.round(a*255).toString(16)).slice(-2);x.fill()});requestAnimationFrame(dr)}init();dr();window.addEventListener('resize',init)}();
+</script>
+</body>
+</html>
