@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaLaLand様 業務省力化システム ご提案書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#fff;--sw:#F9F7F3;--tx:#1A1A1A;--ts:#5C5C5C;--tl:#9A9A9A;--bd:#EBEBEB;
+--r1:#E8637A;--r2:#F5A623;--r3:#F7D154;--r4:#6EC5A0;--r5:#5BA4D9;--r6:#8B6EC0;
+--acs:#F4B8C2;
+--rd:14px;--rs:8px;
+--sh:0 1px 4px rgba(0,0,0,.03),0 6px 20px rgba(0,0,0,.025);
+--fe:'Quicksand','Outfit',sans-serif;--fo:'Outfit',sans-serif;--fj:'Noto Sans JP','Noto Sans CJK JP',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fj);background:var(--bg);color:var(--tx);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+.rl{height:4px;background:linear-gradient(90deg,var(--r1),var(--r2),var(--r3),var(--r4),var(--r5),var(--r6))}
+#pb{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--r1),var(--r3),var(--r5),var(--r6));z-index:10}
+
+.hero{position:relative;min-height:56vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px 56px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;pointer-events:none}
+.hero>*:not(canvas){position:relative;z-index:1}
+.hero-logo img{height:56px;width:auto;margin-bottom:24px}
+.hero-badge{display:inline-block;font-family:var(--fo);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--r5);background:#EDF5FB;border:1px solid rgba(91,164,217,.2);border-radius:20px;padding:6px 18px;margin-bottom:24px}
+.hero h1{font-size:clamp(22px,3.8vw,36px);font-weight:700;line-height:1.5;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--acs) 62%)}
+.hero-sub{font-size:14px;color:var(--ts);max-width:540px;line-height:2}
+.hero-meta{margin-top:36px;display:flex;flex-wrap:wrap;justify-content:center;gap:36px}
+.hero-meta dt{font-family:var(--fe);font-size:10px;font-weight:600;letter-spacing:2px;color:var(--r1);margin-bottom:4px}
+.hero-meta dd{font-size:13px;color:var(--ts)}
+
+.toc{max-width:780px;margin:0 auto;padding:0 24px 8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.toc a{font-size:12px;color:var(--ts);text-decoration:none;border:1px solid var(--bd);border-radius:20px;padding:5px 14px}
+.toc a:hover,.toc a:focus-visible{border-color:var(--r5);color:var(--r5);outline:none}
+
+.sec{max-width:780px;margin:0 auto;padding:64px 24px}
+.sec-l{font-family:var(--fo);font-size:11px;font-weight:600;letter-spacing:3px;color:var(--r1);margin-bottom:12px}
+.sec-t{font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.5;margin-bottom:12px}
+.sec-p{font-size:14px;color:var(--ts);line-height:2;margin-bottom:32px}
+.dv{max-width:780px;margin:0 auto;padding:0 24px}
+.dv hr{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent)}
+
+/* overview */
+.arch{background:var(--sw);border-radius:var(--rd);padding:24px;margin-bottom:28px;overflow-x:auto}
+.arch svg{display:block;min-width:620px;width:100%;height:auto}
+.sys-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.sys-mini{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--bd);border-radius:var(--rs);text-decoration:none;color:inherit}
+.sys-mini:hover,.sys-mini:focus-visible{border-color:var(--r5);outline:none}
+.sys-mini h3{font-size:14px;font-weight:600;line-height:1.5}
+.sys-mini p{font-size:12px;color:var(--ts);line-height:1.7;margin-top:2px}
+.ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{width:18px;height:18px}
+
+/* principles */
+.pr{display:flex;flex-direction:column;border-top:1px solid var(--bd)}
+.pr-item{display:grid;grid-template-columns:220px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--bd)}
+.pr-item h3{font-size:14px;font-weight:600;line-height:1.7}
+.pr-item p{font-size:13px;color:var(--ts);line-height:1.9}
+
+/* system cards */
+.sys{border:1px solid var(--bd);border-radius:var(--rd);box-shadow:var(--sh);overflow:hidden;margin-bottom:28px;scroll-margin-top:24px}
+.sys-bar{height:4px}
+.sys-head{display:flex;align-items:center;gap:14px;padding:24px 28px 0}
+.sys-head h3{font-size:18px;font-weight:700;line-height:1.5}
+.sys-head .for{font-size:12px;color:var(--tl)}
+.sys-body{padding:18px 28px 28px}
+.blk{margin-top:18px}
+.blk-l{font-size:12px;font-weight:700;color:var(--ts);margin-bottom:6px}
+.blk p{font-size:14px;line-height:1.95}
+.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px}
+.steps li{counter-increment:s;display:flex;gap:12px;font-size:13px;line-height:1.85}
+.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--sw);font-family:var(--fe);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px}
+.pts li{font-size:13px;line-height:1.85;padding-left:16px;position:relative}
+.pts li::before{content:'';position:absolute;left:2px;top:.8em;width:6px;height:6px;border-radius:50%;background:var(--r4)}
+.ask li::before{background:var(--r2)}
+.bd-tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+.bd-tbl td{padding:9px 0;border-bottom:1px solid #F3F3F3}
+.bd-tbl td:last-child{text-align:right;font-family:var(--fe);font-weight:700;white-space:nowrap;padding-left:16px}
+.bd-tbl tr.tot td{border-top:2px solid var(--tx);border-bottom:none;font-weight:700;padding-top:12px}
+.bd-tbl tr.tot td:last-child{font-size:17px}
+.chip{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.chip-c{background:#FEF6E8;color:#B7791F}
+.chip-p{background:#F3EFF9;color:var(--r6)}
+
+/* cost */
+.cost{width:100%;border-collapse:collapse;font-size:14px}
+.cost td{padding:14px 0;border-bottom:1px solid #F3F3F3;vertical-align:baseline}
+.cost td:last-child{text-align:right;font-family:var(--fe);font-weight:700;font-size:16px;white-space:nowrap;padding-left:16px}
+.cost small{display:block;font-size:12px;color:var(--tl)}
+.cost tr.tot td{border-top:2px solid var(--tx);border-bottom:none;font-weight:700}
+.cost tr.tot td:last-child{font-size:22px}
+.grant{background:var(--sw);border-radius:var(--rs);padding:16px 20px;margin-top:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--ts)}
+.grant b{font-family:var(--fe);font-size:14px;color:var(--r4);background:#EDF9F3;border-radius:6px;padding:3px 10px}
+.grant strong{font-family:var(--fe);font-size:18px;color:var(--tx)}
+.extra{margin-top:28px;border:1px solid var(--bd);border-radius:var(--rd);padding:22px 24px}
+.extra h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.extra>p{font-size:13px;color:var(--ts);margin-bottom:12px}
+.ex-row{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-top:1px solid #F3F3F3}
+.ex-row h4{font-size:13px;font-weight:600}
+.ex-row p{font-size:13px;color:var(--ts);line-height:1.85}
+
+/* maintenance */
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mt-card{background:var(--sw);border-radius:var(--rs);padding:18px 20px}
+.mt-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.mt-card p{font-size:13px;color:var(--ts);line-height:1.9}
+
+/* cautions + asks */
+.cl{list-style:none;counter-reset:c;border-top:1px solid var(--bd)}
+.cl li{counter-increment:c;display:grid;grid-template-columns:28px 180px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--bd);font-size:13px;line-height:1.85}
+.cl li::before{content:counter(c);font-family:var(--fe);font-weight:700;color:var(--r1)}
+.cl h3{font-size:13px;font-weight:700}
+.cl p{color:var(--ts)}
+.qa{columns:2;column-gap:28px}
+.qa section{break-inside:avoid;margin-bottom:20px}
+.qa h3{font-size:13px;font-weight:700;margin-bottom:6px}
+
+/* timeline */
+.tl-item{display:flex;gap:20px;padding:16px 0}
+.tl-dot{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:16px}
+.tl-dot span{width:12px;height:12px;border-radius:50%;border:3px solid var(--r1);background:#fff}
+.tl-dot::after{content:'';flex:1;width:2px;background:var(--bd);margin-top:6px}
+.tl-item:last-child .tl-dot::after{display:none}
+.tl-when{font-family:var(--fe);font-size:12px;font-weight:700;color:var(--r1)}
+.tl-item h3{font-size:14px;font-weight:600}
+.tl-item p{font-size:13px;color:var(--ts);line-height:1.85}
+
+.note{font-size:12px;color:var(--tl);line-height:1.8;margin-top:16px}
+.ft{text-align:center;padding:40px 24px;font-size:12px;color:var(--tl);border-top:1px solid var(--bd)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.rv.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:640px){
+.sec{padding:48px 20px}.sys-head,.sys-body{padding-left:20px;padding-right:20px}
+.sys-grid,.mt{grid-template-columns:1fr}.qa{columns:1}
+.pr-item,.ex-row{grid-template-columns:1fr;gap:4px}
+.cl li{grid-template-columns:24px 1fr}.cl li p{grid-column:2}
+}
+
+@page{size:A4;margin:14mm 15mm 16mm}
+@media print{
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-size:10pt;line-height:1.75}
+#pb,.toc,.hero canvas,.dv{display:none!important}
+.rv{opacity:1!important;transform:none!important;transition:none!important}
+a{color:inherit;text-decoration:none}
+.hero{min-height:auto;height:250mm;padding:0;justify-content:center;break-after:page}
+.hero h1{font-size:28pt}
+.sec{max-width:none;padding:0 0 8mm}
+.sec-t{font-size:16pt}
+.sec-p{margin-bottom:5mm}
+#overview,#principles,#systems,#cost,#chatgpt,#maintenance,#asks{break-before:page}
+#schedule{padding-top:2mm}
+.tl-item{padding:2.2mm 0}.tl-item p{font-size:9pt}
+.mt-card{padding:4mm 5mm}
+#maintenance{padding-bottom:4mm}
+.arch{padding:4mm;margin-bottom:5mm}.arch svg{min-width:0}
+.sys{box-shadow:none;break-inside:avoid;margin-bottom:6mm}
+.sys-body{padding:3mm 7mm 6mm}.sys-head{padding:6mm 7mm 0}
+.blk{margin-top:3.5mm}.blk p,.steps li,.pts li,.bd-tbl{font-size:9pt}
+.pr-item,.ex-row,.tl-item,.mt-card,.qa section,.extra{break-inside:avoid}
+h2,h3,.blk-l{break-after:avoid}
+.ft{border-top:1px solid var(--bd);margin-top:6mm}
+.rl{display:none}
+
+/* print: Japanese font + white backgrounds */
+:root{--fe:'Noto Sans CJK JP','Noto Sans JP',sans-serif;--fo:'Noto Sans CJK JP','Noto Sans JP',sans-serif;--fj:'Noto Sans CJK JP','Noto Sans JP',sans-serif;--sw:#fff}
+body,body *{font-family:'Noto Sans CJK JP','Noto Sans JP',sans-serif!important}
+.arch svg text{font-family:'Noto Sans CJK JP',sans-serif!important}
+.arch,.mt-card,.grant,.ic,.hero-badge,.sys-mini,.extra,.sys{background:#fff!important}
+.arch,.mt-card,.grant{border:1px solid var(--bd)}
+.arch svg rect{fill:#fff}
+.hero h1 em{background:none;border-bottom:3px solid var(--acs)}
+.chip{background:#fff!important;border:1px solid currentColor}
+.grant b{background:#fff;border:1px solid var(--r4)}
+.steps li::before{background:#fff;border:1px solid var(--bd)}
+}
+
+</style>
+</head>
+<body>
+<div id="pb"></div>
+<div class="rl"></div>
+
+<header class="hero">
+<canvas id="hC"></canvas>
+<div class="hero-logo"><img src="data:image/webp;base64,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" alt="LaLaLand"></div>
+<div class="hero-badge">Proposal</div>
+<h1>業務省力化システム<br><em>ご提案書</em></h1>
+<p class="hero-sub">4つのシステムについて、減らしたい仕事、仕組み、費用、進め方をまとめました。補助金の活用に関する情報は、別資料「補助金活用に向けた情報提供」にまとめています。</p>
+<dl class="hero-meta"><div><dt>Date</dt><dd>2026年9月</dd></div><div><dt>Prepared by</dt><dd>TOKON</dd></div><div><dt>Status</dt><dd>ご提案</dd></div></dl>
+</header>
+
+<nav class="toc" aria-label="目次">
+<a href="#overview">全体像</a><a href="#principles">設計の考え方</a><a href="#systems">システム別の設計</a><a href="#cost">費用</a><a href="#chatgpt">ChatGPT Business</a><a href="#maintenance">保守</a><a href="#schedule">スケジュール</a><a href="#asks">確認事項</a>
+</nav>
+
+<!-- OVERVIEW -->
+<section class="sec" id="overview">
+<div class="rv">
+<div class="sec-l">Overview</div>
+<h2 class="sec-t">4つのシステムと、共通の土台</h2>
+<p class="sec-p">4つのシステムは、同じ土台の上に作ります。職員の方が使う画面は「LaLaLandポータル」として1か所にまとめ、裏側の処理とデータの置き場も共通にします。土台を共通にすることで、作る費用を抑え、社内で直すときも1つの仕組みを覚えれば済むようにします。</p>
+</div>
+
+<div class="arch rv" role="img" aria-label="システム構成図。職員がLaLaLandポータルまたはLINEから使い、処理エンジンがデータ置き場とAIにつながる">
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans JP, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9A9A9A"/></marker></defs>
+<g font-size="12" fill="#1A1A1A">
+<rect x="10" y="40" width="120" height="64" rx="10" fill="#fff" stroke="#EBEBEB"/>
+<text x="70" y="68" text-anchor="middle" font-weight="700">職員</text>
+<text x="70" y="88" text-anchor="middle" font-size="11" fill="#5C5C5C">PC・スマホ</text>
+<rect x="10" y="140" width="120" height="64" rx="10" fill="#fff" stroke="#EBEBEB"/>
+<text x="70" y="168" text-anchor="middle" font-weight="700">LINE</text>
+<text x="70" y="188" text-anchor="middle" font-size="11" fill="#5C5C5C">就業規則Bot</text>
+<rect x="180" y="40" width="140" height="64" rx="10" fill="#EDF5FB" stroke="#5BA4D9"/>
+<text x="250" y="68" text-anchor="middle" font-weight="700">LaLaLandポータル</text>
+<text x="250" y="88" text-anchor="middle" font-size="11" fill="#5C5C5C">画面（Firebase）</text>
+<rect x="370" y="90" width="140" height="70" rx="10" fill="#EDF9F3" stroke="#6EC5A0"/>
+<text x="440" y="120" text-anchor="middle" font-weight="700">処理エンジン</text>
+<text x="440" y="140" text-anchor="middle" font-size="11" fill="#5C5C5C">Google Apps Script</text>
+<rect x="560" y="30" width="110" height="64" rx="10" fill="#F3EFF9" stroke="#8B6EC0"/>
+<text x="615" y="58" text-anchor="middle" font-weight="700">AI</text>
+<text x="615" y="78" text-anchor="middle" font-size="11" fill="#5C5C5C">Claude / Gemini 等</text>
+<rect x="560" y="150" width="110" height="80" rx="10" fill="#FEF6E8" stroke="#F5A623"/>
+<text x="615" y="176" text-anchor="middle" font-weight="700">データ置き場</text>
+<text x="615" y="196" text-anchor="middle" font-size="11" fill="#5C5C5C">Dropbox・ドライブ</text>
+<text x="615" y="214" text-anchor="middle" font-size="11" fill="#5C5C5C">スプレッドシート</text>
+</g>
+<g stroke="#9A9A9A" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+<path d="M130 72H176"/>
+<path d="M320 80C345 80 350 110 366 114"/>
+<path d="M130 172C250 172 300 150 366 138"/>
+<path d="M510 110C535 100 540 70 556 64"/>
+<path d="M510 140C535 150 540 180 556 186"/>
+</g>
+</svg>
+</div>
+
+<div class="sys-grid rv">
+<a class="sys-mini" href="#sys-a"><div class="ic" style="background:#EDF5FB"><svg viewBox="0 0 24 24" fill="none" stroke="#5BA4D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v3"/><path d="M3 7v10a2 2 0 002 2h6"/><circle cx="17" cy="16" r="3"/><path d="M19.5 18.5L22 21"/></svg></div><div><h3>Dropbox対話型AI検索</h3><p>資料を探す時間を減らす</p></div></a>
+<a class="sys-mini" href="#sys-b"><div class="ic" style="background:#EDF9F3"><svg viewBox="0 0 24 24" fill="none" stroke="#6EC5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/><path d="M9 10h6M9 14h4"/></svg></div><div><h3>就業規則Bot（LINE）</h3><p>規程の問い合わせ対応を減らす</p></div></a>
+<a class="sys-mini" href="#sys-c"><div class="ic" style="background:#F3EFF9"><svg viewBox="0 0 24 24" fill="none" stroke="#8B6EC0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.4 1 1.1 1 1.9V16h5v-.2c0-.8.4-1.5 1-1.9A6 6 0 0012 3z"/></svg></div><div><h3>コンテンツ企画壁打ちAI</h3><p>発信・企画の下書き時間を減らす</p></div></a>
+<a class="sys-mini" href="#sys-d"><div class="ic" style="background:#FEF2F4"><svg viewBox="0 0 24 24" fill="none" stroke="#E8637A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="8" rx="1.5"/><rect x="14" y="13" width="7" height="8" rx="1.5"/><path d="M10 7h4a3 3 0 013 3v3"/><path d="M15 11l2 2 2-2"/></svg></div><div><h3>労務・処遇改善 一気通貫システム</h3><p>入社手続きと処遇改善書類の手作業を減らす</p></div></a>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- PRINCIPLES -->
+<section class="sec" id="principles">
+<div class="rv">
+<div class="sec-l">Principles</div>
+<h2 class="sec-t">設計の考え方</h2>
+<p class="sec-p">4つのシステムすべてに共通するルールです。</p>
+</div>
+<div class="pr rv">
+<div class="pr-item"><h3>計算は機械に、判断は人に、読み取りはAIに</h3><p>AIに任せるのは、文章や資料を読み取ることと下書きを作ることだけです。金額の計算や書類への転記はプログラムが確実に行い、最終的な確認と判断は必ず人が行います。</p></div>
+<div class="pr-item"><h3>AIが見る情報は、人が読める場所に置く</h3><p>AIが参照する規程や過去の記事、従業員の情報は、スプレッドシートなど職員の方が直接見て直せる場所に置きます。AIの回答がおかしいときは、そこを直せば済むようにします。</p></div>
+<div class="pr-item"><h3>AIサービスを1社に固定しない</h3><p>使うAI（Claude / Gemini 等）は後から切り替えられる作りにします。料金や性能が変わっても、仕組み全体を作り直さずに済みます。</p></div>
+<div class="pr-item"><h3>社内で直せる作りにする</h3><p>研修プログラムで学ぶ技術（Google Apps Script、GitHub、Firebase）だけで組み立てます。日常の修正や改善を社内のメンバーが行え、外部に頼らずに運用できる状態を目指します。</p></div>
+<div class="pr-item"><h3>個人情報は必要な人だけが見られるように</h3><p>従業員の情報を扱う労務システムは、閲覧・編集できる人を役割ごとに限定します。AIには必要な項目だけを渡し、給与などの個人的な情報をBotが答えることはありません。</p></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- SYSTEMS -->
+<section class="sec" id="systems">
+<div class="rv">
+<div class="sec-l">Systems</div>
+<h2 class="sec-t">システム別の設計</h2>
+<p class="sec-p">導入の効果を測れるように、システムごとに「どの仕事を減らすか」から書いています。仕組み、設計のポイント、費用の内訳は現時点の目安で、ヒアリング後に確定します。</p>
+</div>
+
+<!-- A -->
+<article class="sys rv" id="sys-a">
+<div class="sys-bar" style="background:var(--r5)"></div>
+<div class="sys-head"><div class="ic" style="background:#EDF5FB"><svg viewBox="0 0 24 24" fill="none" stroke="#5BA4D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v3"/><path d="M3 7v10a2 2 0 002 2h6"/><circle cx="17" cy="16" r="3"/><path d="M19.5 18.5L22 21"/></svg></div><div><h3>Dropbox対話型AI検索</h3><div class="for">使う人：全職員</div></div></div>
+<div class="sys-body">
+<div class="blk"><div class="blk-l">減らしたい仕事</div><p>Dropboxの中から必要な資料を探す時間と、「あの資料どこ？」という社内の問い合わせ。「去年の運動会の企画書は？」と普段の言葉で聞くだけで、該当する資料と場所が返ってくる状態を作ります。</p></div>
+<div class="blk"><div class="blk-l">仕組み</div>
+<ol class="steps">
+<li>Dropbox内の全ファイル・フォルダを一覧表にし、「使っている／使っていない／保留」を一緒に仕分けます。</li>
+<li>整理後のファイルから、検索用のデータ（ファイル名・場所・中身の要点）を作り、スプレッドシートに置きます。</li>
+<li>ポータルの検索画面で質問すると、処理エンジンが検索用データから候補を探し、AIが答えを返します。</li>
+</ol></div>
+<div class="blk"><div class="blk-l">設計のポイント</div>
+<ul class="pts">
+<li>回答には必ず元のファイルの場所を添え、職員の方が中身を自分で確かめられるようにします。</li>
+<li>人事・給与など閲覧を限定したいフォルダは、最初から検索の対象外にします。</li>
+<li>ファイルが増えても、検索用データを自動で更新する作りにします。</li>
+</ul></div>
+<div class="blk"><div class="blk-l">費用の内訳</div>
+<table class="bd-tbl">
+<tr><td>ファイルの一覧化・整理方針づくり</td><td>¥50,000</td></tr>
+<tr><td>検索用データの構築</td><td>¥60,000</td></tr>
+<tr><td>検索画面・AI回答の仕組み</td><td>¥70,000</td></tr>
+<tr><td>動作確認・導入説明</td><td>¥20,000</td></tr>
+<tr class="tot"><td>小計</td><td>¥200,000</td></tr>
+</table>
+<p class="note">ファイルの一覧化と整理は、検索の仕組みより先に着手することもできます。</p>
+</div>
+</div>
+</article>
+
+<!-- B -->
+<article class="sys rv" id="sys-b">
+<div class="sys-bar" style="background:var(--r4)"></div>
+<div class="sys-head"><div class="ic" style="background:#EDF9F3"><svg viewBox="0 0 24 24" fill="none" stroke="#6EC5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/><path d="M9 10h6M9 14h4"/></svg></div><div><h3>就業規則Bot（LINE）</h3><div class="for">使う人：全職員／管理：労務担当</div></div></div>
+<div class="sys-body">
+<div class="blk"><div class="blk-l">減らしたい仕事</div><p>「有給は何日前に申請すればいい？」のような、就業規則・賃金規程・社内ルールについての問い合わせ対応。職員の方がLINEで聞くと、御社の規程に基づいた答えが返ってきます。一般論ではなく「LaLaLandではこうです」という答えです。</p></div>
+<div class="blk"><div class="blk-l">仕組み</div>
+<ol class="steps">
+<li>就業規則などのPDF・Wordを所定のフォルダに入れると、AIが読み取り、条文ごとにスプレッドシートに整理します。労務担当の方が内容を確認・修正できます。</li>
+<li>LINE公式アカウントで質問を受け取り、処理エンジンが関係する条文を探して、AIが答えを作ります。</li>
+<li>規程を改定したときは、フォルダのファイルを差し替えるだけで答えが更新されます。</li>
+</ol></div>
+<div class="blk"><div class="blk-l">設計のポイント</div>
+<ul class="pts">
+<li>答えには根拠になった規程の名前と条文を添えます。</li>
+<li>規程に書かれていないことや判断が必要なことは、答えずに労務担当の方への問い合わせを案内します。</li>
+<li>個人の給与や評価などの個別の情報には答えません。</li>
+</ul></div>
+<div class="blk"><div class="blk-l">費用の内訳</div>
+<table class="bd-tbl">
+<tr><td>規程データの整備</td><td>¥40,000</td></tr>
+<tr><td>回答の仕組み（処理エンジン・AI）</td><td>¥50,000</td></tr>
+<tr><td>LINE公式アカウントとの連携</td><td>¥40,000</td></tr>
+<tr><td>動作確認・導入説明</td><td>¥20,000</td></tr>
+<tr class="tot"><td>小計</td><td>¥150,000</td></tr>
+</table>
+<p class="note">LINE公式アカウントの利用料は、プランに応じてお客様のご負担となります。</p>
+</div>
+</div>
+</article>
+
+<!-- C -->
+<article class="sys rv" id="sys-c">
+<div class="sys-bar" style="background:var(--r6)"></div>
+<div class="sys-head"><div class="ic" style="background:#F3EFF9"><svg viewBox="0 0 24 24" fill="none" stroke="#8B6EC0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.4 1 1.1 1 1.9V16h5v-.2c0-.8.4-1.5 1-1.9A6 6 0 0012 3z"/></svg></div><div><h3>コンテンツ企画壁打ちAI</h3><div class="for">使う人：広報・企画担当</div></div></div>
+<div class="sys-body">
+<div class="blk"><div class="blk-l">減らしたい仕事</div><p>ブログ・SNS・保護者向け文章の下書きと、企画のアイデア出し。「コンテンツ生成」と「企画壁打ち」の2つのモードを切り替えて使います。メモを渡すとLaLaLandらしい文章の下書きが返り、企画の相談をすると過去と被らない案や続編シリーズの案が返ってきます。</p></div>
+<div class="blk"><div class="blk-l">仕組み</div>
+<ol class="steps">
+<li>過去のブログ記事、キャッチコピー、企画書、イベント実績をフォルダに入れ、スプレッドシートに整理します。</li>
+<li>研修プログラムで言語化した「LaLaLandらしさ」（理念、大切にしていること、使わない言葉）のデータをAIに読み込ませます。</li>
+<li>画面で用途（ブログ／SNS／保護者向け／企画）を選んで依頼すると、過去データとLaLaLandらしさを踏まえてAIが案を出します。</li>
+</ol></div>
+<div class="blk"><div class="blk-l">設計のポイント</div>
+<ul class="pts">
+<li>過去の企画と似た案が出たときは、どの企画と似ているかを添えて知らせます。</li>
+<li>出てくるのはあくまで下書きです。公開前の確認と最終判断は担当の方が行います。</li>
+<li>LaLaLandらしさのデータは研修プログラムの成果物を使うため、この見積に追加費用はかかりません。<span class="chip chip-p">研修と連動</span></li>
+</ul></div>
+<div class="blk"><div class="blk-l">費用の内訳</div>
+<table class="bd-tbl">
+<tr><td>過去の記事・企画データの整備</td><td>¥40,000</td></tr>
+<tr><td>生成・壁打ちの仕組み</td><td>¥50,000</td></tr>
+<tr><td>操作画面（モード切り替え・用途選択）</td><td>¥40,000</td></tr>
+<tr><td>動作確認・導入説明</td><td>¥20,000</td></tr>
+<tr class="tot"><td>小計</td><td>¥150,000</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<!-- D -->
+<article class="sys rv" id="sys-d">
+<div class="sys-bar" style="background:var(--r1)"></div>
+<div class="sys-head"><div class="ic" style="background:#FEF2F4"><svg viewBox="0 0 24 24" fill="none" stroke="#E8637A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="8" rx="1.5"/><rect x="14" y="13" width="7" height="8" rx="1.5"/><path d="M10 7h4a3 3 0 013 3v3"/><path d="M15 11l2 2 2-2"/></svg></div><div><h3>労務・処遇改善 一気通貫システム</h3><div class="for">使う人：労務担当・入社する職員</div></div></div>
+<div class="sys-body">
+<div class="blk"><div class="blk-l">減らしたい仕事</div><p>入社手続き（雇用契約書の作成、書類への署名の回収、従業員情報の入力）と、保育園の処遇改善の書類作成。今は別々に手で行っている作業を1本の流れにつなげ、同じ情報を何度も入力しなくて済むようにします。</p></div>
+<div class="blk"><div class="blk-l">仕組み</div>
+<ol class="steps">
+<li>入社する方がフォームに必要事項を入力すると、雇用契約書と入社書類が自動で作られます。</li>
+<li>書類は電子署名で回収します。署名が完了すると、内容が従業員マスタ（従業員情報の一覧）に自動で登録されます。</li>
+<li>処遇改善の書類に必要な項目を従業員マスタから取り出し、決められた様式のシートに自動で書き込みます。</li>
+<li>労務担当の方が内容を確認し、確定します。</li>
+</ol></div>
+<div class="blk"><div class="blk-l">設計のポイント</div>
+<ul class="pts">
+<li>従業員マスタを唯一の元データにし、処遇改善シートなどはそこから作ります。情報のずれが起きません。</li>
+<li>閲覧・編集できる人を役割ごとに限定し、変更の記録を残します。</li>
+<li>処遇改善シートの金額の計算はプログラムが行い、AIは使いません。</li>
+<li>グループのどの会社を対象にするかで範囲が変わるため、対象会社を最初に確定します。</li>
+</ul></div>
+<div class="blk"><div class="blk-l">費用の内訳</div>
+<table class="bd-tbl">
+<tr><td>要件定義・仕様書の作成</td><td>¥100,000</td></tr>
+<tr><td>入社フォーム・雇用契約書の自動作成</td><td>¥150,000</td></tr>
+<tr><td>電子署名サービスとの連携</td><td>¥100,000〜150,000</td></tr>
+<tr><td>従業員マスタの構築・自動登録</td><td>¥150,000</td></tr>
+<tr><td>処遇改善シートの自動作成</td><td>¥100,000〜150,000</td></tr>
+<tr><td>検収資料の作成・導入説明</td><td>¥50,000</td></tr>
+<tr class="tot"><td>小計</td><td>¥650,000〜750,000</td></tr>
+</table>
+<p class="note">金額の幅は、電子署名（既にお使いのサービスとの連携か、新しく選ぶか）と、処遇改善の様式の複雑さによって決まります。電子署名サービスの利用料は別途お客様のご負担となります。</p>
+</div>
+</div>
+</article>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- COST -->
+<section class="sec" id="cost">
+<div class="rv">
+<div class="sec-l">Cost</div>
+<h2 class="sec-t">TOKONの開発費</h2>
+<p class="sec-p">TOKONにご発注いただく開発費のまとめです。</p>
+</div>
+<div class="rv">
+<table class="cost">
+<tr><td>Dropbox対話型AI検索</td><td>¥200,000</td></tr>
+<tr><td>就業規則Bot（LINE）</td><td>¥150,000</td></tr>
+<tr><td>コンテンツ企画壁打ちAI</td><td>¥150,000</td></tr>
+<tr><td>労務・処遇改善 一気通貫システム</td><td>¥650,000〜750,000</td></tr>
+<tr class="tot"><td>開発費 合計（税別）</td><td>¥1,150,000〜1,250,000</td></tr>
+</table>
+</div>
+
+<div class="extra rv">
+<h3>開発費とは別にかかる費用</h3>
+<p>TOKONの開発費には含まれず、お客様のご負担となる費用です。</p>
+<div class="ex-row"><h4>AIの利用料</h4><p>システムがAIを使うたびにかかる実費です。御社名義で直接契約いただき、月ごとの利用上限を設定して使いすぎを防ぎます。導入後2〜3か月の実績を見て、月額の目安をお伝えします。</p></div>
+<div class="ex-row"><h4>ChatGPT Business</h4><p>御社とOpenAIの直接契約です。費用の目安は次の項目をご覧ください。</p></div>
+<div class="ex-row"><h4>各サービスの利用料</h4><p>LINE公式アカウント、電子署名サービスなど、システムが使う外部サービスの利用料です。</p></div>
+<div class="ex-row"><h4>保守</h4><p>必要なときだけの有償対応です。「保守の考え方」をご覧ください。</p></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- CHATGPT -->
+<section class="sec" id="chatgpt">
+<div class="rv">
+<div class="sec-l">ChatGPT Business</div>
+<h2 class="sec-t">ChatGPT Business（10名分）の費用の目安</h2>
+<p class="sec-p">ChatGPT Businessは、御社とOpenAIの直接契約となります。TOKONの開発費には含まれません。ご予算を立てていただくための参考として、公式の料金をもとに目安をまとめました。</p>
+</div>
+<div class="rv">
+<table class="cost">
+<tr><td>年払い<small>1名あたり月額換算20米ドル。年額を一括でお支払い</small></td><td>年額 約2,400米ドル</td></tr>
+<tr><td>月払い<small>1名あたり月額25米ドル</small></td><td>月額 約250米ドル</td></tr>
+</table>
+<div class="grant"><span>円換算の目安（1米ドル＝150円の場合）：年払い <strong>約¥360,000／年</strong>　月払い <strong>約¥37,500／月</strong></span></div>
+<p class="note">Standardプラン10名分・2026年9月時点の公式料金です。税・為替・カード手数料は含みません。実際の請求額は申込画面でご確認ください。</p>
+</div>
+<div class="extra rv">
+<h3>契約の前に知っておきたいこと</h3>
+<div class="ex-row"><h4>お支払い方法</h4><p>オンラインでの申し込みはクレジットカード・デビットカード払いです。銀行振込や請求書払いには対応していません。</p></div>
+<div class="ex-row"><h4>年払いの途中解約</h4><p>年払いの途中で使わなくなっても、通常は返金されません。人数を減らせるのは次の更新時からです。</p></div>
+<div class="ex-row"><h4>契約の単位</h4><p>会社のワークスペースに10名分の席を用意する形で契約します。個人向けの契約を10件結ぶ形ではありません。</p></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- MAINTENANCE -->
+<section class="sec" id="maintenance">
+<div class="rv">
+<div class="sec-l">Maintenance</div>
+<h2 class="sec-t">保守の考え方</h2>
+<p class="sec-p">研修プログラムでは、社内のメンバーがシステムを直せるように育てることを目指しています。そのため、TOKONとの毎月の定額保守は設けず、次の形でお引き受けします。</p>
+</div>
+<div class="mt rv">
+<div class="mt-card"><h3>日常の保守は社内で</h3><p>設定の変更、データの更新、小さな修正は、研修を受けたメンバーが行います。</p></div>
+<div class="mt-card"><h3>TOKONとは保守の基本契約を結ぶ</h3><p>担当の範囲、受付方法、料金の決め方を定めた基本契約を結びます。定額料金はなく、対応が必要なときだけ個別にお見積りして有償で対応します。</p></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- SCHEDULE -->
+<section class="sec" id="schedule">
+<div class="rv">
+<div class="sec-l">Schedule</div>
+<h2 class="sec-t">進め方とスケジュール</h2>
+<p class="sec-p">着手からおよそ4か月で、4つのシステムの導入と社内への引き継ぎまでを行う想定です。着手の時期は、補助金を活用するかどうかによって変わります。</p>
+</div>
+<div class="rv">
+<div class="tl-item"><div class="tl-dot"><span></span></div><div><div class="tl-when">着手〜1か月目</div><h3>ヒアリング・要件定義</h3><p>4つのシステムに共通する土台（LaLaLandポータル）を設計し、労務・処遇改善システムの要件を固めます。</p></div></div>
+<div class="tl-item"><div class="tl-dot"><span style="border-color:var(--r4)"></span></div><div><div class="tl-when">1〜2か月目</div><h3>就業規則Bot・Dropbox対話型AI検索</h3><p>効果が早く出る2つから公開します。Dropboxの整理は、この期間より前に始めることもできます。</p></div></div>
+<div class="tl-item"><div class="tl-dot"><span style="border-color:var(--r1)"></span></div><div><div class="tl-when">2〜4か月目</div><h3>労務・処遇改善 一気通貫システム</h3><p>入社フォーム、電子署名、従業員マスタ、処遇改善シートの順に作り、労務担当の方と確認しながら進めます。</p></div></div>
+<div class="tl-item"><div class="tl-dot"><span style="border-color:var(--r6)"></span></div><div><div class="tl-when">3〜4か月目</div><h3>コンテンツ企画壁打ちAI</h3><p>研修プログラムで言語化した「LaLaLandらしさ」のデータがそろった後に仕上げます。</p></div></div>
+<div class="tl-item"><div class="tl-dot"><span style="border-color:var(--r5)"></span></div><div><div class="tl-when">4か月目</div><h3>引き継ぎ・保守の基本契約</h3><p>社内のメンバーに仕組みと直し方を引き継ぎ、保守の基本契約を結びます。</p></div></div>
+</div>
+</section>
+
+<div class="dv"><hr></div>
+
+<!-- ASKS -->
+<section class="sec" id="asks">
+<div class="rv">
+<div class="sec-l">What We Need</div>
+<h2 class="sec-t">ご確認いただきたいこと</h2>
+<p class="sec-p">見積書を確定するために、以下を教えてください。</p>
+</div>
+<div class="qa rv">
+<section><h3>Dropbox対話型AI検索</h3><ul class="pts ask"><li>整理をいつ始めたいか</li><li>検索の対象外にしたいフォルダ</li></ul></section>
+<section><h3>就業規則Bot（LINE）</h3><ul class="pts ask"><li>LINE公式アカウントの有無</li><li>読み込ませたい規程の一覧</li></ul></section>
+<section><h3>労務・処遇改善 一気通貫システム</h3><ul class="pts ask"><li>対象にするグループ内の会社</li><li>現在の入社書類の種類と流れ</li><li>お使いの電子署名サービス（あれば）</li><li>処遇改善の様式ファイル</li><li>Google Workspaceの契約プラン</li></ul></section>
+<section><h3>ChatGPT Business</h3><ul class="pts ask"><li>利用する10名の方と、それぞれの使い道</li><li>利用を始めたい時期</li></ul></section>
+</div>
+</section>
+
+<footer class="ft"><p>TOKON<br>記載の金額は概算です。ご希望に合わせたカスタマイズも承りますので、お気軽にご相談ください。</p></footer>
+<div class="rl"></div>
+
+<script>
+var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var O=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(e){O.observe(e)});
+var pb=document.getElementById('pb');
+window.addEventListener('scroll',function(){var h=document.documentElement;pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+if(!RM)!function(){var c=document.getElementById('hC'),x=c.getContext('2d'),cl=['#E8637A','#F5A623','#F7D154','#6EC5A0','#5BA4D9','#8B6EC0'],ps=[],w,h;function rz(){var d=window.devicePixelRatio||1;w=c.parentElement.offsetWidth;h=c.parentElement.offsetHeight;c.width=w*d;c.height=h*d;c.style.width=w+'px';c.style.height=h+'px';x.setTransform(d,0,0,d,0,0)}function init(){rz();ps=[];for(var i=0,n=Math.min(Math.floor(w*h/14000),70);i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2.8+.8,vx:(Math.random()-.5)*.25,vy:-Math.random()*.2-.04,c:cl[i%6],a:Math.random()*.2+.08,p:Math.random()*6.28})}var t=0;function dr(){x.clearRect(0,0,w,h);t+=.004;ps.forEach(function(p){p.x+=p.vx+Math.sin(t+p.p)*.12;p.y+=p.vy;if(p.y<-10){p.y=h+10;p.x=Math.random()*w}if(p.x<-10)p.x=w+10;if(p.x>w+10)p.x=-10;var a=p.a*(.6+.4*Math.sin(t*1.8+p.p));x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fillStyle=p.c+('0'+Math.round(a*255).toString(16)).slice(-2);x.fill()});requestAnimationFrame(dr)}init();dr();window.addEventListener('resize',init)}();
+</script>
+</body>
+</html>
