@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LaLaLand 研修 第2回 ENGINEERING</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<style>
+/* 第2回だけで使う部品：ターミナルの画面、命令の文字、判定の印 */
+.term { background: #1E1E1E; color: #E8E8E8; border-radius: 14px; padding: 22px 30px; font-family: "SF Mono", Menlo, Consolas, "Noto Sans JP", monospace; font-size: 23px; line-height: 1.7; white-space: pre-wrap; word-break: break-all; box-shadow: 0 10px 30px rgba(14, 27, 46, .18); }
+.term .bar { display: flex; gap: 8px; margin: -6px 0 12px; }
+.term .bar i { width: 13px; height: 13px; border-radius: 50%; background: #555; }
+.term .bar i:nth-child(1) { background: #FF5F57; } .term .bar i:nth-child(2) { background: #FEBC2E; } .term .bar i:nth-child(3) { background: #28C840; }
+.term .p { color: #6EC5A0; }
+.term .c { color: #9A9A9A; }
+.term .ai { color: #F4B8C2; }
+code.k { font-family: "SF Mono", Menlo, Consolas, monospace; background: #F1F1EE; border: 1px solid var(--line); border-radius: 8px; padding: 1px 10px; font-size: .92em; color: var(--ink); white-space: nowrap; }
+.cmd { font-family: "SF Mono", Menlo, Consolas, monospace; background: #1E1E1E; color: #E8E8E8; border-radius: 10px; padding: 12px 18px; font-size: 20px; line-height: 1.5; word-break: normal; overflow-wrap: anywhere; margin-top: 10px; }
+.os2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.os2 .os { background: var(--soft); border-radius: 18px; padding: 26px 30px; }
+.os2 .os h3 { font-size: 30px; margin-bottom: 10px; }
+.os2 .os ol { padding-left: 1.3em; font-size: 23px; line-height: 1.6; color: var(--ink-soft); }
+.os2 .os ol li + li { margin-top: 6px; }
+.judge { display: inline-flex; width: 46px; height: 46px; border-radius: 50%; align-items: center; justify-content: center; font-weight: 800; font-size: 26px; color: #fff; flex: none; }
+.judge.a { background: var(--green); } .judge.b { background: var(--brand); } .judge.c { background: var(--amber); } .judge.d { background: var(--red); }
+.jrow { display: flex; gap: 18px; align-items: center; }
+.tbl td code.k { font-size: 21px; }
+/* できること の6枚カード：1画面に収める */
+/* プロの MD を解剖するページ：原文を小さく2段に */
+.mdsrc { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; background: #FBFBF9; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; color: var(--ink); }
+.mdsrc .h { color: var(--accent); font-weight: 700; }
+.mdsrc .n { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: #fff; font: 800 14px/1 "Noto Sans JP", sans-serif; align-items: center; justify-content: center; margin-right: 6px; vertical-align: 1px; }
+.anat .card { padding: 12px 18px !important; }
+.anat .card .no { font-size: 20px !important; margin-bottom: 4px; }
+.anat .card p.mini { font-size: 19px; line-height: 1.45; margin-top: 0; }
+.tree { font-family: "SF Mono", Menlo, Consolas, "Noto Sans JP", monospace; font-size: 21px; line-height: 1.75; white-space: pre;}
+.tree td { padding: 2px 24px 2px 0; }
+.tree { background: #FBFBF9; border: 1px solid var(--line); border-radius: 14px; padding: 20px 26px; }
+.tree .c { color: var(--muted); font-family: "Noto Sans JP", sans-serif; }
+.cards.feat .card { padding: 26px 30px; }
+.cards.feat .card .no { font-size: 23px; letter-spacing: .04em; }
+.cards.feat .card p { font-size: 23px; line-height: 1.6; }
+</style>
+</head>
+<body data-deck="LaLaLand 研修 第2回" data-intro-min="0" data-limit-min="180">
+<div id="stage">
+
+<!-- ═════════ 3時間版（2026-10-26） ═════════ -->
+
+<!-- S01 表紙 -->
+<section class="slide cover" data-ch="はじめに" data-min="5">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <img class="logo" src="assets/lalaland_logo.webp" alt="LaLaLand">
+  <div class="cat" style="color:var(--green);background:var(--green-soft);border-color:rgba(110,197,160,.4)">ENGINEERING</div>
+  <div class="kicker">AI人材育成＋DXリスキリング研修プログラム</div>
+  <h1>第2回　AI開発ツールと<em>AGENTS.md</em></h1>
+  <div class="meta">
+    <div><b>DATE</b>2026年10月26日（月）9:30〜12:30</div>
+    <div><b>PLACE</b>株式会社LaLaLand 本社</div>
+    <div><b>SPEAKER</b>TOKON　喜多村 一寛</div>
+  </div>
+  <div class="rainbow-bottom"></div>
+  <aside class="notes"><b>開始前</b>　講師 PC でターミナルを開き、Claude Code にログインしておく。デスクトップに実演用の空のフォルダー「園だより」を作っておく。ChatGPT デスクトップアプリも開いておく。
+<b>操作</b>　V で発表者ビュー、T でタイマー開始（3時間）。</aside>
+</section>
+
+<!-- S02 全体の中の第2回 -->
+<section class="slide">
+  <div class="kicker">PROGRAM</div>
+  <h1>研修の全体像　今日は第2回</h1>
+  <p class="purpose">第2〜4回は、AI を使って道具を作る回です。今日はその準備として、AI が PC の中で働く仕組みを体験します。</p>
+  <div class="body">
+    <div class="cards c4" style="gap:18px">
+      <div class="card blue" style="opacity:.6"><div class="no">第1回</div><h3>AI SKILLS</h3><p class="mini">生成AIの全体像、スキル、ガバナンス</p></div>
+      <div class="card green"><div class="no">第2回　今日</div><h3>AI開発ツール</h3><p class="mini">Claude Code と Codex、AGENTS.md</p></div>
+      <div class="card"><div class="no">第3回</div><h3>GAS と API</h3><p class="mini">スプレッドシートと AI をつなぐ</p></div>
+      <div class="card"><div class="no">第4回</div><h3>Web で公開</h3><p class="mini">作った道具を URL で共有する</p></div>
+    </div>
+    <div class="callout">今日の最後に、次回までの宿題（AI に任せて実現したいこと）を1人1つ決めます。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　第1回は ChatGPT に「頼む」回だった。今日からは、AI が PC の中で実際に作業する道具を使う。
+宿題は先方からのご要望。最後の40分で1人ずつ決めて、講師がその場でできる・できないを判定する。</aside>
+</section>
+
+<!-- S03 今日のゴール -->
+<section class="slide">
+  <div class="kicker">GOAL</div>
+  <h1>今日のゴール</h1>
+  <p class="purpose">研修が終わったときに、この3つができる状態を目指します。</p>
+  <div class="body">
+    <ol class="goals">
+      <li><span class="n">1</span><span>AI がターミナル（黒い画面）で働く仕組みを説明できる</span></li>
+      <li><span class="n">2</span><span>自分用の AGENTS.md を作り、AI に自分のことを覚えさせられる</span></li>
+      <li><span class="n">3</span><span>AI に任せたいことを1つ決め、次回までに形にする道筋が見えている</span></li>
+    </ol>
+  </div>
+  <aside class="notes"><b>話すこと</b>　黒い画面と聞くと身構えるけれど、打つのは日本語の頼みごとがほとんど。最後にもう一度この3つを確認する。</aside>
+</section>
+
+<!-- S04 今日の進め方 -->
+<section class="slide">
+  <div class="kicker">TIMETABLE</div>
+  <h1>今日の進め方</h1>
+  <p class="purpose">前半は講師の実演を見ながら手元でも操作し、後半は自分の AI づくりと宿題決めに使います。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th>時間</th><th>形式</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="time">9:35〜10:10</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span> <span class="pill ok">演習</span></td><td>Part 1　Claude Code とターミナル</td></tr>
+        <tr><td class="time">10:10〜10:20</td><td>—</td><td>休憩</td></tr>
+        <tr><td class="time">10:20〜11:00</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span> <span class="pill ok">演習</span></td><td>Part 2　Codex でも同じことが起きている</td></tr>
+        <tr><td class="time">11:00〜11:40</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span> <span class="pill ok">演習</span></td><td>Part 3　AGENTS.md　AI に自分と会社を覚えさせる</td></tr>
+        <tr><td class="time">11:40〜12:20</td><td><span class="pill ok">演習</span></td><td>Part 4　業務棚卸し＋宿題準備</td></tr>
+        <tr><td class="time">12:20〜12:25</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span></td><td>Part 5　迷子になったときの、AI への話しかけ方</td></tr>
+        <tr><td class="time">12:25〜12:30</td><td><span class="pill" style="background:var(--violet-soft);color:var(--violet)">質疑</span></td><td>ふりかえり・宿題の確認</td></tr>
+      </tbody>
+    </table>
+    <p class="small">演習は ChatGPT デスクトップアプリの Codex で行います。Mac と Windows のどちらでも進められます。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Claude Code は講師が実演する。受講者の手元では、ChatGPT の有料プランで使える Codex を使う。中で起きていることは同じ。</aside>
+</section>
+
+<!-- ═════════ Part 1 ═════════ -->
+<section class="slide part" style="--part:var(--r4)" data-ch="Part 1" data-min="35">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 01</div>
+  <h1>Claude Code とターミナル</h1>
+  <div class="time-chip">座学・演習 35分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- P1-1 Claude Code とは -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>Claude Code　PC のフォルダーの中で働く AI</h1>
+  <p class="purpose">Anthropic 社の AI 開発ツールです。ターミナルに日本語で頼むと、フォルダーの中のファイルを読み、作り、直し、動かして確かめます。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>頼む</b><span>「11月の園だよりの下書きを作って」</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>自分で進める</b><span>読む → 作る → 動かす → 確かめる</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>許可を求める</b><span>ファイルを書き換える前に「いい？」と聞く</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>仕上げる</b><span>フォルダーにファイルができている</span></div>
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:24%"></th><th>第1回の ChatGPT（Chat）</th><th>Claude Code</th></tr></thead>
+      <tbody>
+        <tr><td>作業する場所</td><td>会話の画面の中</td><td>PC のフォルダーの中</td></tr>
+        <tr><td>できあがるもの</td><td>回答の文章。ファイルはダウンロードする</td><td>フォルダーに直接ファイルができる</td></tr>
+        <tr><td>使う画面</td><td>アプリ・ブラウザ</td><td>ターミナル（黒い画面）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　第1回で触れた AI エージェントの代表例。会話で答えるのではなく、PC の中で手を動かす。
+次のスライドで実際に動かしてみせる。</aside>
+</section>
+
+<!-- P1-2 実演 -->
+<section class="slide">
+  <div class="tag-row"><span class="t demo">実演</span></div>
+  <h1>講師の画面で、Claude Code を動かします</h1>
+  <p class="purpose">見るところは3つです。AI が何を読んだか、何をする前に許可を求めたか、何ができあがったか。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="term"><div class="bar"><i></i><i></i><i></i></div><span class="p">~/Desktop/園だより $</span> claude
+<span class="c">────────────────────────────</span>
+<span class="p">&gt;</span> 11月の園だよりの下書きを作って。
+  行事は芋ほり遠足と避難訓練。
+  保護者向けに、やさしい言葉で。
+  A4 1枚で印刷できる HTML にして。
+<span class="ai">● 構成を考えています…</span>
+<span class="ai">● 園だより_11月.html を作成しますか？</span></div>
+      <div>
+        <ol class="steps" style="gap:16px">
+          <li style="font-size:25px">AI が手順を考えて、画面に書き出す</li>
+          <li style="font-size:25px">ファイルを作る前に、許可を求めてくる</li>
+          <li style="font-size:25px">できたファイルをブラウザで開く</li>
+          <li style="font-size:25px">「行事の日付を太字に」と直しを頼む</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>実演</b>　デスクトップの「園だより」フォルダーで claude を起動し、左の頼みをそのまま入れる。
+許可の画面が出たら、いったん止めて「何をしようとしているか」を読み上げる。ファイルができたら open（Windows は start）で開いて見せる。
+2回目の頼みで直してもらい、「捨てずに直す」（第1回 Part 2）とつながることを話す。
+<b>時間</b>　5分程度。</aside>
+</section>
+
+<!-- P1-3 なぜ黒い画面 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>なぜ黒い画面なのか　GUI と CLI</h1>
+  <p class="purpose">PC の操作のしかたは2つあります。AI は文字が得意なので、文字で命令する CLI のほうが PC を自由に操作できます。</p>
+  <div class="body">
+    <div class="compare">
+      <div class="side"><div class="tag">GUI　画面で操作する</div><p class="prompt">ボタンやアイコンを、人が探して押す<br><span class="small">例：フォルダーを右クリックして「新規フォルダー」</span></p></div>
+      <div class="side good"><div class="tag">CLI　文字で命令する</div><p class="prompt">命令を1行打つと、PC がその通りに動く<br><span class="small">例：<code class="k">mkdir 園だより</code> でフォルダーができる</span></p></div>
+    </div>
+    <div class="callout">ターミナルは、CLI で PC に命令するためのアプリです。Mac は「ターミナル」、Windows は「PowerShell」を使います。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　GUI は人が見て押すための作り。CLI は文字だけでやりとりするので、AI がそのまま命令を打てる。だから AI の開発ツールはターミナルで動くものが多い。
+受講者が覚える命令は、このあと紹介する数個だけで十分。</aside>
+</section>
+
+<!-- P1-4 入れ方 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>Claude Code の入れ方</h1>
+  <p class="purpose">ターミナルに命令を1行貼りつけて、Enter を押します。Claude の有料プラン（Pro 以上）が必要です。</p>
+  <div class="body">
+    <div class="os2">
+      <div class="os">
+        <h3>Mac</h3>
+        <ol>
+          <li>⌘＋スペースで検索を開き、「ターミナル」と入れて開く</li>
+          <li>下の命令を貼りつけて Enter</li>
+        </ol>
+        <div class="cmd">curl -fsSL https://claude.ai/install.sh | bash</div>
+      </div>
+      <div class="os">
+        <h3>Windows</h3>
+        <ol>
+          <li>スタートで「PowerShell」と入れて開く</li>
+          <li>下の命令を貼りつけて Enter</li>
+        </ol>
+        <div class="cmd">irm https://claude.ai/install.ps1 | iex</div>
+      </div>
+    </div>
+    <p class="small">出典：Claude Code の公式ドキュメント（code.claude.com/docs）。Windows は Git for Windows を入れておくと、使える機能が増えます。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　このあとの演習で、受講者の PC にも入れる。ログインには Claude の有料プランが必要なので、今日は入れて <code>claude --version</code> で確かめるところまで。
+必要なプラン：Pro・Max・Team・Enterprise（無料プランは対象外）。公式ドキュメントで 2026-10-25 に確認。</aside>
+</section>
+
+<!-- P1-4a ターミナルとシェル -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>そもそも、ターミナルとシェルとは</h1>
+  <p class="purpose">ターミナルは文字を打つ「窓口」、シェルはその奥で命令を読んで PC を動かす「係の人」です。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>あなた</b><span>命令を文字で打つ</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>ターミナル（窓口）</b><span>文字を打つ窓。結果も見せる</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>シェル（係の人）</b><span>命令を読んで、PC に仕事をさせる</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>PC</b><span>ファイルを作る。アプリを動かす</span></div>
+    </div>
+    <div class="shot-row" style="grid-template-columns:44% 1fr;align-items:center">
+      <img class="shot" src="assets/shell_prompt.png" alt="ターミナルの入力行：sato@MacBook ~ % claude">
+      <table class="tbl dense">
+        <tbody>
+          <tr><td style="width:42%"><code class="k">sato@MacBook</code></td><td>誰が、どの PC で</td></tr>
+          <tr><td><code class="k">~</code></td><td>今いる場所（自分のホーム）</td></tr>
+          <tr><td><code class="k">%</code></td><td>「打っていいよ」の合図</td></tr>
+          <tr><td><code class="k">claude</code></td><td>打った命令</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Mac はアプリ「ターミナル」の中で zsh というシェルが、Windows は PowerShell というシェルが動いています（合図は「&gt;」）。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　レストランでたとえる。メニューの写真を指さして頼むのが GUI。カウンターで店員に口で注文するのが CLI。カウンターがターミナル、注文を聞いて厨房に伝える店員がシェル、厨房が PC。
+シェル（shell）は英語で「貝殻」。PC の中心部分を包んで、人とのあいだに立つ殻、という意味の名前。
+受講者が覚えるのは「ターミナル＝打つ場所」「シェル＝読んで動かす係」の2つだけでいい。
+左の画面の名前（sato@MacBook）は例。実際は自分の名前と PC の名前が出る。</aside>
+</section>
+
+<!-- P1-4b 1行で入るわけ -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>命令1行でインストールが終わるわけ</h1>
+  <p class="purpose">やっていることは同じです。人がクリックしていた手順を、手順書が代わりにやっています。</p>
+  <div class="body">
+    <div class="os2" style="gap:24px">
+      <div class="os" style="padding:22px 28px">
+        <h3>いつものインストール</h3>
+        <p style="font-size:24px;line-height:1.7;color:var(--ink-soft)">サイトを開く<br>→ ダウンロードを押す<br>→ インストーラーを開く<br>→ 「次へ」を押していく<br>→ アプリが置かれる</p>
+        <p class="small" style="margin-top:8px">人が1つずつクリックする</p>
+      </div>
+      <div class="os" style="background:var(--brand-soft);padding:22px 28px">
+        <h3>命令1行のインストール</h3>
+        <table class="tbl dense" style="margin-top:4px">
+          <tbody>
+            <tr><td style="width:58%"><code class="k">curl https://…/install.sh</code></td><td>手順書を取ってくる</td></tr>
+            <tr><td><code class="k">|</code></td><td>右へ渡す</td></tr>
+            <tr><td><code class="k">bash</code></td><td>上から順に実行する</td></tr>
+          </tbody>
+        </table>
+        <p class="small" style="margin-top:6px">Windows の <code class="k">irm</code> は「取ってくる」、<code class="k">iex</code> は「実行する」です。</p>
+      </div>
+    </div>
+    <p class="small">手順書の中身：PC の種類を確かめる → 本体をダウンロード → 壊れていないか確かめる → 設定する → 片付ける</p>
+    <div class="callout red">だから、貼る命令は<strong>公式サイトに載っているものだけ</strong>にします。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　普段は「ダウンロード → 開く → 次へ」を人がやっている。1行の命令は、その手順を書いた手順書（スクリプト）を取ってきて、シェルにそのまま実行させている。だから1行で終わる。
+手順書の中身は、講師が公式の install.sh を開いて確かめた（2026-10-25）。ダウンロードした本体が壊れていないかを、照合用の値（チェックサム）で確かめてから入れている。
+入れたあと「claude が見つからない」と出たら、ターミナルを閉じて開き直す。シェルは決まった棚（PATH）からアプリを探すので、開き直すと棚を読み直す。
+<b>ガバナンス</b>　第1回 Part 5 とつなぐ。命令の貼りつけは、PC に何でもさせられる強い操作。知らないサイトの命令を貼るのは、知らないインストーラーを開くのと同じ。</aside>
+</section>
+
+<!-- P1-5 画面と起動 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>起動は <code class="k">claude</code> と打つだけ</h1>
+  <p class="purpose">作業したいフォルダーに移動してから起動します。AI はそのフォルダーの中を作業場所にします。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="term"><div class="bar"><i></i><i></i><i></i></div><span class="c"># 1. デスクトップに移動</span>
+<span class="p">$</span> cd Desktop
+<span class="c"># 2. 作業用のフォルダーに入る</span>
+<span class="p">$</span> cd 園だより
+<span class="c"># 3. Claude Code を起動</span>
+<span class="p">$</span> claude</div>
+      <ol class="steps" style="gap:16px">
+        <li style="font-size:25px">初回はブラウザが開くので、Claude のアカウントでログインする</li>
+        <li style="font-size:25px">「このフォルダーを信頼しますか」と聞かれたら、自分のフォルダーか確かめて「はい」</li>
+        <li style="font-size:25px">入力欄に日本語で頼む</li>
+        <li style="font-size:25px">終わるときは <code class="k">/exit</code></li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「どのフォルダーで起動したか」が作業場所になる。デスクトップ全体で起動すると、デスクトップ中のファイルが対象になるので、作業用のフォルダーを作ってそこで起動する習慣をつける。</aside>
+</section>
+
+<!-- P1-5a 起動した画面 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>起動した画面の見方</h1>
+  <p class="purpose">起動すると、この画面になります。下の入力欄に日本語で頼みます。</p>
+  <div class="body">
+    <div class="shot-wrap" style="width:84%;margin:0 auto">
+      <img class="shot" src="assets/cc_start.png" alt="Claude Code を起動した画面" style="width:100%">
+      <span class="mark" style="left:41%;top:17%">1</span>
+      <span class="mark" style="left:31%;top:24.5%">2</span>
+      <span class="mark" style="left:80%;top:67%">3</span>
+      <span class="mark" style="left:27%;top:79%">4</span>
+      <span class="mark" style="left:48%;top:96%">5</span>
+    </div>
+    <div class="cards feat" style="grid-template-columns:repeat(5,1fr);gap:12px">
+      <div class="card"><div class="no">1　AI と契約</div><p><code class="k">/model</code> で変える</p></div>
+      <div class="card"><div class="no">2　作業場所</div><p>起動したフォルダー</p></div>
+      <div class="card"><div class="no">3　考える深さ</div><p><code class="k">/effort</code> で変える</p></div>
+      <div class="card"><div class="no">4　入力欄</div><p>ここに日本語で頼む</p></div>
+      <div class="card"><div class="no">5　許可のモード</div><p><code class="k">Shift＋Tab</code> で切り替える</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　1〜5を指さしながら説明する。早見表（Part 2）で出てくる /model・/effort が、最初からこの画面に書いてある。
+講師の画面は 5 が「auto mode」（自動で判断して進める）になっている。初めての人は「毎回聞く」なので、この行の表示が違う。
+画面は講師の PC（Claude Code 2.1.310、2026-10-25）。名前などの表示は消してある。</aside>
+</section>
+
+<!-- P1-6 ターミナルの命令 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>ターミナルの基本の命令</h1>
+  <p class="purpose">覚えるのはこれだけで十分です。ほとんどの命令は Mac と Windows で同じです。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:34%">やること</th><th>Mac（ターミナル）</th><th>Windows（PowerShell）</th></tr></thead>
+      <tbody>
+        <tr><td>今いる場所を表示する</td><td><code class="k">pwd</code></td><td><code class="k">pwd</code></td></tr>
+        <tr><td>中にあるものを一覧にする</td><td><code class="k">ls</code></td><td><code class="k">ls</code></td></tr>
+        <tr><td>フォルダーに入る</td><td><code class="k">cd フォルダー名</code></td><td><code class="k">cd フォルダー名</code></td></tr>
+        <tr><td>1つ上のフォルダーに戻る</td><td><code class="k">cd ..</code></td><td><code class="k">cd ..</code></td></tr>
+        <tr><td>フォルダーを作る</td><td><code class="k">mkdir 名前</code></td><td><code class="k">mkdir 名前</code></td></tr>
+        <tr><td>今のフォルダーを画面で開く</td><td><code class="k">open .</code></td><td><code class="k">start .</code></td></tr>
+        <tr><td>動いているものを止める</td><td><code class="k">Ctrl＋C</code></td><td><code class="k">Ctrl＋C</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">フォルダー名は、最初の数文字を打って Tab キーを押すと、残りを自動で入れてくれます。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　pwd は「今どこ？」、ls は「ここに何がある？」、cd は「移動」。迷子になったら pwd と ls。
+open . の「.」は「今いるここ」という意味。</aside>
+</section>
+
+<!-- P1-7 Claude Code の中の命令 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>Claude Code の中で使う操作</h1>
+  <p class="purpose">起動したあとは、日本語で頼むのが基本です。よく使う操作だけ覚えておきます。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:30%">操作</th><th>働き</th></tr></thead>
+      <tbody>
+        <tr><td><code class="k">Esc</code></td><td>AI の作業を途中で止める。方向が違うと思ったらすぐ押す</td></tr>
+        <tr><td><code class="k">/clear</code></td><td>会話をリセットして、新しい話を始める</td></tr>
+        <tr><td><code class="k">/init</code></td><td>このフォルダー用の説明書（CLAUDE.md）を AI に作らせる。Part 3 で扱います</td></tr>
+        <tr><td><code class="k">Shift＋Tab</code></td><td>許可のモードを切り替える（毎回聞く／編集は自動で進める／計画だけ立てる）</td></tr>
+        <tr><td><code class="k">/help</code></td><td>使える操作の一覧を見る</td></tr>
+        <tr><td><code class="k">/exit</code></td><td>Claude Code を終わる</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　いちばん大事なのは Esc。AI が違う方向に進み始めたら、待たずに止めて言い直す。
+Shift＋Tab のモードは、慣れるまで「毎回聞く」のままでいい。</aside>
+</section>
+
+<!-- P1-8 許可の画面 -->
+<section class="slide">
+  <div class="kicker">PART 1　Claude Code とターミナル</div>
+  <h1>許可の画面の読み方</h1>
+  <p class="purpose">AI はファイルを書き換える前や、命令を実行する前に許可を求めます。押す前に「何を」「どこで」の2つを読みます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="term"><div class="bar"><i></i><i></i><i></i></div><span class="ai">● 園だより_11月.html を作成します</span>
+  ~/Desktop/園だより/園だより_11月.html
+
+  このファイルを作成しますか？
+  <span class="p">❯ 1. はい</span>
+    2. はい、このあとも聞かずに進める
+    3. いいえ、違うやり方を伝える</div>
+      <div class="cards stackc" style="gap:14px">
+        <div class="card"><div class="no">はい</div><p class="mini">内容と場所が合っていれば、そのまま進める</p></div>
+        <div class="card"><div class="no">このあとも聞かずに進める</div><p class="mini">同じ種類の作業を続けて任せたいとき</p></div>
+        <div class="card red"><div class="no">いいえ</div><p class="mini">迷ったらこれ。「なぜこれが必要？」と聞けばいい</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　許可の画面は、AI からの「この作業をしていい？」という確認。内容がわからないまま「はい」を押さない。
+選択肢の文言は版によって少し違う。講師の画面で実物を見せる。
+<b>ガバナンス</b>　第1回 Part 5 の「権限を必要な分だけ」と同じ考え方。</aside>
+</section>
+
+<!-- P1-9 演習 黒い画面に慣れる -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習　10分</span></div>
+  <h1>ターミナルを開いて、命令を打つ</h1>
+  <p class="purpose">Claude Code を入れてから、今日の作業用フォルダーを作ります。このフォルダーは Part 2 以降でも使います。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <ol class="steps" style="gap:6px">
+        <li style="font-size:21px">ターミナル（Windows は PowerShell）を開く</li>
+        <li style="font-size:21px"><strong>「Claude Code の入れ方」の命令を貼って Enter</strong></li>
+        <li style="font-size:21px"><code class="k">claude --version</code> で入ったか確かめる</li>
+        <li style="font-size:21px"><code class="k">pwd</code> で今いる場所を見る</li>
+        <li style="font-size:21px"><code class="k">cd Desktop</code> でデスクトップに移動</li>
+        <li style="font-size:21px"><code class="k">mkdir AI研修</code> でフォルダーを作る</li>
+        <li style="font-size:21px"><code class="k">cd AI研修</code> で中に入る</li>
+        <li style="font-size:21px"><code class="k">open .</code>（Windows は <code class="k">start .</code>）で画面に開く</li>
+      </ol>
+      <div class="term" style="font-size:18px;line-height:1.55;padding:18px 26px"><div class="bar"><i></i><i></i><i></i></div><span class="p">$</span> curl -fsSL https://claude.ai/install.sh \
+  | bash
+<span class="c">（数十秒待つ）</span>
+<span class="p">$</span> claude --version
+<span class="c">2.1.310 (Claude Code)</span>
+<span class="p">$</span> pwd
+/Users/sato
+<span class="p">$</span> cd Desktop
+<span class="p">$</span> mkdir AI研修
+<span class="p">$</span> cd AI研修
+<span class="p">$</span> open .</div>
+    </div>
+    <p class="small">エラーが出ても PC は壊れません。文字をそのまま講師に見せてください。ログインには Claude の有料プランが必要なので、今日は入れるところまでです。</p>
+  </div>
+  <aside class="notes"><b>見て回る</b>　インストールのあと「claude が見つからない（command not found）」と出たら、ターミナルを一度閉じて開き直す。それでも出るときは、インストールの最後に表示された案内（PATH の追加）を一緒に読む。
+会社の PC でインストールが止められている場合は無理に進めず、講師の画面を見てもらう。Windows で PowerShell の実行が制限されている場合も同じ。
+Windows で OneDrive がデスクトップを同期している場合、cd Desktop で入れないことがある。そのときは cd OneDrive\Desktop（日本語環境では「デスクトップ」の表記の場合もある）。
+デスクトップの場所が違う人は、ls で中を見せて一緒に探す。</aside>
+</section>
+
+<!-- 休憩 -->
+<section class="slide part" style="--part:var(--muted)" data-ch="休憩" data-min="10">
+  <div class="kicker">BREAK</div>
+  <h1>休憩　10分</h1>
+  <p class="lead">再開　<strong>10:20</strong></p>
+  <aside class="notes"><b>休憩中に</b>　ChatGPT デスクトップアプリが入っていない方に、入れてもらう。ログインまで済ませておいていただく。</aside>
+</section>
+
+<!-- ═════════ Part 2 ═════════ -->
+<section class="slide part" style="--part:var(--r5)" data-ch="Part 2" data-min="40">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 02</div>
+  <h1>Codex でも同じことが起きている</h1>
+  <div class="time-chip">座学・演習 40分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- P2-1 同じ仕組み -->
+<section class="slide">
+  <div class="kicker">PART 2　Codex でも同じことが起きている</div>
+  <h1>Claude Code と Codex　違うのは画面だけ</h1>
+  <p class="purpose">Codex は OpenAI 社の AI 開発ツールです。ChatGPT のデスクトップアプリの中で動きます。フォルダーの中で働くしくみは Claude Code と同じです。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:26%"></th><th>Claude Code</th><th>Codex</th></tr></thead>
+      <tbody>
+        <tr><td>会社</td><td>Anthropic</td><td>OpenAI</td></tr>
+        <tr><td>主な画面</td><td>ターミナル</td><td>ChatGPT デスクトップアプリ（ターミナル版もある）</td></tr>
+        <tr><td>必要なプラン</td><td>Claude の Pro 以上</td><td>ChatGPT の Plus 以上</td></tr>
+        <tr><td>作業する場所</td><td colspan="2" style="text-align:center"><strong>指定した PC のフォルダー</strong></td></tr>
+        <tr><td>許可の確認</td><td colspan="2" style="text-align:center"><strong>ファイルの変更や命令の前に聞いてくる</strong></td></tr>
+        <tr><td>毎回読む説明書</td><td>CLAUDE.md</td><td>AGENTS.md</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　画面がアプリかターミナルかの違いで、中でやっていることは同じ。「フォルダーを渡す → 読んで作る → 許可を求める → 仕上げる」。
+Codex が使えるプラン：Plus・Pro・Business・Edu・Enterprise（OpenAI の公式 GitHub、2026-10-25 確認）。</aside>
+</section>
+
+<!-- P2-2 3つのツール -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　Codex でも同じことが起きている</div>
+  <h1>AI開発ツールの主な3つ</h1>
+  <p class="purpose">どれも「フォルダーを渡して、AI に作業させる」道具です。普段使っている AI の会社に合わせて選びます。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">Anthropic</div><h3>Claude Code</h3><p>ターミナルで動く。Claude の有料プランで使える。今日の実演</p></div>
+      <div class="card green"><div class="no">OpenAI</div><h3>Codex</h3><p>ChatGPT のデスクトップアプリの中で動く。ChatGPT の有料プランで使える。今日の演習</p></div>
+      <div class="card"><div class="no">Google</div><h3>Antigravity</h3><p>ファイルと AI の会話を並べて見るアプリ。Gemini を使う</p></div>
+    </div>
+    <div class="callout">ChatGPT を使っている LaLaLand では、Codex から始めるのがいちばん近道です。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　3つとも考え方は同じなので、1つ覚えれば他も使える。
+Antigravity の料金と提供条件は変わりやすい。質問が出たら当日の公式サイト（antigravity.google）で確認する。</aside>
+</section>
+
+<!-- P2-3 Claude Code 早見表1 会話を整える -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Claude Code 早見表 1　会話を整える</h1>
+  <p class="purpose">Part 1 の6つに足して覚えておくと楽になる操作です。「/」を打つと一覧が出るので、名前を覚えなくても選べます。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:24%">操作</th><th>こういう時に使う</th></tr></thead>
+      <tbody>
+        <tr><td><code class="k">/compact</code></td><td>会話が長くなって、AI の反応が鈍くなってきたとき。要点にまとめて続きを話せる</td></tr>
+        <tr><td><code class="k">/context</code></td><td>会話がどれくらいたまっているかを見たいとき</td></tr>
+        <tr><td><code class="k">/resume</code></td><td>昨日の続きをしたいとき。前の会話を選んで再開する</td></tr>
+        <tr><td><code class="k">Esc</code> を2回</td><td>さっきの状態に戻したいとき（<code class="k">/rewind</code> と同じ）。会話もファイルも戻せる</td></tr>
+        <tr><td><code class="k">/btw</code></td><td>作業を止めずに、ちょっと質問したいとき。会話の流れには残らない</td></tr>
+        <tr><td><code class="k">@ファイル名</code></td><td>「このファイルを見て」と、ファイルを指して頼みたいとき</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　/clear は「新しい話」、/compact は「同じ話を、要点だけにして続ける」。迷ったら /clear でいい。
+Esc 2回は、入力欄に文字があるときは「入力を消す」になる。空のときに押すと戻る画面が出る。
+<b>出典</b>　code.claude.com/docs の Commands と Interactive mode（2026-10-25 確認、Claude Code 2.1.310）。</aside>
+</section>
+
+<!-- P2-4 Claude Code 早見表2 働かせ方を変える -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Claude Code 早見表 2　働かせ方を変える</h1>
+  <p class="purpose">仕事の重さに合わせて、AI の頭の使い方を切り替えます。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:24%">操作</th><th>こういう時に使う</th></tr></thead>
+      <tbody>
+        <tr><td><code class="k">/model</code></td><td>難しい仕事は賢いモデル、簡単な仕事は速いモデルに切り替えたいとき</td></tr>
+        <tr><td><code class="k">/effort</code></td><td>考える深さを変えたいとき。low（浅く速く）から max（じっくり）まで</td></tr>
+        <tr><td><code class="k">/plan</code></td><td>いきなり作らせず、先に計画を見てから進めたいとき</td></tr>
+        <tr><td><code class="k">/goal</code></td><td>「ここまでできたら終わり」と決めて、終わるまで続けて任せたいとき</td></tr>
+        <tr><td><code class="k">/memory</code></td><td>AI が毎回読む説明書（CLAUDE.md）を開いて直したいとき</td></tr>
+        <tr><td><code class="k">/usage</code></td><td>使った量と、上限まであとどれくらいかを見たいとき</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　/goal の例：「このフォルダーの全部の文書に日付を入れて。全部に入ったら終わり」。AI が自分で確かめながら続ける。
+/plan は Shift＋Tab で「計画だけ立てる」モードにしても同じ。
+<b>出典</b>　code.claude.com/docs の Commands（2026-10-25 確認）。</aside>
+</section>
+
+<!-- P2-5 Claude Code でできること -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Claude Code でできること</h1>
+  <p class="purpose">慣れてきたら使える機能です。今日は名前と「何に使えるか」だけ覚えてください。</p>
+  <div class="body">
+    <div class="cards c3 feat" style="gap:18px">
+      <div class="card"><div class="no">サブエージェント</div><p>AI が手分けして働く。調べ物を別の AI に任せて、結果だけ受け取る</p></div>
+      <div class="card"><div class="no">ゴール　/goal</div><p>決めた条件を満たすまで、AI が自分で確かめながら続ける</p></div>
+      <div class="card"><div class="no">リモート操作　/rc</div><p>PC で動いている作業を、スマホやブラウザの Claude から見て、続きを頼める</p></div>
+      <div class="card"><div class="no">くり返し　/loop　/schedule</div><p>決まった間隔や時刻に、同じ作業をさせる</p></div>
+      <div class="card"><div class="no">スキル</div><p>よくやる手順を覚えさせて、「/名前」で呼び出す</p></div>
+      <div class="card"><div class="no">つなぐ（MCP）</div><p>Gmail やカレンダーなど、ほかのサービスとつないで読み書きさせる</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　サブエージェントは「部下に調べ物を頼んで、報告だけもらう」イメージ。「手分けして調べて」と頼めば使う。自分の会話が散らからない。
+リモート操作（/remote-control、短く /rc）は Claude の有料プランでログインしていることが条件。
+/loop は Claude Code を開いている間だけ動く。/schedule はクラウドで動くので、PC を閉じていても動く。
+つなぐ機能は、会社のデータを渡すことになる。使う前に第1回 Part 5 のルールで確認する。
+<b>出典</b>　code.claude.com/docs の Commands（2026-10-25 確認）。</aside>
+</section>
+
+<!-- P2-6 Codex 早見表 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Codex 早見表　Claude Code とほぼ同じ</h1>
+  <p class="purpose">Codex でも「/」を打つと一覧が出ます。名前が同じものが多いので、片方を覚えればもう片方も使えます。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:22%">Codex</th><th>こういう時に使う</th><th style="width:22%">Claude Code では</th></tr></thead>
+      <tbody>
+        <tr><td><code class="k">/model</code></td><td>モデルと考える深さを選ぶ</td><td><code class="k">/model</code> <code class="k">/effort</code></td></tr>
+        <tr><td><code class="k">/permissions</code></td><td>聞かずに進めてよい範囲を決める</td><td><code class="k">Shift＋Tab</code></td></tr>
+        <tr><td><code class="k">/plan</code></td><td>先に計画を見てから進める</td><td><code class="k">/plan</code></td></tr>
+        <tr><td><code class="k">/goal</code></td><td>終わりの条件を決めて任せる</td><td><code class="k">/goal</code></td></tr>
+        <tr><td><code class="k">/new</code></td><td>新しい話を始める</td><td><code class="k">/clear</code></td></tr>
+        <tr><td><code class="k">/resume</code></td><td>前の会話の続きをする</td><td><code class="k">/resume</code></td></tr>
+        <tr><td><code class="k">/compact</code></td><td>長くなった会話を要点にまとめる</td><td><code class="k">/compact</code></td></tr>
+        <tr><td><code class="k">/status</code></td><td>設定と残りの量を見る</td><td><code class="k">/status</code> <code class="k">/usage</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">表はターミナル版の名前です。アプリでも「/」で一覧が出ます（/goal・/plan・/status などは同じ名前）。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　2つの道具は、名前までほとんどそろっている。違いを覚えるより「/ を打って探す」を覚える。
+<b>当日確認</b>　アプリの「/」一覧は版で変わる。公式に載っているのは /feedback・/goal・/init・/mcp・/plan・/review・/status。始まる前に講師の画面で一覧を開いて確かめる。
+<b>出典</b>　learn.chatgpt.com の Codex コマンド一覧（2026-10-25 確認）。</aside>
+</section>
+
+<!-- P2-7 Codex でできること -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Codex でできること</h1>
+  <p class="purpose">考え方は Claude Code と同じです。ChatGPT を使っている皆さんは、こちらから試すのが近道です。</p>
+  <div class="body">
+    <div class="cards c3 feat" style="gap:18px">
+      <div class="card green"><div class="no">サブエージェント</div><p>AI が手分けして働く。<code class="k">/agents</code> で、手分けした AI の様子を見られる</p></div>
+      <div class="card green"><div class="no">ゴール　/goal</div><p>終わりの条件を決めて任せる。途中で止めたり、再開したりもできる</p></div>
+      <div class="card green"><div class="no">見直し　/review</div><p>AI が変えた内容を、別の目でチェックさせる</p></div>
+      <div class="card green"><div class="no">アプリとつなぐ　/apps</div><p>ChatGPT につないだサービスを、頼みの中で使う</p></div>
+      <div class="card green"><div class="no">スキル　/skills</div><p>よくやる手順を覚えさせて、呼び出す</p></div>
+      <div class="card green"><div class="no">寄り道　/side</div><p>作業を止めずに、別の小さな会話で質問する</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Claude Code のスライドと見比べると、ほぼ同じ並びになっている。道具が違っても、AI に仕事を任せる考え方は同じ。
+ターミナル版の /app で、続きを ChatGPT のアプリに移せる。
+<b>出典</b>　learn.chatgpt.com の Codex コマンド一覧（2026-10-25 確認）。</aside>
+</section>
+
+<!-- P2-7a Codex アプリの画面 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>Codex アプリの画面の見方</h1>
+  <p class="purpose">ChatGPT アプリの左上で「Codex」に切り替えます。入力欄のまわりに、作業場所・許可・モデルが並んでいます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:24% 1fr;align-items:center">
+      <img class="shot" src="assets/codex_switch.png" alt="ChatGPT と Codex の切り替え">
+      <div class="shot-wrap">
+        <img class="shot" src="assets/codex_composer.png" alt="Codex の入力欄" style="width:100%">
+        <span class="mark" style="left:9%;top:10%">1</span>
+        <span class="mark" style="left:26%;top:10%">2</span>
+        <span class="mark" style="left:25.5%;top:81%">3</span>
+        <span class="mark" style="left:62%;top:81%">4</span>
+      </div>
+    </div>
+    <div class="cards c4 feat" style="gap:14px">
+      <div class="card"><div class="no">1　フォルダー</div><p class="mini">作業する場所。押して「AI研修」を選ぶ</p></div>
+      <div class="card"><div class="no">2　動く場所</div><p class="mini">自分の PC の上で動く</p></div>
+      <div class="card red"><div class="no">3　許可の範囲</div><p class="mini">「フルアクセス」は聞かずに進む。慣れるまでは狭く</p></div>
+      <div class="card"><div class="no">4　モデルと深さ</div><p class="mini">「マックス」が考える深さ</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Claude Code の起動画面と、並んでいるものは同じ。作業場所・許可・モデル。
+画面は講師の PC（2026-10-25）。
+<b>当日確認</b>　3 を押したときに出る選択肢の名前と、受講者の初期設定を、始まる前に講師の画面で確かめる。4 の「マックス」が考える深さの表示であることも確かめる。</aside>
+</section>
+
+<!-- P2-7b Codex モデルを選ぶ -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 2　コマンドとできること</div>
+  <h1>モデルを選ぶ　迷ったら「デフォルト」</h1>
+  <p class="purpose">入力欄の右下を押すと、モデルの一覧が出ます。ターミナル版の <code class="k">/model</code> と同じ働きです。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:52% 1fr;align-items:center">
+      <img class="shot" src="assets/codex_model.png" alt="Codex のモデル選択">
+      <div class="cards stackc" style="gap:14px">
+        <div class="card"><div class="no">ふだんは</div><p class="mini">「デフォルト」のまま。おすすめの組み合わせになる</p></div>
+        <div class="card"><div class="no">難しい仕事は</div><p class="mini">説明に「最も難しいタスク」とあるモデルにする</p></div>
+        <div class="card"><div class="no">見え方は人それぞれ</div><p class="mini">並ぶモデルは、契約しているプランで変わる</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　モデルの名前は数か月で入れ替わるので、名前は覚えなくていい。カーソルを乗せると説明が出るので、それを読んで選ぶ。
+画面は講師の PC（2026-10-25）。受講者の一覧は、プランによって少ないことがある。</aside>
+</section>
+
+<!-- P2-8 演習 Claude Code / Codex で作ってみる -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習　15分</span></div>
+  <h1>Claude Code / Codex で、まずこれを作ってみる</h1>
+  <p class="purpose">本社の仕事に近いお題です。1つ選んで、<strong>最初の頼みは自分の言葉で書いてください。</strong></p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="cards stackc" style="gap:14px">
+        <div class="card"><div class="no">お題 A　施設別ダッシュボード</div><p class="mini">5園の定員・在籍数・職員数・人件費から、充足率と人件費率をグラフで比べるページ</p></div>
+        <div class="card"><div class="no">お題 B　経営会議の1枚レポート</div><p class="mini">月次の売上と費用から、前年比と着地見込みを計算し、要点3つを添える</p></div>
+        <div class="card"><div class="no">お題 C　施設の修繕計画</div><p class="mini">5施設の設備と設置年から、今後5年の修繕の順番と予算を年表にする</p></div>
+      </div>
+      <ol class="steps" style="gap:14px">
+        <li style="font-size:24px">Codex（Claude Code を使える方は Claude Code）を開き、フォルダーに「AI研修」を選ぶ</li>
+        <li style="font-size:24px">お題を選んで自分の言葉で頼む。数字は AI に架空で作らせる</li>
+        <li style="font-size:24px"><strong>最初の頼みは、送る前にメモ帳へコピーしておく</strong></li>
+        <li style="font-size:24px">許可の画面で「何を」「どこで」を読んでから進める</li>
+        <li style="font-size:24px">できたファイルを開き、直したいところを2回目で頼む</li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　頼み方の見本は出さない。うまく頼めなくていい。「え、グラフまで一発で？」を体験してもらうのが1つ目のねらい。最初の頼みを、このあと見せ合うのが2つ目のねらい。
+数字は AI に架空で作らせる。会社の本当の数字・園名・人名は入れない（第1回 Part 5）。
+できたら、計算が合っているかを1か所だけ電卓で確かめてもらう。AI の数字はそのまま信じない。
+早く終わった人には「Excel でも開ける形にして」と2回目で頼んでもらう。
+<b>見て回る</b>　手が止まっている人には「誰が読むもの？」とだけ聞く。
+<b>当日確認</b>　Codex の画面の名称（切り替えの場所、フォルダーの選び方、許可の選択肢）は版で変わる。始まる前に講師の画面で確かめる。
+アプリで Codex が使えない方は、次のスライドのターミナル版か、講師の画面を見て進める。</aside>
+</section>
+
+<!-- P2-9 最初のプロンプトを共有 -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">共有　10分</span></div>
+  <h1>最初に打ったプロンプトを共有しましょう</h1>
+  <p class="purpose">恥ずかしがらなくて大丈夫です。同じお題でも、プロンプトは人によってまったく違います。その違いが、いちばんの学びになります。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">捉え方</div><p>何を問題だと思って、何をゴールにしたか</p></div>
+      <div class="card"><div class="no">進め方</div><p>どんな順番で、どう解決しようとしたか</p></div>
+      <div class="card"><div class="no">言葉にする癖</div><p>どこを細かく書き、どこを AI に任せたか</p></div>
+    </div>
+    <div class="callout">隣の人と見せ合ったあと、2〜3人に画面で紹介してもらいます。<strong>自分にない具体化のしかたを、1つ持ち帰ってください。</strong></div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　プロンプトには、その人の問題の捉え方・解決のプロセス・言語化の癖がそのまま出る。だから見せ合うと、自分にない考え方や具体化のしかたが見つかる。上手・下手を比べる時間ではない。
+<b>講師が拾う観点</b>　誰が読むものか／何を作るか／何を入れるか／どんな形か。抜けていたところは AI が想像で埋めていて、そこが「思っていたのと違う」になる。
+この4つを毎回書くのは面倒。だから次の Part 3 で、AI に先に覚えさせておく（AGENTS.md）。ここが Part 3 への橋。
+<b>紹介してもらう人</b>　短く頼んだ人と、長く頼んだ人を1人ずつ選ぶと違いが見える。</aside>
+</section>
+
+<!-- P2-10 ターミナル版（おまけ） -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="tag-row"><span class="t" style="background:#F3F4F6;color:var(--muted);border-color:var(--line)">おまけ　家で試したい方へ</span></div>
+  <h1>Codex をターミナルで使う場合</h1>
+  <p class="purpose">アプリが使えない PC や、Claude Code と同じ画面で使いたいときの入れ方です。起動は <code class="k">codex</code> と打つだけです。</p>
+  <div class="body">
+    <div class="os2">
+      <div class="os">
+        <h3>Mac</h3>
+        <ol><li>ターミナルを開き、下の命令を貼りつけて Enter</li></ol>
+        <div class="cmd">curl -fsSL https://chatgpt.com/codex/install.sh | sh</div>
+      </div>
+      <div class="os">
+        <h3>Windows</h3>
+        <ol><li>PowerShell を開き、下の命令を貼りつけて Enter</li></ol>
+        <div class="cmd">powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"</div>
+      </div>
+    </div>
+    <ol class="steps" style="gap:20px;margin-top:6px">
+      <li style="font-size:23px">作業フォルダーに移動して <code class="k">codex</code> と打つ</li>
+      <li style="font-size:23px">初回は「Sign in with ChatGPT」を選び、ChatGPT のアカウントでログインする</li>
+    </ol>
+    <p class="small">出典：OpenAI の Codex 公式リポジトリ（github.com/openai/codex）</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　おまけ。時間がなければ飛ばして、配布資料で読んでもらう。今日はアプリで進めるので、ここは見せるだけ。早見表の名前はターミナル版のもの。家でターミナル版を試したい方向け。
+会社の PC で PowerShell の実行が制限されている場合は、情報システムの担当に確認する。</aside>
+</section>
+
+<!-- ═════════ Part 3 ═════════ -->
+<section class="slide part" style="--part:var(--r2)" data-ch="Part 3" data-min="40">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 03</div>
+  <h1>AGENTS.md　AI に自分と会社を覚えさせる</h1>
+  <div class="time-chip">座学・演習 40分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- P3-1 AGENTS.md とは -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>AGENTS.md　AI が毎回最初に読む説明書</h1>
+  <p class="purpose">AI は会話が変わると、前のことを覚えていません。毎回伝えたいことをファイルに書いておくと、AI が作業の前に必ず読みます。</p>
+  <div class="body">
+    <div class="compare">
+      <div class="side"><div class="tag">説明書がないとき</div><p class="prompt">会話のたびに「私は本部の採用担当で、保護者向けの文はやさしく…」と説明する</p></div>
+      <div class="side good"><div class="tag">説明書があるとき</div><p class="prompt">「お知らせを書いて」だけで、自分の担当と好みに合わせて書いてくれる</p></div>
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:26%"></th><th>Codex</th><th>Claude Code</th></tr></thead>
+      <tbody>
+        <tr><td>ファイルの名前</td><td>AGENTS.md</td><td>CLAUDE.md</td></tr>
+        <tr><td>AGENTS.md は</td><td>読む</td><td><strong>読めるようになりました</strong><span class="small">（CLAUDE.md がないとき）</span></td></tr>
+        <tr><td>中身</td><td colspan="2" style="text-align:center">ふつうの文章。見出しと箇条書きで書く</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　新しく入った人に渡す「仕事の進め方メモ」と同じ。名前が違うだけで、どの AI 開発ツールにも同じしくみがある。
+.md は Markdown（マークダウン）という書き方のファイル。# が見出し、- が箇条書き。メモ帳でも開ける。
+Claude Code は v2.1.277 から AGENTS.md を直接読める。そのフォルダー（と上のフォルダー）に CLAUDE.md がないときは AGENTS.md を読み、CLAUDE.md があるときは CLAUDE.md を優先する。両方読ませる設定もある（/config の Project instructions）。だから Codex 用に作った AGENTS.md は、Claude Code でもそのまま使える。
+<b>出典</b>　code.claude.com/docs「How Claude remembers your project」の AGENTS.md の節（2026-10-26 確認）。</aside>
+</section>
+
+<!-- P3-2 置き場所 -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>置き場所は2つ　自分用とフォルダー用</h1>
+  <p class="purpose">どこに置くかで、読まれる範囲が変わります。両方ある場合は両方読み、作業フォルダーに近いほうの内容を優先します。</p>
+  <div class="body">
+    <div class="cards c2 roomy">
+      <div class="card"><div class="no">自分用</div><h3>どのフォルダーでも読む</h3><p>自分の担当、書き方の好み、いつもお願いしたいこと</p><p class="small" style="margin-top:10px">Codex：<code class="k">~/.codex/AGENTS.md</code></p></div>
+      <div class="card green"><div class="no">フォルダー用</div><h3>そのフォルダーでだけ読む</h3><p>その仕事のルール。例：園だより用、採用用、会社共通</p><p class="small" style="margin-top:10px">作業フォルダーの中の <code class="k">AGENTS.md</code></p></div>
+    </div>
+    <div class="callout">今日は、自分用を1つ作り、会社共通を「AI研修」フォルダーに置きます。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　~ は「自分のホームフォルダー」の意味。Mac なら /Users/名前、Windows なら C:\Users\名前。.codex は普段は見えないフォルダー。場所を覚えなくても、Codex に「自分用の AGENTS.md に保存して」と頼めばいい。
+仕様の出典：OpenAI 公式ドキュメント「AGENTS.md」。全体で 32KB まで読む（A4 で十数枚分。今日の分量なら気にしなくていい）。</aside>
+</section>
+
+<!-- P3-2a 公式がすすめる置き方と書き方 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>公式がすすめる置き方と書き方</h1>
+  <p class="purpose">Claude Code の公式ドキュメントが示している形です。Codex の AGENTS.md も、同じ考え方で置けます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:52% 1fr;align-items:start">
+      <div class="tree"><table style="border-collapse:collapse">
+<tr><td>~/.claude/CLAUDE.md</td><td class="c">← 自分用。どこでも読む</td></tr>
+<tr><td>会社の共有フォルダー/</td><td></td></tr>
+<tr><td>├─ CLAUDE.md</td><td class="c">← 会社共通。チームで共有</td></tr>
+<tr><td>├─ CLAUDE.local.md</td><td class="c">← 自分だけのメモ</td></tr>
+<tr><td>├─ .claude/rules/</td><td class="c">← 話題ごとに分けたルール</td></tr>
+<tr><td>└─ 採用/</td><td></td></tr>
+<tr><td>　　└─ CLAUDE.md</td><td class="c">← 採用の仕事のときだけ読む</td></tr>
+</table></div>
+      <div class="cards stackc anat" style="gap:12px">
+        <div class="card"><div class="no">確かめられるほど具体的に</div><p class="mini">「きれいに整えて」ではなく「見出しは20字以内」</p></div>
+        <div class="card"><div class="no">1つ200行まで</div><p class="mini">長いほど守られにくくなる。増えたら話題ごとに分ける</p></div>
+        <div class="card"><div class="no">見出しと箇条書きで</div><p class="mini">長い文章より、まとまりで分けたほうが守られる</p></div>
+        <div class="card"><div class="no">食い違いをなくす</div><p class="mini">矛盾があると、AI はどちらか一方を選んでしまう</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　フォルダーの階段を上から順に全部読む。起動したフォルダーに近いものほど、あとに読まれる。下のフォルダー（採用/）の分は、AI がそのフォルダーで作業したときに読む。
+会社全体で全員の PC に配る置き場所もある（情報システムが管理する）。今日は扱わない。
+Codex では ~/.codex/AGENTS.md が自分用、フォルダーの AGENTS.md がフォルダー用（前のページの内容）。Claude Code は、CLAUDE.md がないフォルダーでは AGENTS.md を読む（v2.1.277 以降）。
+<b>出典</b>　code.claude.com/docs「How Claude remembers your project」（2026-10-25 確認）。右の4つは「Write effective instructions」の節。例は講師が日本語の仕事に置き換えた。</aside>
+</section>
+
+<!-- P3-2b プロの MD を解剖する -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>プロの CLAUDE.md を解剖する</h1>
+  <div class="body" style="gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 290px;gap:14px;align-items:start">
+      <div class="mdsrc"><span class="n">1</span><span class="h"># CLAUDE.md</span>
+
+Guidance for Claude Code and other coding agents working in this repository.
+
+<span class="n">2</span><span class="h">## Security hardening for GitHub Actions</span>
+
+Workflow jobs in this repository that call Claude run with three protections. Keep them when you add or edit a workflow.
+
+<span class="n">3</span>1. **Egress-firewall runner.** The job has `runs-on: ubuntu-24.04-firewall`, a GitHub-hosted runner that filters the job's outbound network traffic. Do not move a job that calls Claude to another runner.
+2. **Network allow list.** `.github/egress-firewall.yaml` lists the hosts those jobs may reach, besides any that GitHub's firewall allows by default. Keep `mode: enforce`, which is what makes the firewall block the rest. Follow that file's header when you add a host.
+
+`claude.yml` answers `@claude` mentions. The Claude Code action sets `--permission-mode acceptEdits` for those, and the `--permission-mode auto` in the workflow's `claude_args`, which comes after it, replaces it.</div>
+      <div class="mdsrc">3. **Auto permission mode.** Every step that runs the Claude Code action (`uses: anthropics/claude-code-action`, or a local action with a `claude_args` input) passes `--permission-mode auto` in `claude_args`. A tool call that needs permission and that the allowed tools do not cover then runs only if Claude Code's safety review passes it. Allow only the tools the job needs, and keep any `--disallowedTools` list a step has. Use `claude-opus-4-6` or a newer model: on an older one Claude Code falls back to its default permission mode.
+
+<span class="n">4</span>`.github/workflows/workflow-hardening.yml` fails when a job that runs the Claude Code action or mentions `ANTHROPIC_FEDERATION_RULE_ID` breaks protection 1 or 3, or when the allow list is missing, empty, not `mode: enforce`, or names a host with `*`. It cannot see a job that calls Claude another way, so check new workflows by hand too. If a job cannot meet protection 1 or 3, add it with the reason to the matching exemption table in `.github/scripts/check_workflow_hardening.py`. A job in `EXEMPT_FROM_AUTO_MODE` must set no permission mode at all. Do not skip or weaken the check.
+
+<span class="n">5</span>Keep each workflow's `permissions:` block minimal, and never print tokens or environment variables in workflow logs.</div>
+    <div class="cards stackc anat" style="gap:8px">
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">1　宛先</div><p class="mini">誰に向けた説明書か</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">2　見出し</div><p class="mini">話題ごとに分ける</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">3　番号と理由</div><p class="mini">何を・なぜ、を番号で</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">4　言い切る</div><p class="mini">「〜しない」と明言</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">5　最後の約束</div><p class="mini">鍵を画面に出さない</p></div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;grid-column:1/-1;margin:0">出典：github.com/anthropics/claude-code の CLAUDE.md（全文・2026年10月）</p>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Claude Code を作っている Anthropic が、自分たちの公開リポジトリに置いている CLAUDE.md の全文。中身は GitHub の自動処理のセキュリティの話で、読めなくていい。見てほしいのは「書き方の型」の5つ。英語でも、番号と見出しを追えば構造がわかる。
+Claude Code の作者 Boris Cherny は、チームで CLAUDE.md を1つ共有し、「Claude が間違えるたびに書き足して、次は同じことをしないようにしている」と書いている（本人の X の投稿、2026-01-02）。プロの説明書は、最初から完璧に書くのではなく、使いながら育てている。
+<b>出典</b>　github.com/anthropics/claude-code の CLAUDE.md（全文、2026-10-25 取得）。解説のための引用。Boris Cherny 本人の CLAUDE.md は公開されていないので、ここでは見せていない。</aside>
+</section>
+
+<!-- P3-2b2 解剖の日本語訳 -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>プロの CLAUDE.md　日本語にすると</h1>
+  <div class="body" style="gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 290px;gap:14px;align-items:start">
+      <div class="mdsrc" style="font-size:14px;line-height:1.55"><span class="n">1</span><span class="h"># CLAUDE.md</span>
+
+このリポジトリで作業する Claude Code と、ほかのコーディング AI への案内です。
+
+<span class="n">2</span><span class="h">## GitHub の自動処理を守るために</span>
+
+このリポジトリで Claude を呼び出す自動処理は、3つの守りの中で動いています。自動処理を足したり直したりするときも、この3つを保つこと。
+
+<span class="n">3</span>1. **外への通信をふるいにかける実行環境。** Claude を呼ぶ処理は、外への通信を絞る専用の環境（`ubuntu-24.04-firewall`）で動かす。ほかの環境に移さない。
+2. **つないでよい相手のリスト。** つないでよい相手を1つのファイルに並べ、リストにない相手はふさぐ設定（`mode: enforce`）を保つ。相手を足すときは、そのファイルの冒頭の説明に従う。
+
+`@claude` と呼ばれて答える処理では、編集を自動で許す設定が先に付くが、あとから書いた「自動の許可モード」で置き換わる。</div>
+      <div class="mdsrc" style="font-size:14px;line-height:1.55">3. **自動の許可モード。** Claude を動かすすべての手順で、許可モードを `auto` にする。許可が必要な操作は、Claude Code の安全確認を通ったときだけ動く。許可するのは必要な道具だけ。禁止の道具のリストは消さない。モデルは新しいもの（`claude-opus-4-6` 以降）を使う。古いモデルだと、標準の許可モードに戻ってしまう。
+
+<span class="n">4</span>守り1か3を破った処理や、リストがない・空・ふさぐ設定になっていない・相手を「*」でまとめて指定している場合は、チェック用の自動処理が失敗して知らせる。ほかの方法で Claude を呼ぶ処理はチェックから見えないので、新しい処理は人の目でも確かめる。どうしても守れない処理は、理由を添えて例外の表に書く。例外にした処理には、許可モードを一切指定しない。<strong>チェックを飛ばしたり、弱めたりしない。</strong>
+
+<span class="n">5</span>どの処理も、与える権限は最小限に。鍵（トークン）や環境の設定を、記録（ログ）に出さない。</div>
+    <div class="cards stackc anat" style="gap:8px">
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">1　宛先</div><p class="mini">Claude と、ほかの AI へ</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">2　見出し</div><p class="mini">何の話か、先に言う</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">3　番号と理由</div><p class="mini">3つの守りと、そのわけ</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">4　言い切る</div><p class="mini">「飛ばさない・弱めない」</p></div>
+      <div class="card" style="padding:10px 16px"><div class="no" style="font-size:19px">5　最後の約束</div><p class="mini">鍵を記録に出さない</p></div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;grid-column:1/-1;margin:0">講師による日本語訳（専門的な部分は意味をとって訳しています）。原文：github.com/anthropics/claude-code の CLAUDE.md</p>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　前のページの英語を日本語にしたもの。中身は「GitHub の自動処理で AI を安全に動かす決まり」。細かいところは読まなくていい。
+見てほしいのは、会社の業務マニュアルと同じ形をしていること：誰に向けたか → 何の話か → 番号付きの決まりと、そのわけ → 「してはいけない」をはっきり → 最後に鍵の扱い。
+次のページで、この型のまま本社の仕事を書く。
+<b>出典</b>　github.com/anthropics/claude-code の CLAUDE.md（2026-10-25 取得）を講師が訳した。ファイル名や設定名など一部は意味をとって言い換えている。</aside>
+</section>
+
+<!-- P3-2c 同じ型で本社の説明書を書くと -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>同じ型で、本社の仕事を書くと</h1>
+  <div class="body" style="gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 290px;gap:14px;align-items:start">
+      <div class="mdsrc" style="font-size:16px;line-height:1.6"><span class="n">1</span><span class="h"># CLAUDE.md</span>
+本社 経営企画のフォルダーで働く AI へ。月次報告・施設データ・会議資料を作るときの決まりです。
+
+<span class="n">2</span><span class="h">## このフォルダーについて</span>
+- `データ/` 施設ごとの月次データ。元のファイルは書き換えない
+- `報告/` できあがった報告書を置く
+- `ひな形/` 会議資料の型。新しく作らず、これを使う
+
+<span class="n">3</span><span class="h">## 数字のルール</span>
+1. **定義をそろえる。** 充足率＝在籍数÷定員、人件費率＝人件費÷売上。式が違うと施設どうしを比べられないため。別の式を使うときは先に聞く
+2. **元データから計算する。** 前の報告書の数字を写さない。古い数字が残るため
+3. **推測の数字には印をつける。** 「（推計）」と書き、何から推計したかを1行添える
+4. **合計を確かめる。** 施設別の合計と全体の数字が合うか、出す前に照らし合わせる</div>
+      <div class="mdsrc" style="font-size:16px;line-height:1.6"><span class="n">4</span><span class="h">## 書き方</span>
+- 結論を最初の3行に書く。会議では最初しか読まれない
+- 施設名は正式名称で。略称は使わない
+- 金額は千円単位。小数点以下は四捨五入
+- グラフには期間と出典を必ず入れる
+
+<span class="n">5</span><span class="h">## してはいけないこと</span>
+- 職員・園児・保護者の個人名を資料に出さない
+- `データ/` の元ファイルを上書きしない
+- 外部のサービスにデータを送らない。必要なときは先に聞く
+
+<span class="n">6</span><span class="h">## 間違えたときに足した決まり</span>
+<span style="color:var(--muted)">&lt;!-- AI が間違えるたびに、ここに1行足す --&gt;</span>
+- 9月：前年同月と前月を取り違えた
+  → 比べる列には「前年同月」と必ず書く
+- 10月：4月入園の人数を二重に数えた
+  → 在籍数は月末時点で1回だけ数える</div>
+    <div class="cards stackc anat" style="gap:8px">
+      <div class="card"><div class="no">1　宛先</div><p class="mini">誰に向けた説明書か</p></div>
+      <div class="card"><div class="no">2　地図</div><p class="mini">どこに何があるか</p></div>
+      <div class="card"><div class="no">3　番号と理由</div><p class="mini">何を・なぜ、を番号で</p></div>
+      <div class="card"><div class="no">4　具体的に</div><p class="mini">確かめられる言い方で</p></div>
+      <div class="card"><div class="no">5　言い切る</div><p class="mini">「しない」をはっきり</p></div>
+      <div class="card green"><div class="no">6　育てる</div><p class="mini">間違えるたびに1行足す</p></div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;grid-column:1/-1;margin:0">講師が作成した架空の例です。型は前のページの CLAUDE.md、育て方は Claude Code の作者 Boris Cherny が紹介している方法にならいました。</p>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　前のページの5つの型を、本社の仕事に当てはめるとこうなる。1〜5は前のページと同じ。6が「育てる」：Claude Code の作者 Boris Cherny は、チームで1つの CLAUDE.md を共有し、「Claude が間違えるたびに書き足して、次は同じことをしないようにしている」と書いている（本人の X の投稿、2026-01-02）。
+最初から完璧に書かなくていい。間違えたら1行足す。これを続けると、自分の部署専用の AI になっていく。
+数字・施設・出来事はすべて架空。実在の LaLaLand のデータではないことを、必要なら口頭でも伝える。
+このあとの演習は自分用なので、ここまで長くなくていい。3つのまとまりから始める。</aside>
+</section>
+
+<!-- P3-2d 講師の実際の置き方 -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>講師の実際の置き方　役割ごとに分ける</h1>
+  <p class="purpose">Claude Code と Codex の両方を使っています。AI が変わっても、同じ約束と同じ現在地を読みます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:56% 1fr;align-items:start">
+      <div class="tree"><table style="border-collapse:collapse">
+<tr><td>仕事/</td><td></td></tr>
+<tr><td>├─ CLAUDE.md</td><td class="c">← Claude Code の入口</td></tr>
+<tr><td>├─ AGENTS.md</td><td class="c">← Codex の入口</td></tr>
+<tr><td>├─ PHARUS.md</td><td class="c">← 灯台。全案件の現在地</td></tr>
+<tr><td>├─ OMNIS.md</td><td class="c">← 約束と学び。全員で共有</td></tr>
+<tr><td>├─ design/</td><td class="c">← 資料と画面の決まり</td></tr>
+<tr><td>└─ 案件ごとのフォルダー/</td><td></td></tr>
+<tr><td>　　└─ tasks/status.md</td><td class="c">← 進み具合と次の一手</td></tr>
+</table></div>
+      <div class="cards stackc anat" style="gap:10px">
+        <div class="card"><div class="no">1　入口を読む</div><p class="mini">自動で読まれる。ほかのファイルへの道案内</p></div>
+        <div class="card"><div class="no">2　PHARUS で全体を見る</div><p class="mini">どの案件が、いまどこにいるか</p></div>
+        <div class="card"><div class="no">3　OMNIS の約束を読む</div><p class="mini">学びは、入る案件に関係する所だけ</p></div>
+        <div class="card"><div class="no">4　案件の status を読む</div><p class="mini">前回どこまで進んで、次に何をするか</p></div>
+        <div class="card green"><div class="no">5　「何をやる？」と聞く</div><p class="mini">ここまで読んでから、仕事を始める</p></div>
+      </div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;margin:0">講師が実際に使っている構成を、お見せできる形に書き換えたものです。PHARUS はラテン語で「灯台」、OMNIS は「すべて」。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　私は Claude Code と Codex の両方を使っている。入口（CLAUDE.md と AGENTS.md）は AI ごとに分けるけれど、守ってほしい約束と、いま何がどこまで進んでいるかは1か所にまとめて、両方に同じものを読ませている。
+右は、AI が仕事を始めるときに読む順番。入口に「最初にこれを読んで」と書いてあるので、毎回この順番で読んでから「何をやる？」と聞いてくる。前の日の続きから、説明し直さずに始められる。
+ポイントは、ファイルを「誰の」「何の」で分けていること。約束（変わらない）、現在地（毎日変わる）、案件の進み具合（案件ごと）を混ぜない。
+皆さんは最初からここまで作らなくていい。次の演習の「自分用」1枚から始めて、増えてきたら分ける。</aside>
+</section>
+
+<!-- P3-2e OMNIS の中身 -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>OMNIS の中身　上は約束、下は学び</h1>
+  <div class="body" style="gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 290px;gap:14px;align-items:start">
+      <div class="mdsrc" style="font-size:16px;line-height:1.6"><span class="h"># OMNIS</span>
+人と AI のチームで共有する「すべて」。上段は約束、下段は学び。
+
+<span class="n">1</span><span class="h"># 上段：約束</span>
+<span class="h">## 誠実さ</span>
+- 自分の言葉で説明できないものを、お客様に渡さない
+- 「直した」は、実際に確かめた範囲でだけ言う。確かめていないことは「未確認」と書く
+- 推測で置いた数字には、その場で印を付ける（【実測】【計算】【推測】）。印のない推測は、翌日には事実になる
+
+<span class="h">## 止まる場所</span>
+- お客様に見えるものを変えるとき、元に戻せない操作をするときは、進める前に人に戻す
+- 迷ったら聞く
+
+<span class="h">## 記録</span>
+- 進み具合は、会話ではなくファイルに書く
+- 確かめられたら保存する</div>
+      <div class="mdsrc" style="font-size:16px;line-height:1.6"><span class="n">2</span><span class="h"># 下段：共有の学び</span>
+<span style="color:var(--muted)">&lt;!-- 日付・[案件名]・起きたこと・次からどうするか --&gt;</span>
+
+<span class="h">## 9/24 [月次報告] 予定日と実績の基準日を分ける</span>
+- 起きたこと：予定と実績を、違う日付の締めで比べていた
+- 次から：表の上に「何日時点の数字か」を必ず書く
+
+<span class="h">## 10/23 [会議資料] 作り直す前に、注意書きを数える</span>
+- 起きたこと：新しい版で、前の版にあった注意書きが消えていた
+- 次から：作り直す前に、前の版の注意書きを数えて、新しい版でも同じ数あるか確かめる
+
+<span class="n">3</span><span style="color:var(--muted)">（このあと、全体で約4,800行）</span></div>
+    <div class="cards stackc anat" style="gap:8px">
+      <div class="card"><div class="no">1　約束は短く</div><p class="mini">毎回、全部読む</p></div>
+      <div class="card"><div class="no">2　学びは具体的に</div><p class="mini">起きたことと、次からの行動</p></div>
+      <div class="card green"><div class="no">3　学びは長くていい</div><p class="mini">関係する案件の所だけ読む</p></div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;grid-column:1/-1;margin:0">講師が実際に使っている OMNIS を、お見せできる形に書き換えた抜粋です。案件名は置き換えています。</p>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　上段の約束は短くして、AI が毎回全部読む。中身は、人に仕事を頼むときと同じこと：説明できないものを渡さない、確かめていないことを「やった」と言わない、迷ったら聞く。
+下段は、前のページの「間違えたときに足した決まり」を、案件を越えて貯めたもの。ある案件で踏んだ穴を、別の案件では踏まない。Boris Cherny の「間違えるたびに1行足す」を続けると、こうなる。
+「印のない推測は、翌日には事実になる」は、実際に AI が推測で置いた数字を、次の日に確定した事実として扱ったことから足した一文。
+皆さんの部署なら、上段は「部署のルール」、下段は「ヒヤリハット集」に近い。
+<b>注意</b>　実物は社外の案件名を含むので、案件名と文面を置き換えて見せている。行数（約4,800行・2026-10-26 時点）は実測。</aside>
+</section>
+
+<!-- P3-3 MD を作ってみよう -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>MD を作ってみよう</h1>
+  <p class="purpose">自分用の AGENTS.md は、3つのまとまりで書くと AI が使いやすくなります。最初は短くていいので、使いながら足していきます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div class="term" style="font-size:21px"><div class="bar"><i></i><i></i><i></i></div><span class="ai"># わたしについて</span>
+- 担当：本部で採用と入社の手続き
+- よく作るもの：求人票、職員向けのお知らせ
+
+<span class="ai"># 書き方の好み</span>
+- 結論から先に書く
+- 箇条書きを多めに
+- 保護者向けは、やさしい言葉で
+
+<span class="ai"># お願い</span>
+- わからないことは、作る前に質問して
+- 数字は元の資料と照らし合わせて</div>
+      <div class="cards stackc" style="gap:14px">
+        <div class="card"><div class="no">わたしについて</div><p class="mini">担当の仕事、よく作るもの、関わる相手</p></div>
+        <div class="card"><div class="no">書き方の好み</div><p class="mini">文の長さ、言葉づかい、形式（表・箇条書き）</p></div>
+        <div class="card"><div class="no">お願い</div><p class="mini">毎回守ってほしいこと、確かめてほしいこと</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　左は架空の例。ここに書くのは仕事の情報だけ。住所や電話番号など、個人の情報は書かない。</aside>
+</section>
+
+<!-- P3-3a 3つの演習（映しっぱなし用） -->
+<section class="slide">
+  <div class="kicker">PART 3　AGENTS.md</div>
+  <h1>ここからの3つ　自分用 → 会社共通 → 比べる</h1>
+  <div class="body">
+    <div class="cards c3" style="gap:18px;align-items:stretch">
+      <div class="card" style="display:flex;flex-direction:column;gap:12px"><div class="no">1　自分用を作る</div><p class="mini" style="color:var(--green);font-weight:700;margin:0">ひとりで</p>
+        <div class="prompt-box" style="font-size:19px;line-height:1.6;margin:0">私用の AGENTS.md を作りたい。私の仕事と、書き方の好みについて、1問ずつ質問して。5問くらい聞いたら、「わたしについて」「書き方の好み」「お願い」の3つにまとめて、自分用の AGENTS.md に保存して。</div>
+        <p class="mini" style="margin:0">できたら、新しい会話で<br>「私のこと、何を知ってる？」</p></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px"><div class="no">2　AI にこう働いてほしい</div><p class="mini" style="color:var(--violet);font-weight:700;margin:0">みんなで</p>
+        <p class="mini" style="margin:0">1人1つずつ、声に出す</p>
+        <ul class="mini" style="margin:0;padding-left:1.2em;line-height:1.7"><li>大事にしていること</li><li>言葉づかい</li><li>してはいけないこと</li><li>期待すること</li></ul>
+        <p class="mini" style="margin:0">講師がまとめて、会社共通の AGENTS.md にします</p></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px"><div class="no">3　同じ頼みを比べる</div><p class="mini" style="color:var(--amber);font-weight:700;margin:0">講師の画面で</p>
+        <div class="prompt-box" style="font-size:19px;line-height:1.6;margin:0">運動会が雨で延期になったことを、保護者に知らせる文を書いて。</div>
+        <p class="mini" style="margin:0">説明書がないフォルダーと、あるフォルダーで、同じ頼みを入れて比べます</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>使い方</b>　この3つのあいだ、このページを映したままにしておける。頼みの文は配布資料からコピーできる。
+くわしい手順は、次の3枚にある（必要なときだけめくる）。</aside>
+</section>
+
+<!-- P3-4 演習 自分の AGENTS.md -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習　12分</span></div>
+  <h1>AI に質問してもらいながら、自分用を作る</h1>
+  <p class="purpose">自分で一から書かなくても大丈夫です。AI に質問させて、答えたことをまとめてもらいます。</p>
+  <div class="body">
+    <div class="prompt-box" style="font-size:24px">私用の AGENTS.md を作りたい。<br>私の仕事と、書き方の好みについて、1問ずつ質問して。<br>5問くらい聞いたら、「わたしについて」「書き方の好み」「お願い」の3つにまとめて、<b>自分用の AGENTS.md</b> に保存して。</div>
+    <div class="flow">
+      <div class="st"><b>1　頼む</b><span>上の文をそのまま入れる</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>2　答える</b><span>質問に短く答える</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>3　確かめる</b><span>新しい会話で「私のこと、何を知ってる？」</span></div>
+    </div>
+  </div>
+  <aside class="notes"><b>見て回る</b>　保存の許可の画面が出るので、保存先が ~/.codex/AGENTS.md（Windows は C:\Users\名前\.codex\AGENTS.md）になっているか一緒に確認する。
+新しい会話で中身を答えられれば成功。答えられないときは、保存先が違う可能性が高い。</aside>
+</section>
+
+<!-- P3-5 GW 会社共通 -->
+<section class="slide">
+  <div class="tag-row"><span class="t qa">グループワーク　10分</span></div>
+  <h1>LaLaLand の社員として、AI にこう働いてほしい</h1>
+  <p class="purpose">新しく入った人に最初に伝えることを、AI にも伝えます。全員で出し合い、会社共通の AGENTS.md にまとめます。</p>
+  <div class="body">
+    <div class="cards c4" style="gap:16px">
+      <div class="card"><div class="no">大事にしていること</div><p class="mini">仕事で迷ったときに立ち返ること</p></div>
+      <div class="card"><div class="no">言葉づかい</div><p class="mini">保護者、子ども、職員それぞれへの言い方</p></div>
+      <div class="card red"><div class="no">してはいけないこと</div><p class="mini">個人情報の扱い、外に出さない情報</p></div>
+      <div class="card green"><div class="no">期待すること</div><p class="mini">「こう働いてくれたら頼れる」と思うこと</p></div>
+    </div>
+    <div class="prompt-box" style="font-size:23px">今みんなで出した内容を、「LaLaLand で働く AI へのお願い」として AGENTS.md にまとめて、このフォルダーに保存して。</div>
+  </div>
+  <aside class="notes"><b>進め方</b>　4つの観点で、1人1つずつ声に出してもらう（5分）。講師が Codex の画面に打ち込み、最後に上の頼みでまとめる（2分）。できたファイルを画面に映して全員で読む（3分）。
+<b>話すこと</b>　これは第5〜8回の CORPORA（LaLaLand らしさの言語化）の入口。今日のものはたたき台でいい。</aside>
+</section>
+
+<!-- P3-6 比べる -->
+<section class="slide">
+  <div class="tag-row"><span class="t demo">実演　5分</span></div>
+  <h1>説明書の前と後で、同じ頼みを比べる</h1>
+  <p class="purpose">会社共通の AGENTS.md があるフォルダーと、ないフォルダーで、まったく同じ頼みを入れます。</p>
+  <div class="body">
+    <div class="prompt-box" style="font-size:26px">運動会が雨で延期になったことを、保護者に知らせる文を書いて。</div>
+    <div class="compare">
+      <div class="side"><div class="tag">説明書なし</div><p class="prompt">一般的なお知らせの文<br><span class="small">どの会社でも使える言い方</span></p></div>
+      <div class="side good"><div class="tag">説明書あり</div><p class="prompt">LaLaLand の言葉づかいとお願いが入った文<br><span class="small">さっき全員で決めたことが反映される</span></p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>実演</b>　講師の PC で2つのフォルダーを用意し、左右に並べて見せる。違いが出た箇所を指でさして、「誰が書いたルールが効いたか」を確認する。
+違いが小さい場合は、「どこに反映されている？」と AI に聞いてみせる。</aside>
+</section>
+
+<!-- ═════════ Part 4 ═════════ -->
+<section class="slide part" style="--part:var(--r1)" data-ch="Part 4" data-min="40">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 04</div>
+  <h1>業務棚卸し＋宿題準備</h1>
+  <div class="time-chip">演習 40分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- P4-1 宿題 -->
+<section class="slide">
+  <div class="kicker">PART 4　業務棚卸し＋宿題準備</div>
+  <h1>宿題　AI に任せて実現したいことを1つ</h1>
+  <p class="purpose">自分の仕事の中から、AI に任せたいことを1つ選び、次回までに形にして見せていただきます。</p>
+  <div class="body">
+    <div class="steps3">
+      <div class="st"><b>今日</b><span>やりたいことを決めて、講師が「できる・できない」を判定する</span></div>
+      <div class="st"><b>次回まで</b><span>Codex や ChatGPT を使って、形にしてみる</span></div>
+      <div class="st"><b>第3回</b><span>できたもの、つまずいたところを見せる</span></div>
+    </div>
+    <div class="callout">完成していなくても大丈夫です。どこまで進んで、どこで止まったかが、次回の題材になります。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　先方からのご要望。目的は「自分の仕事で使ってみる」こと。立派なものでなくていい。
+第3回は GAS（スプレッドシートの自動化）と API。宿題の中で「毎回手で集計している」ものは、第3回で自動にできる。</aside>
+</section>
+
+<!-- P4-2 棚卸しの考え方 -->
+<section class="slide">
+  <div class="kicker">PART 4　業務棚卸し＋宿題準備</div>
+  <h1>仕事の棚卸し　4つの見方</h1>
+  <p class="purpose">1週間の仕事を思い出して書き出し、それぞれを4つの見方で確かめます。当てはまるものが多いほど、AI に任せやすい仕事です。</p>
+  <div class="body">
+    <div class="cards c2" style="gap:18px">
+      <div class="card"><div class="no">1　手順</div><h3>毎回だいたい同じ手順か</h3><p class="mini">例：毎月のお知らせ、毎週の集計</p></div>
+      <div class="card"><div class="no">2　材料</div><h3>渡す材料がデータになっているか</h3><p class="mini">文字、表、ファイルで渡せる。紙だけ、頭の中だけ、ではない</p></div>
+      <div class="card"><div class="no">3　形</div><h3>できあがりの形が決まっているか</h3><p class="mini">例：A4 1枚の文書、決まった列の表</p></div>
+      <div class="card"><div class="no">4　影響</div><h3>間違えても、人の確認で防げるか</h3><p class="mini">最後に人が見てから使う、外に出す前に直せる</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「時間がかかっている」「回数が多い」仕事から書き出すと見つけやすい。
+4つ全部そろっていなくてもいい。足りない見方は、準備すればそろう場合が多い（例：紙の記録を表にする）。</aside>
+</section>
+
+<!-- P4-3 判定 -->
+<section class="slide">
+  <div class="kicker">PART 4　業務棚卸し＋宿題準備</div>
+  <h1>判定の4段階</h1>
+  <p class="purpose">講師が、1人ずつその場で判定します。判定と一緒に、次回までのゴールを決めます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:30%">判定</th><th>意味</th><th style="width:32%">例</th></tr></thead>
+      <tbody>
+        <tr><td><div class="jrow"><span class="judge a">◎</span>今日からできる</div></td><td>ChatGPT や Codex だけで完結する</td><td>園だよりの下書き</td></tr>
+        <tr><td><div class="jrow"><span class="judge b">○</span>準備すればできる</div></td><td>材料をデータにそろえる、第3回の GAS で自動にする</td><td>毎月の出欠の集計</td></tr>
+        <tr><td><div class="jrow"><span class="judge c">△</span>下書きまで AI</div></td><td>AI が案を作り、判断と仕上げは人がする</td><td>保護者からの相談への返信</td></tr>
+        <tr><td><div class="jrow"><span class="judge d">×</span>任せない</div></td><td>人が責任を持って決めること。個人情報の判断を含むこと</td><td>職員の評価を決める</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>判定のコツ</b>　× でも終わらせない。「その手前の準備（評価の観点の整理など）なら △」のように、任せられる部分を一緒に探す。
+例はすべて架空。実在の職員・保護者の情報は扱わない。</aside>
+</section>
+
+<!-- P4-4 ワークシート（記入例） -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習　10分</span></div>
+  <h1>宿題シートを書く</h1>
+  <p class="purpose">AI にインタビューしてもらいながら書きます。左は記入例です。頼みの文は次のページにあります。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:58% 1fr;align-items:start">
+      <div>
+      <table class="tbl dense">
+        <tbody>
+          <tr><td style="width:30%"><strong>やりたいこと</strong></td><td>施設別の月次報告を、AI に下書きしてもらう</td></tr>
+          <tr><td><strong>今のやり方</strong></td><td>月1回。5園から届く Excel を手で1枚にまとめる。1回 約3時間</td></tr>
+          <tr><td><strong>渡す材料</strong></td><td>各園の月次 Excel（在籍数・職員数・人件費）</td></tr>
+          <tr><td><strong>できあがり</strong></td><td>経営会議用の A4 1枚。表1つと要点3つ</td></tr>
+          <tr><td><strong>判定</strong></td><td>○ 準備すればできる（各園の Excel の列をそろえる）</td></tr>
+          <tr><td><strong>次回までのゴール</strong></td><td>先月分を AI で作り、手で作ったものと比べる</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:8px">記入例は架空です。判定とゴールは、このあと講師と一緒に書きます。</p>
+      </div>
+      <div class="flow" style="flex-direction:column;align-items:stretch;gap:10px">
+        <div class="st"><b>1　貼る</b><span>次のページの頼みを、Codex に貼る</span></div>
+        <div class="st"><b>2　答える</b><span>1問ずつ。最近の1回を思い出して</span></div>
+        <div class="st"><b>3　確かめる</b><span>まとめを読んで、違うところを直す</span></div>
+        <div class="st now"><b>4　保存</b><span>「宿題.md」がフォルダーにできる</span></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　思いつかない方は、棚卸しの4つの見方を思い出して「毎回同じ手順の仕事」から選ぶ。紙に書いてもいい。
+インタビューは10問くらいで、10分では終わらない人もいる。講師が回ってくるまで続けてよい。
+<b>見て回る</b>　答えが「いろいろ」「その都度」になっている人には、「先週のその仕事は、何から始めましたか？」と聞く。</aside>
+</section>
+
+<!-- P4-4a 宿題インタビューの頼み -->
+<section class="slide">
+  <div class="kicker">PART 4　業務棚卸し＋宿題準備</div>
+  <h1>AI にインタビューしてもらう頼み</h1>
+  <div class="body" style="gap:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start">
+      <div class="mdsrc" style="font-size:15px;line-height:1.55"><span class="h"># あなたの役割</span>
+あなたは業務改善のインタビュアー。私が「AI に任せたい仕事」を1つ決められるように、話を聞いて整理して。決めるのは私。
+
+<span class="h"># 聞き方</span>
+- 質問は1回に1つ。私が答えるまで次に進まない
+- 答えがあいまいなときは「先週のその仕事は、何から始めましたか？」のように、最近の1回を具体的に聞き返す
+- AI でできることの提案や、あなたの意見は、最後のまとめまで言わない
+- 専門用語を使わず、私の言葉をそのまま使う
+- 職員・園児・保護者の個人名は聞かない。私が書いたら「Aさん」に置き換えて記録する
+- 10問くらいで終える
+
+<span class="h"># 聞くこと（この順番で）</span>
+1. 先週1週間で、時間がかかった仕事・くり返した仕事を3つ
+2. その中で、いちばん代わってほしい1つと、その理由
+3. 最後にその仕事をした日の手順を、始めから終わりまで（何を開き、何を見て、何を書いたか）
+4. どのくらいの頻度で、1回に何分かかるか</div>
+      <div class="mdsrc" style="font-size:15px;line-height:1.55">5. 使う材料は何か。データ（Excel・文書・メール）か、紙や頭の中だけか
+6. 誰が読む・使うものか。どんな形か。見本はあるか
+7. 今はどうやって正しさを確かめているか。間違えると誰が困るか
+8. 任せられたら、空いた時間で何をしたいか
+
+<span class="h"># 最後に</span>
+1. 下の形にまとめて見せ、「合っていますか？」と聞く
+2. 私が直したところを反映する
+3. 「宿題.md」としてこのフォルダーに保存する
+
+<span class="h"># まとめの形</span>
+## やりたいこと ／ ## 選んだ理由
+## 今のやり方（手順・頻度・1回の時間）
+## 渡す材料（データになっているか）
+## できあがり（誰が・どんな形）
+## 確かめ方と、間違えたときの影響
+## 4つの見方（手順・材料・形・影響を、はい／いいえ／一部で）
+## 判定（空けておく。講師が書く）
+## 次回までのゴール（空けておく）
+
+では、最初の質問から始めて。</div>
+    </div>
+    <p class="small" style="font-size:16px;line-height:1.5;margin:0">配布資料からそのままコピーできます。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　頼みが長いのは、AI に「聞き役」をきちんとやってもらうため。役割、聞き方の決まり、聞く順番、まとめの形まで書くと、AI は先に答えを出さず、こちらの話を最後まで聞いてくれる。Part 3 の説明書と同じ考え方。
+3の「最後にその仕事をした日」を聞くのがいちばん大事。「いつもは」で聞くと答えがぼやける。
+<b>注意</b>　個人名を入れないよう、頼みの中でも決めてある。それでも入れてしまった人には、その場で消してもらう。</aside>
+</section>
+
+<!-- P4-5 判定の進め方 -->
+<section class="slide">
+  <div class="tag-row"><span class="t qa">講師と1人ずつ　25分</span></div>
+  <h1>1人ずつ判定して、次回までのゴールを決める</h1>
+  <p class="purpose">講師が順番に回ります。待っている間は、自分の宿題を Codex で試し始めてください。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>見せる</b><span>宿題シートの4項目</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>判定</b><span>◎○△× と、その理由</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>ゴールを決める</b><span>次回までに、どこまで作るか</span></div>
+    </div>
+    <div class="callout">ゴールは小さく決めます。「1回分を AI で作ってみて、手でやるのと比べる」くらいで十分です。</div>
+  </div>
+  <aside class="notes"><b>進め方</b>　1人2〜3分。判定とゴールは、その人の宿題.md に本人が書き足す。
+△や×の人は、任せられる部分を一緒に切り出して ◎か○ のゴールにする。
+最後の5分で、2〜3人に「何を宿題にしたか」を共有してもらう。</aside>
+</section>
+
+<!-- ═════════ Part 5 ═════════ -->
+<section class="slide part" style="--part:var(--r6)" data-ch="Part 5" data-min="5">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 05</div>
+  <h1>迷子になったときの、AI への話しかけ方</h1>
+  <div class="time-chip">座学 5分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- P5-1 6つの話しかけ方 -->
+<section class="slide">
+  <div class="kicker">PART 5　迷子になったとき</div>
+  <h1>わからなくなったら、AI に聞き直す</h1>
+  <p class="purpose">宿題の途中でつまずいたら、あきらめる前に AI に聞きます。AI は何度聞いても嫌がりません。聞き方を変えると、わからないことが減ります。</p>
+  <div class="body">
+    <div class="cards c3" style="gap:16px">
+      <div class="card"><div class="no">1　画面をそのまま渡す</div><p class="mini">エラーの文字を全部コピーして貼る。画面の写真でもいい</p></div>
+      <div class="card"><div class="no">2　どこまでできたか言う</div><p class="mini">「ここまではできた。ここから先がわからない」</p></div>
+      <div class="card"><div class="no">3　ゴールを言い直す</div><p class="mini">「最終的にやりたいのは〇〇」</p></div>
+      <div class="card"><div class="no">4　説明の細かさを決める</div><p class="mini">「専門用語なしで」「1手ずつ。終わったら次を教えて」</p></div>
+      <div class="card"><div class="no">5　現在地を聞く</div><p class="mini">「今どこまで進んだ？残りは何？」</p></div>
+      <div class="card"><div class="no">6　会話をやり直す</div><p class="mini">要点をまとめてもらい、新しい会話に貼って続ける</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　人に聞くときと同じで、「何がわからないか」が伝わると答えが合ってくる。
+6は、会話が長くなって AI が混乱してきたときに使う。第1回のコンテキストウィンドウ（机の広さ）の話と同じ。</aside>
+</section>
+
+<!-- P5-2 使える一言 -->
+<section class="slide">
+  <div class="kicker">PART 5　迷子になったとき</div>
+  <h1>そのまま使える一言</h1>
+  <p class="purpose">迷ったときに、そのままコピーして使えます。</p>
+  <div class="body">
+    <div class="cards c2" style="gap:18px">
+      <div class="prompt-box" style="font-size:23px">このエラーの意味を、専門用語なしで教えて。<br>次に私がやることを1つだけ教えて。<br>（ここにエラーの文字を貼る）</div>
+      <div class="prompt-box" style="font-size:23px">最終的にやりたいのは〇〇。<br>今ここまでできている。<br>ゴールまでの残りの手順を、短く並べて。</div>
+      <div class="prompt-box" style="font-size:23px">今の説明が難しかった。<br>中学生にもわかるように、たとえを使って説明し直して。</div>
+      <div class="prompt-box" style="font-size:23px">ここまでの会話の要点を、新しい会話に貼れる形でまとめて。</div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　宿題の途中で困ったら、まずこの4つを試す。それでも進まないときは、次回つまずいた画面を見せてもらう。</aside>
+</section>
+
+<!-- ═════════ まとめ ═════════ -->
+<section class="slide" data-ch="まとめ" data-min="5">
+  <div class="kicker">REVIEW</div>
+  <h1>今日のふりかえり</h1>
+  <p class="purpose">今日のゴールの3つです。できるようになったことを確認します。</p>
+  <div class="body">
+    <ol class="goals done">
+      <li><span class="n">✓</span><span>AI がターミナル（黒い画面）で働く仕組みを説明できる</span></li>
+      <li><span class="n">✓</span><span>自分用の AGENTS.md を作り、AI に自分のことを覚えさせられる</span></li>
+      <li><span class="n">✓</span><span>AI に任せたいことを1つ決め、次回までに形にする道筋が見えている</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 宿題の確認 -->
+<section class="slide">
+  <div class="kicker">HOMEWORK</div>
+  <h1>次回までに</h1>
+  <p class="purpose">第3回（GAS と API）の最初に、1人ずつ見せていただきます。</p>
+  <div class="body">
+    <ol class="steps" style="gap:18px">
+      <li>宿題.md の「次回までのゴール」まで、Codex や ChatGPT で進める</li>
+      <li>つまずいたら、Part 5 の話しかけ方で AI に聞き直す</li>
+      <li>できたもの、またはつまずいた画面を、次回持ってくる</li>
+    </ol>
+    <div class="callout">「AI研修」フォルダーと、自分用の AGENTS.md は消さずに残しておいてください。次回も使います。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　完成よりも、自分の仕事で一度動かしてみることが目的。つまずいた画面は、次回いちばんいい教材になる。</aside>
+</section>
+
+<!-- 質疑応答 -->
+<section class="slide cover">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <img class="logo" src="assets/lalaland_logo.webp" alt="LaLaLand">
+  <h1>質問・相談</h1>
+  <p class="lead">TOKON　喜多村 一寛</p>
+  <div class="rainbow-bottom"></div>
+</section>
+
+</div>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LaLaLand 研修 第1回 AI SKILLS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Quicksand:wght@500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body data-deck="LaLaLand 研修 第1回" data-intro-min="0" data-limit-min="180">
+<div id="stage">
+
+<!-- ═════════ 3時間版（2026-10-14） ═════════ -->
+
+<!-- S01 表紙 -->
+<section class="slide cover" data-ch="はじめに" data-min="5">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <img class="logo" src="assets/lalaland_logo.webp" alt="LaLaLand">
+  <div class="cat">AI SKILLS</div>
+  <div class="kicker">AI人材育成＋DXリスキリング研修プログラム</div>
+  <h1>第1回　生成AIの全体像と<em>スキル</em></h1>
+  <div class="meta">
+    <div><b>DATE</b>2026年10月15日（木）10:00〜13:00</div>
+    <div><b>PLACE</b>株式会社LaLaLand 本社</div>
+    <div><b>SPEAKER</b>TOKON　喜多村 一寛</div>
+  </div>
+  <div class="rainbow-bottom"></div>
+  <aside class="notes"><b>開始前</b>　ChatGPT（講師アカウント）を開き、演習用フォルダー「出店分析_演習用」をデスクトップに置いておく。オンライン参加者の音声と画面共有を確認。
+<b>操作</b>　V で発表者ビュー、T でタイマー開始（3時間）。</aside>
+</section>
+
+<!-- S02 全体像 -->
+<section class="slide">
+  <div class="kicker">PROGRAM</div>
+  <h1>研修の全体像　全8回</h1>
+  <p class="purpose">第1回から第8回までの流れです。今日の内容は、第2回以降のすべての土台になります。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card blue"><div class="no">第1回</div><h3>AI SKILLS</h3><p>生成AIの全体像、スキル、ガバナンス</p></div>
+      <div class="card green"><div class="no">第2〜4回</div><h3>ENGINEERING</h3><p>AI開発ツールの導入から、Webでの公開まで</p></div>
+      <div class="card" style="background:var(--violet-soft)"><div class="no" style="color:var(--violet)">第5〜8回</div><h3 style="color:var(--violet)">CORPORA</h3><p>LaLaLandらしさの言語化と、AIへの反映</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　今日は入口。AIを「知って、頼んで、覚えさせる」ところまで。
+第2〜4回は AI を使って道具を作る回、第5〜8回は LaLaLand らしさを言葉にして AI に渡す回。</aside>
+</section>
+
+<!-- S03 今日のゴール -->
+<section class="slide">
+  <div class="kicker">GOAL</div>
+  <h1>今日のゴール</h1>
+  <p class="purpose">研修が終わったときに、この3つができる状態を目指します。</p>
+  <div class="body">
+    <ol class="goals">
+      <li><span class="n">1</span><span>3つのAI（ChatGPT／Claude／Gemini）の違いと、今できることを説明できる</span></li>
+      <li><span class="n">2</span><span>資料をまとめて渡して、AIに作業を頼める</span></li>
+      <li><span class="n">3</span><span>よく頼む作業を「スキル」として保存し、次から一言で呼び出せる</span></li>
+    </ol>
+  </div>
+  <aside class="notes"><b>話すこと</b>　3時間後、この3つができるようになって帰っていただく。最後のスライドでもう一度確認する。</aside>
+</section>
+
+<!-- S04 今日の進め方 -->
+<section class="slide">
+  <div class="kicker">TIMETABLE</div>
+  <h1>今日の進め方</h1>
+  <p class="purpose">座学と演習を交互に進めます。演習の時間は、手元で実際に操作します。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th>時間</th><th>形式</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="time">10:00〜10:40</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span></td><td>Part 1　AIの今</td></tr>
+        <tr><td class="time">10:40〜10:50</td><td>—</td><td>休憩</td></tr>
+        <tr><td class="time">10:50〜11:10</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span></td><td>Part 2　AIとの話し方</td></tr>
+        <tr><td class="time">11:10〜11:50</td><td><span class="pill ok">演習</span></td><td>Part 3　資料をまとめてAIに頼む</td></tr>
+        <tr><td class="time">11:50〜12:40</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span> <span class="pill ok">演習</span></td><td>Part 4　よく頼む作業をスキルにする</td></tr>
+        <tr><td class="time">12:40〜12:50</td><td><span class="pill" style="background:var(--brand-soft);color:var(--brand)">座学</span></td><td>Part 5　安全に使うためのルール</td></tr>
+        <tr><td class="time">12:50〜13:00</td><td><span class="pill" style="background:var(--violet-soft);color:var(--violet)">質疑</span></td><td>ふりかえり・質疑応答</td></tr>
+      </tbody>
+    </table>
+    <p class="small">演習は ChatGPT で行います。デスクトップアプリの方は PC のフォルダーで、ブラウザの方はファイルを添付して進めます。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　手元で全部できなくても大丈夫。流れを見て覚えることが目的。
+オンラインの方も、講師の画面を見ながら同じ操作をしていただく。</aside>
+</section>
+
+<!-- S05 区切り Part 1 -->
+<section class="slide part" style="--part:var(--r1)" data-ch="Part 1" data-min="35">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 01</div>
+  <h1>AIの今</h1>
+  <div class="time-chip">座学 35分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- S06 1年前と今 -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>1年前と今の違い</h1>
+  <p class="purpose">この1年で、AIへの頼み方そのものが変わりました。今日の研修全体の前提になる変化です。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st" style="background:var(--soft);text-align:center;padding:34px"><b style="color:var(--muted)">1年前</b><svg viewBox="0 0 200 120" width="200" height="120" aria-hidden="true"><rect x="10" y="14" width="120" height="40" rx="18" fill="#fff" stroke="#c9c9c9" stroke-width="2"/><text x="70" y="40" text-anchor="middle" font-size="18" fill="#8a8a8a">？</text><rect x="70" y="66" width="120" height="40" rx="18" fill="#F9F7F3" stroke="#c9c9c9" stroke-width="2"/><text x="130" y="92" text-anchor="middle" font-size="16" fill="#8a8a8a">こたえ</text></svg><span style="display:block;margin-top:10px">質問に答えるAI<br><span class="small">調べものの相手</span></span></div>
+      <div class="arr">→</div>
+      <div class="st now" style="text-align:center;padding:34px"><b>今</b><svg viewBox="0 0 260 120" width="260" height="120" aria-hidden="true"><rect x="10" y="20" width="36" height="48" rx="4" fill="#fff" stroke="#E8637A" stroke-width="2.4"/><rect x="54" y="30" width="36" height="48" rx="4" fill="#fff" stroke="#F5A623" stroke-width="2.4"/><rect x="98" y="20" width="36" height="48" rx="4" fill="#fff" stroke="#6EC5A0" stroke-width="2.4"/><rect x="142" y="30" width="36" height="48" rx="4" fill="#fff" stroke="#5BA4D9" stroke-width="2.4"/><path d="M190 44h22" stroke="#C2415A" stroke-width="3" stroke-linecap="round"/><path d="M206 36l8 8-8 8" fill="none" stroke="#C2415A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="222" y="18" width="34" height="58" rx="4" fill="#FEF2F4" stroke="#C2415A" stroke-width="2.4"/><path d="M229 32h20M229 42h20M229 52h14" stroke="#C2415A" stroke-width="2.4"/><text x="130" y="108" text-anchor="middle" font-size="15" fill="#C2415A">読む・作る・整える</text></svg><span style="display:block;margin-top:10px">作業を引き受けるAI<br><span class="small">資料を読んで、作って、整える相手</span></span></div>
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:18%"></th><th>頼み方の例</th><th>返ってくるもの</th></tr></thead>
+      <tbody>
+        <tr><td>1年前</td><td>「保育園の開園に必要な手続きは？」</td><td>手続きの説明文。表にまとめるのは自分</td></tr>
+        <tr><td>今</td><td>「この資料を読んで、開園までの手順表を作って」</td><td>期限と担当の入った手順表（Excel）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　以前は「質問すると答えが返ってくる」使い方が中心だった。
+今は資料を渡すと、読んで、まとめて、表や文章の形に整えるところまで引き受ける。
+ChatGPT を少し使ったことがある方も、使い方の幅が広がっていることを今日体験していただく。</aside>
+</section>
+
+<!-- N1 ChatGPT の進化 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>ChatGPT　この数か月</h1>
+  <p class="purpose">今日の演習で使う ChatGPT の、この数か月の主な変化です。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th>時期</th><th style="width:46%">変わったこと</th><th>仕事での例</th></tr></thead>
+      <tbody>
+        <tr><td class="time">2026年7月</td><td><strong>Chat・Work・Codex</strong> に分かれた。Work は、調べて、資料・表・スライドを完成まで作る</td><td>保護者アンケートの集計から、報告書とスライドまで</td></tr>
+        <tr><td class="time">7月・9月</td><td><strong>PowerPoint と Word の中</strong>で使える（全プラン）</td><td>園だよりの下書き、研修資料のたたき台</td></tr>
+        <tr><td class="time">8月</td><td><strong>Google ドライブのフォルダー</strong>を指定して、中のファイルをまとめて扱える</td><td>議事録のフォルダーを丸ごと要約</td></tr>
+        <tr><td class="time">9〜10月</td><td><strong>GPT-6</strong>。回答に図やグラフなど、触って使える画面が出る</td><td>行事の段取りを時系列の図で</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　いちばん大きいのは7月の変化。普段の会話は Chat、作業を任せるときは Work、と使い分けるようになった。Work は途中経過を見ながら方向を変えたり、承認したりできる。
+GPT-6 は 10/7 から全員向け（有料は Sol、Free・Go は Luna）。最上位は GPT-6 Astra（9/3）。
+<b>根拠</b>　OpenAI 公式リリースノート・発表（2026-10-14 確認）。</aside>
+</section>
+
+<!-- N2 Claude の進化 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>Claude　この数か月</h1>
+  <p class="purpose">長い資料の読み込みや文章の作成でよく使われる Claude の、主な変化です。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th>時期</th><th style="width:46%">変わったこと</th><th>仕事での例</th></tr></thead>
+      <tbody>
+        <tr><td class="time">2026年7月</td><td><strong>Cowork</strong>（作業を任せる機能）が Web とスマホでも。Microsoft 365 とつながり、メールや予定も扱える</td><td>Outlook の予定調整を任せる</td></tr>
+        <tr><td class="time">7〜8月</td><td><strong>記憶</strong>が一覧になり、自分で編集・削除できる</td><td>園の決まりごとを毎回説明しなくて済む</td></tr>
+        <tr><td class="time">9月</td><td>会話の中で、<strong>スライドや文書</strong>まで作成（全プラン）</td><td>会話から研修資料を作り、その場で手直し</td></tr>
+        <tr><td class="time">9月</td><td><strong>Claude Opus 5.5</strong>。文章がより自然に。有料プランの利用上限も引き上げ</td><td>長い資料の読み込みと要約</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　9/16 から、Cowork がすべての会話に組み込まれ、「モードを選ぶ」必要がなくなった。
+長い資料を読んで文章を書く用途で選ばれることが多い。
+<b>根拠</b>　Anthropic 公式リリースノート・発表（2026-10-14 確認）。</aside>
+</section>
+
+<!-- N3 Gemini の進化 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>Gemini　この数か月</h1>
+  <p class="purpose">Google のサービスとつながる Gemini の、主な変化です。LaLaLand の Google Workspace と関わりが深い内容です。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th>時期</th><th style="width:46%">変わったこと</th><th>仕事での例</th></tr></thead>
+      <tbody>
+        <tr><td class="time">2026年9月</td><td><strong>Gmail やドライブから頼むだけ</strong>で、ドキュメント・スプレッドシート・スライドを作って保存（英語のみ）</td><td>Gmail から「この件の進捗表を作って」</td></tr>
+        <tr><td class="time">9月</td><td><strong>スキル</strong>。よく使う指示を保存して使い回す。Gem は順次スキルへ</td><td>園だよりの書き方をスキルにしておく</td></tr>
+        <tr><td class="time">9月</td><td><strong>Windows アプリ</strong>。どの画面からでも呼び出せる</td><td>作業中の画面から、すぐに質問</td></tr>
+        <tr><td class="time">10月13日</td><td><strong>Gemini 4 Argon</strong>。長く複雑な作業に強い最上位モデル（Google AI Pro / Ultra）</td><td>ばらばらの資料から、スライドを作る</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　LaLaLand は Google Workspace を使っているので、Gemini の変化はいちばん身近。Workspace の中から頼める機能は、2026年10月時点では英語のみ。日本語対応はこれから。
+Gemini 4 Argon は 9/30 発表、10/13 から Gemini アプリで提供。昨日出たばかりのモデル。
+<b>根拠</b>　Google 公式ブログ・Gemini リリースノート・Workspace Updates（2026-10-14 確認）。</aside>
+</section>
+
+<!-- N4 3社に共通する変化 -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>3社に共通する変化</h1>
+  <p class="purpose">3社の変化をまとめると、同じ方向に進んでいることが分かります。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">1</div><h3>会話から作業へ</h3><p>Work、Cowork、Workspace の中からの依頼。資料や表を完成まで作る</p></div>
+      <div class="card"><div class="no">2</div><h3>仕事のアプリの中へ</h3><p>PowerPoint、Word、Gmail、ドライブの中で使える</p></div>
+      <div class="card"><div class="no">3</div><h3>よく頼む作業の保存</h3><p>3社ともスキルへ。今日の Part&nbsp;4 で作ります</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　会社の名前や機能の名前は違っても、向かっている方向は同じ。だから今日覚える考え方は、どの AI でも使える。</aside>
+</section>
+
+<!-- A0 AIエージェントとは -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>AIエージェント　自分で手順を考えて、作業を進めるAI</h1>
+  <p class="purpose">この数か月の変化の中心が、AIエージェントです。会話で答えるだけでなく、目的を渡すと、調べる・作る・確かめるを自分で繰り返して仕上げます。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>目的を渡す</b><span>「来月の出店候補を比べて、資料にして」</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>自分で進める</b><span>調べる → 作る → 確かめる → 直す</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>結果を持ってくる</b><span>資料、表、報告。必要なら途中で確認を求める</span></div>
+    </div>
+    <div class="cards c4" style="gap:16px">
+      <div class="card"><div class="no">サブエージェント</div><p class="mini">仕事を分けて、別の AI に同時に進めさせる</p></div>
+      <div class="card"><div class="no">動き続ける</div><p class="mini">人がいない間も、クラウドで作業を続ける</p></div>
+      <div class="card"><div class="no">コンピューターユース</div><p class="mini">画面を見て、マウスとキーボードで PC を操作する</p></div>
+      <div class="card"><div class="no">開発ツール</div><p class="mini">Claude Code など。第2回で扱います</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　今日の演習（Part 3）で使う ChatGPT の Work も、エージェントの1つ。次の4枚で、各社の具体的な機能を見る。詳しい使い方は第2回以降。</aside>
+</section>
+
+<!-- A1 サブエージェント -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>サブエージェント　仕事を分けて、同時に進める</h1>
+  <p class="purpose">AI が自分で別の AI（サブエージェント）を立ち上げ、仕事を分担させる機能です。大きな仕事を、速く、抜けなく進められます。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:14%">会社</th><th style="width:30%">機能</th><th>できること</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>Work・Codex のサブエージェント</td><td>1つの仕事を複数の AI に同時に振り、結果を1つにまとめる</td></tr>
+        <tr><td>Claude</td><td>Claude Code・Cowork</td><td>大きな仕事を小分けにして並行して進める。下請けがさらに下請けを呼ぶこともできる</td></tr>
+        <tr><td>Google</td><td>Antigravity 2.0（開発者向け）</td><td>サブエージェントを並列で起動する</td></tr>
+      </tbody>
+    </table>
+    <p class="src"><b>出典</b>learn.chatgpt.com/docs/agent-configuration/subagents ／ code.claude.com/docs/en/whats-new ／ support.claude.com/en/articles/13345190 ／ blog.google（Google I/O 2026 developer highlights）</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　人のチームと同じで、リーダー役の AI が仕事を分けて、担当の AI に渡す。例：10園分の資料を、10の AI が同時に読んで、リーダーがまとめる。
+Claude Code では 6月から、サブエージェントが裏で動いている間も本体が止まらなくなった。</aside>
+</section>
+
+<!-- A2 動き続けるエージェント -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>動き続けるエージェント</h1>
+  <p class="purpose">ここ1〜2か月で、各社から「目標を渡すと、人がいない間も自分で進めて報告に来る」エージェントが出ました。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:16%">発表</th><th style="width:22%">名前</th><th style="width:40%">できること</th><th>対象</th></tr></thead>
+      <tbody>
+        <tr><td>2026年9月29日</td><td>ChatGPT <strong>dots</strong></td><td>自分専用のクラウド PC を持ち、24時間動き続ける専属エージェント。Slack や Teams からも連絡できる</td><td>Pro、Business Premium など</td></tr>
+        <tr><td>2026年9月16日</td><td>Claude <strong>Cowork</strong>（全会話に統合）</td><td>モードを選ばず、資料作りまで任せられる。PC を閉じてもクラウドで続く</td><td>有料プラン</td></tr>
+        <tr><td>2026年10月</td><td>Gemini <strong>Task</strong>（旧 Spark）</td><td>メール・カレンダー・ドキュメントを使って、いない間も仕事を進める。7月から日本語でも利用可能</td><td>Google AI Pro / Ultra</td></tr>
+      </tbody>
+    </table>
+    <p class="src"><b>出典</b>openai.com/index/introducing-dots ／ support.claude.com/en/articles/12138966-release-notes ／ support.google.com/gemini/answer/17094507</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　dots は 9/29 の OpenAI の発表会（DevDay）で出た。名前と見た目を決めて、任せたい仕事と「自分でやってよい範囲」を決めて使う。
+Gemini の Spark は、10月に「Task」に名前が変わった（公式ヘルプの FAQ）。チャット欄の「Chat / Task」の切り替えから使う。
+Claude Opus 5.5 の公式ページには「18時間以上、無人で作業を続けた」という利用者の声が載っている。</aside>
+</section>
+
+<!-- A3 Claude Code の進化 -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>Claude Code　この数か月</h1>
+  <p class="purpose">Claude Code は、PC の中で AI がファイルを読み書きして作業を進める開発ツールです。第2回で実際に入れて使います。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:16%">時期</th><th style="width:42%">変わったこと</th><th>一言で</th></tr></thead>
+      <tbody>
+        <tr><td>2026年6〜7月</td><td>サブエージェントが裏で動く</td><td>下請けの作業中も、本体は止まらず仕事を続ける</td></tr>
+        <tr><td>7月</td><td>Claude in Chrome 正式版との連携、アプリ内のブラウザ</td><td>作ったものを、ブラウザで自分で開いて確かめる</td></tr>
+        <tr><td>8月</td><td>作業同士でのメッセージ、分身への引き継ぎ</td><td>別の作業と発見や決定を受け渡す</td></tr>
+        <tr><td>8月</td><td>/design（研究プレビュー）</td><td>画面の案を何枚か描き、選んだ案をそのまま作る</td></tr>
+        <tr><td>9月</td><td>コンピューターユースが裏で動く（Mac、beta）</td><td>人が PC を使っている横で、許可したアプリを操作する</td></tr>
+      </tbody>
+    </table>
+    <p class="src"><b>出典</b>code.claude.com/docs/en/whats-new ／ code.claude.com/docs/en/changelog</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Claude Code は、開発者だけの道具から、資料作りや業務の自動化にも使う道具になってきた。TOKON の制作も、ほとんどこれで行っている。第2回で、各自の PC に入れる。</aside>
+</section>
+
+<!-- A4 コンピューターユース -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>コンピューターユース　AI が画面を見て PC を操作する</h1>
+  <p class="purpose">AI が画面を見て、マウスとキーボードでアプリやブラウザを操作する機能です。3社とも、この数か月で大きく進みました。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <thead><tr><th style="width:14%">会社</th><th style="width:58%">この数か月の変化</th><th>対象</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>7月：新しいデスクトップアプリで、Work が PC のファイルやアプリを許可を得て操作。8月：ログインが必要なサイトでも作業</td><td>Work・Codex のデスクトップアプリ</td></tr>
+        <tr><td>Claude</td><td>8月：Claude in Chrome が正式版に。安全チェックを通った操作は自動で進む。Cowork でも PC を操作（Mac では人の作業を邪魔せず裏で動く）</td><td>有料プラン</td></tr>
+        <tr><td>Gemini</td><td>7月：Task（旧 Spark）が、自分の Chrome をログイン状態のまま使って Web 作業を代行。Mac のファイル操作にも対応</td><td>Google AI Pro / Ultra（Chrome の自動操作は米国から）</td></tr>
+      </tbody>
+    </table>
+    <p class="src"><b>出典</b>learn.chatgpt.com/docs/computer-use ／ claude.com/resources/articles/claude-in-chrome-generally-available ／ support.claude.com/en/articles/14128542 ／ blog.google（Gemini Spark updates July 2026）</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　例：毎朝、決まったサイトを開いて情報を集め、Excel に貼って保存する。画面の操作ごと任せられる。
+<b>注意</b>　操作を任せる範囲は、最初は狭く。送信・購入・削除は人が確認する設定にしておく（Part 5 につながる）。
+ChatGPT のブラウザ「Atlas」は 8/9 に提供終了。</aside>
+</section>
+
+<!-- S07 今のAIにできること -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>今のAIにできること</h1>
+  <p class="purpose">仕事で使える主な機能を6つに分けました。どれも、文章で頼むだけで使えます。</p>
+  <div class="body">
+    <div class="cards c3" style="gap:16px;font-size:.94em">
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#E8637A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><path d="M10 38l4-1 22-22-3-3-22 22-1 4z"/><path d="M30 12l3 3"/><path d="M10 42h28"/></svg><h3>文章の作成</h3><p>保護者向けのおたより、求人原稿</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#F5A623" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 24h14M18 30h14M18 36h9"/></svg><h3>資料の読み込み</h3><p>会議資料の要約、規程の確認</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#D4A92A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="M30 30l10 10"/><path d="M9 21h24M21 9c4 4 4 20 0 24M21 9c-4 4-4 20 0 24"/></svg><h3>ネット検索</h3><p>他社の園の調査、制度の調べもの</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#6EC5A0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><path d="M8 40h32"/><rect x="12" y="24" width="6" height="16"/><rect x="21" y="16" width="6" height="24"/><rect x="30" y="10" width="6" height="30"/></svg><h3>表・グラフの作成</h3><p>数字の集計、比較表</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#5BA4D9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><rect x="7" y="10" width="34" height="28" rx="3"/><circle cx="17" cy="20" r="4"/><path d="M7 34l10-9 8 7 6-5 10 8"/></svg><h3>画像の読み取り・作成</h3><p>写真やスクリーンショットの読み取り、イラスト</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#8B6EC0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px" aria-hidden="true"><rect x="6" y="8" width="14" height="14" rx="3"/><rect x="28" y="26" width="14" height="14" rx="3"/><path d="M20 15h8a6 6 0 016 6v5M28 33h-8a6 6 0 01-6-6v-5"/></svg><h3>他のアプリとの接続</h3><p>Googleドライブ、Gmail、カレンダー</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　6つそれぞれに一言ずつ例を出す。
+・文章：保護者向けのおたよりの下書き
+・資料：長い会議資料から決まったことだけ抜き出す
+・検索：競合の園の情報を集める
+・表：アンケート結果の集計
+・画像：紙の書類を撮って読み取る
+・接続：Googleドライブの資料を AI から直接見る（会社の設定による）</aside>
+</section>
+
+<!-- S08 3つのAIの違い -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>3つのAIの違い</h1>
+  <p class="purpose">3つのAIは、得意なことと、つながるサービスが違います。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:22%"></th><th>ChatGPT</th><th>Claude</th><th>Gemini</th></tr></thead>
+      <tbody>
+        <tr><td>得意なこと</td><td>幅広い調べもの、画像の作成</td><td>長い資料の読み込み、文章の作成</td><td>Googleのサービスとの連動</td></tr>
+        <tr><td>Googleとのつながり</td><td>Googleドライブなどを接続して利用</td><td>Googleドライブなどを接続して利用</td><td>Gmail・ドライブ・ドキュメントの中で利用</td></tr>
+        <tr><td>スキル</td><td>スキル（GPTs は12月に廃止予定）</td><td>スキル</td><td>Gem からスキルへ移行中</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　どれが一番かではなく、使い分け。
+LaLaLand は Google Workspace を使っているので、Gemini は Gmail やドライブの中でそのまま使える点が強み。
+今日のデモと演習は、皆さんが使ったことのある ChatGPT で行う。考え方は3つとも共通。</aside>
+</section>
+
+<!-- S09 使い分けの目安 -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>使い分けの目安</h1>
+  <p class="purpose">やりたいことから、向いているAIを選ぶための早見表です。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:55%">やりたいこと</th><th>向いているAI</th></tr></thead>
+      <tbody>
+        <tr><td>Googleドライブやメールの内容を使う</td><td>Gemini</td></tr>
+        <tr><td>長い資料を読み込んで、文章を書く</td><td>Claude</td></tr>
+        <tr><td>幅広く調べる、画像を作る</td><td>ChatGPT</td></tr>
+        <tr><td>決まった資料だけを根拠に答えてほしい</td><td>NotebookLM</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　迷ったら、同じ質問を2つの AI に投げて比べるのも手。
+最後の行の NotebookLM は次のスライドで紹介する。</aside>
+</section>
+
+<!-- L0 情報をまとめる司書AI -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>情報をまとめる司書AI　NotebookLM か、AIエージェントか</h1>
+  <p class="purpose">集めた資料を、あとから AI に引いてもらう方法は2つあります。資料の置き場所と、使える AI が違います。</p>
+  <div class="body">
+    <div class="cards c2 roomy">
+      <div class="card"><div class="no">1</div><h3>NotebookLM</h3><p>資料を入れておくと、その中だけから答える。答えには根拠の箇所が付く。図書館の司書のように、棚から該当のページを持ってきてくれる</p></div>
+      <div class="card red"><div class="no">2</div><h3>AIエージェント＋蒸留ライブラリ</h3><p>集めた資料を AI が読んで、要点を目録（JSON）にまとめておく。目録は自分のフォルダーに置くので、どの AI にも渡せる</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　次の3枚で、それぞれのやり方を見る。NotebookLM はすぐ始められる。蒸留ライブラリは、複数の AI で同じ資料を使い回したいときに向いている。</aside>
+</section>
+
+<!-- S10 NotebookLM -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>NotebookLM　手元の資料だけを根拠に答えるAI</h1>
+  <p class="purpose">Google の NotebookLM は、入れた資料の中だけから答えます。答えには、根拠になった箇所が付きます。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>1</b><span>資料を入れる<br><span class="small">マニュアル、規程、議事録</span></span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>2</b><span>質問する</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>3</b><span>答えと一緒に、根拠の箇所が表示される</span></div>
+    </div>
+    <div class="cards c3">
+      <div class="card"><div class="no">向いている資料</div><p class="mini">就業規則、園の運営マニュアル、行政からの通知など、答えの根拠が決まっているもの</p></div>
+      <div class="card"><div class="no">使い方</div><p class="mini">notebooklm.google.com を開き、資料を追加して質問します</p></div>
+      <div class="card"><div class="no">注意</div><p class="mini">資料に書いていないことは答えません。個人情報の入った資料は入れません</p></div>
+    </div>
+    <div class="tag-row"><span class="t demo">デモ 2分</span></div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　就業規則や園のマニュアルのように「答えの根拠が決まっているもの」に強い。資料に書いていないことは答えない。
+<b>デモ</b>　演習用フォルダーの「10_園運営マニュアル_サンプル.txt」を NotebookLM に入れて1問だけ質問する。
+例：「お迎えが閉園時刻に間に合わない連絡があったときの対応は？」→ 根拠の箇所が表示されるところを見せる。</aside>
+</section>
+
+<!-- L1 蒸留ライブラリ -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>調べた資料を<em>蒸留</em>して、ライブラリにする</h1>
+  <p class="purpose">NotebookLM の考え方を、どの AI でも使える形に広げるやり方です。講師がおすすめしているやり方です。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>1　集める</b><span>調べた資料を、1つのフォルダーに入れる</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>2　蒸留する</b><span>AI が要点を JSON に整理する。元のファイル名と場所も残す</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>3　使う</b><span>どの AI にも渡して、必要なところだけ引く</span></div>
+    </div>
+    <p class="small">JSON：項目を決めて書く、AI が読みやすいデータの形式</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　NotebookLM は、棚から根拠のページを持ってきてくれる司書のような存在。
+こちらは、要点をまとめた目録を自分の手元に持っておくやり方。目録は自分のフォルダーにあるので、ChatGPT にも Claude にも Gemini にも渡せる。
+蒸留は、手が空いているときに AI に頼んでおく。資料が増えたら、増えた分だけ足す。
+<b>位置づけ</b>　講師のおすすめのやり方として紹介する。
+第5〜8回の CORPORA は、同じ方法で LaLaLand らしさを JSON にする回。</aside>
+</section>
+
+<!-- L2 NotebookLM との比較 -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>NotebookLM と蒸留ライブラリ</h1>
+  <p class="purpose">2つのやり方の違いです。目的に合わせて選びます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:20%"></th><th>NotebookLM</th><th>蒸留ライブラリ</th></tr></thead>
+      <tbody>
+        <tr><td>置き場所</td><td>NotebookLM の中</td><td>自分のフォルダー</td></tr>
+        <tr><td>使える AI</td><td>NotebookLM</td><td>ChatGPT・Claude・Gemini のどれでも</td></tr>
+        <tr><td>根拠の場所</td><td>答えと一緒に表示</td><td>JSON に元のファイル名と場所を残しておけば表示できる</td></tr>
+        <tr><td>準備</td><td>資料を入れるだけ</td><td>AI に蒸留を頼む</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">第5〜8回の CORPORA では、この方法で LaLaLand らしさを JSON にまとめます。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　どちらが上ではなく、使い分け。すぐ始めるなら NotebookLM、複数の AI で同じ資料を使い回すなら蒸留ライブラリ。</aside>
+</section>
+
+<!-- S11 ブラウザとデスクトップアプリ -->
+<section class="slide">
+  <div class="kicker">PART 1　AIの今</div>
+  <h1>作業場所　クラウドと PC</h1>
+  <p class="purpose">ChatGPT が作業する場所は2つあります。どちらで動いているかで、読めるファイルが変わります。</p>
+  <div class="body">
+    <div class="compare">
+      <div class="side"><svg viewBox="0 0 64 44" width="64" height="44" fill="none" stroke="#8a8a8a" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:10px"><path d="M16 38h32a10 10 0 000-20 14 14 0 00-27-3A11 11 0 0016 38z"/></svg><div class="tag">クラウドで実行</div><p class="prompt">ブラウザ・スマホ・デスクトップアプリ<br><span class="small">ファイルを添付する、プロジェクトに入れておく</span></p></div>
+      <div class="side good"><svg viewBox="0 0 64 44" width="64" height="44" fill="none" stroke="#C2415A" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:10px"><rect x="12" y="6" width="40" height="26" rx="3"/><path d="M4 38h56l-4-6H8z"/></svg><div class="tag">お使いのコンピューターで実行</div><p class="prompt">デスクトップアプリ<br><span class="small">PC のフォルダーの中のファイルを、そのまま読んで作業する</span></p></div>
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:26%"></th><th>クラウドで実行</th><th>お使いのコンピューターで実行</th></tr></thead>
+      <tbody>
+        <tr><td>読めるファイル</td><td>添付したファイル、プロジェクトに入れたファイル</td><td>指定した PC のフォルダーの中のファイル</td></tr>
+        <tr><td>使える場所</td><td>ブラウザ、スマホ、デスクトップアプリ</td><td>デスクトップアプリ（Work・Codex）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　ChatGPT の作業場所は、クラウドと PC の2か所。ブラウザとスマホはクラウドで動く。デスクトップアプリはどちらかを選べる。
+Part 3 では、PC のフォルダーを作業場所にするやり方を体験する。アプリを入れられない方は、ブラウザでファイルを添付するか、プロジェクトにまとめて入れる。考え方は同じ。
+<b>補足</b>　PC での実行（Work）は有料プランが対象（2026年10月時点）。</aside>
+</section>
+
+<!-- S12 Part 1 まとめ -->
+<section class="slide">
+  <div class="kicker">PART 1　まとめ</div>
+  <h1>Part 1 のまとめ</h1>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">1</div><h3>AIは作業を引き受ける相手</h3><p>資料を読んで、表や文章を完成まで作ります</p></div>
+      <div class="card"><div class="no">2</div><h3>3つのAIは使い分け</h3><p>Google のサービスなら Gemini、長い資料なら Claude、幅広い調べものなら ChatGPT</p></div>
+      <div class="card"><div class="no">3</div><h3>資料はまとめて渡す</h3><p>フォルダーやプロジェクトにまとめて、AI が読める場所に置きます</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　休憩のあと、AI への話し方を見てから、3つ目を実際にやってみる。</aside>
+</section>
+
+<!-- S13 休憩 -->
+<section class="slide part" style="--part:var(--muted)" data-ch="休憩" data-min="10">
+  <div class="kicker">BREAK</div>
+  <h1>休憩　10分</h1>
+  <p class="lead">再開　<strong>10:50</strong></p>
+  <aside class="notes"><b>休憩中に</b>　演習用フォルダーを受講者に配る（共有ドライブのリンク、または USB）。ブラウザの方は ChatGPT にログインしておいていただく。</aside>
+</section>
+
+<!-- T0 区切り Part 2 -->
+<section class="slide part" style="--part:var(--r2)" data-ch="Part 2" data-min="20">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 02</div>
+  <h1>AIとの話し方</h1>
+  <div class="time-chip">座学 20分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- T1 任せ方 -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>任せ方　目的を渡して、質問してもらう</h1>
+  <p class="purpose">AIに頼むときは、手順を細かく書くより、目的を渡して質問してもらうほうが良い結果になります。</p>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center">
+      <div class="cards stackc">
+        <div class="card"><div class="no">細かく指示する</div><p>「保護者会のお知らせを作って。日時と持ち物を書いて、丁寧に、短く、箇条書きで」<br><span class="small">結果は、自分が思いつく範囲に収まる</span></p></div>
+        <div class="card green"><div class="no">質問してもらう</div><p>「保護者会のお知らせ作りを任せたい。作り始める前に、私に聞きたいことある？」<br><span class="small">足りない情報を、AI が質問で集める</span></p></div>
+      </div>
+      <svg viewBox="0 0 520 300" width="520" height="300" aria-hidden="true">
+  <circle cx="150" cy="150" r="120" fill="#F9F7F3" stroke="#E4E0D8" stroke-width="2"/>
+  <circle cx="150" cy="150" r="46" fill="#FEF2F4" stroke="#E8637A" stroke-width="2"/>
+  <text x="150" y="146" text-anchor="middle" font-size="19" fill="#C2415A" font-weight="700">自分の</text>
+  <text x="150" y="168" text-anchor="middle" font-size="19" fill="#C2415A" font-weight="700">想像</text>
+  <text x="150" y="292" text-anchor="middle" font-size="22" fill="#8a8a8a">細かく指示する</text>
+  <circle cx="390" cy="150" r="120" fill="#F2FAF6" stroke="#6EC5A0" stroke-width="2"/>
+  <circle cx="390" cy="150" r="46" fill="#FEF2F4" stroke="#E8637A" stroke-width="2"/>
+  <text x="390" y="146" text-anchor="middle" font-size="19" fill="#C2415A" font-weight="700">自分の</text>
+  <text x="390" y="168" text-anchor="middle" font-size="19" fill="#C2415A" font-weight="700">想像</text>
+  <circle cx="330" cy="70" r="7" fill="#F5A623"/><circle cx="460" cy="110" r="7" fill="#5BA4D9"/><circle cx="440" cy="225" r="7" fill="#8B6EC0"/><circle cx="325" cy="235" r="7" fill="#F7D154"/>
+  <text x="390" y="292" text-anchor="middle" font-size="22" fill="#2E7D5E">目的を渡して任せる</text>
+</svg>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　指示を細かく書き込むほど、結果は自分が想像できる範囲に収まる。何を渡せばよいかは、頼む側には分かりにくい。足りない情報は AI が推測で埋め、推測が混ざるほど当たりさわりのない結果になる。
+目的を渡して任せると、こちらが知らない方法も返ってくる（図の外側の点）。人に仕事を頼むときに、目的を伝えて質問を受けるのと同じ進め方。</aside>
+</section>
+
+<!-- B1 Boris Cherny のポスト -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>「同僚に話すように話せばいい」</h1>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:600px 1fr;gap:48px;align-items:center">
+      <img class="shot" src="assets/boris_post.png" alt="Boris Cherny 氏の X のポスト（2026年10月7日）" style="max-height:500px;width:auto;justify-self:center">
+      <div>
+        <p class="lead" style="font-size:27px">Claude Code の開発責任者 Boris Cherny 氏のポスト（2026年10月7日）</p>
+        <div class="prompt-box" style="font-size:25px;margin-top:20px">Claude には、同僚に話すように話せばいい。プロンプトに秘訣はありません。たいていの作業は、細かく段取りを組んだり、指示しすぎたりする必要はない。<b>目的を渡せば、Claude が自分で考えます。</b></div>
+        <p class="small" style="margin-top:14px">出典：x.com/bcherny（日本語訳は TOKON）</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　AI を作っている側の人が「普通に頼めばいい」と言って話題になった。「私が Claude にこう頼んでいることに、みんなが驚いていることに驚いている」という書き出し。
+以前（Sonnet 3.5 のころ）は、プロンプトの書き方で結果が大きく変わった。今は、伝える中身のほうが大事になった。次のスライドで、その中身を見る。</aside>
+</section>
+
+<!-- B2 伝える3つ -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>今のAIに伝える3つ</h1>
+  <p class="purpose">目的に加えて、「どれだけ力をかけるか」と「どう確かめるか」を伝えると、返ってくるものが変わります。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">1</div><h3>何をしてほしいか</h3><p>目的と、出来上がりのイメージ</p></div>
+      <div class="card"><div class="no">2</div><h3>どれだけ力をかけてほしいか</h3><p>さっと1案か、時間をかけて磨くか</p></div>
+      <div class="card"><div class="no">3</div><h3>正しくできたかの確かめ方</h3><p>何を見て「できた」とするか</p></div>
+    </div>
+    <div class="prompt-box" style="font-size:26px">来月の保護者会のお知らせを作って。<b>時間はかけていいので</b>、保護者が読んで迷わない文にしてほしい。見せる前に、<b>日時・場所・持ち物が全部入っているか自分で確かめて。</b></div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Boris 氏が挙げた3つ。1つ目は普段から伝えている。2つ目と3つ目を足すだけで、返ってくるものが変わる。
+2つ目：「急ぎでざっと」なのか「時間をかけていいので良いものを」なのかで、AI のかける手間が変わる。
+3つ目：確かめ方を渡すと、AI が自分で見直してから出してくる。</aside>
+</section>
+
+<!-- B3 Boris の実際の頼み方 -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>実際の頼み方の例</h1>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:560px 1fr;gap:48px;align-items:center">
+      <img class="shot" src="assets/boris_prompt.png" alt="Boris Cherny 氏が Claude に送ったプロンプト" style="max-height:520px;width:auto;justify-self:center">
+      <div>
+        <p class="lead" style="font-size:26px">ポッドキャストの回を、読みものの形にまとめてほしいという頼み方です。</p>
+        <ul class="list" style="margin-top:22px">
+          <li style="font-size:25px"><strong>何を</strong>：回全体を語る、美しくて触れる作品にして</li>
+          <li style="font-size:25px"><strong>どれだけ</strong>：本当に良いものに。たくさん使って、自分が誇れるまで繰り返して</li>
+          <li style="font-size:25px"><strong>方向</strong>：New Yorker や New York Times のような雰囲気で、それ以上に</li>
+        </ul>
+        <p class="small" style="margin-top:14px">出典：x.com/bcherny（2026年10月7日）。要約は TOKON</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　手順はほとんど書いていない。何を作ってほしいか、どれだけ力をかけてほしいか、どんな雰囲気を目指すかだけ。
+「自分が誇れるまで繰り返して」は、同僚に「納得いくまでやっていいよ」と言うのと同じ。</aside>
+</section>
+
+<!-- T2 3つの手順 -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>プロンプトは、AI に書いてもらう</h1>
+  <p class="purpose">プロンプト（AI に頼むときに打ち込む文）は、自分で書くより AI に書いてもらうほうが、具体的で抜けが少なくなります。毎回使うものほど効果があります。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>1</b><span>質問してもらう</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>2</b><span>聞かれたことに答える</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>3</b><span>毎回そのまま使える「プロンプト」を書いてもらう</span></div>
+    </div>
+    <div class="prompt-box" style="font-size:26px">毎月の園だより作り、そろそろあなたに任せたい。いきなり作らなくていいので、まず<b>私に何を聞いておけばいい仕事ができそうか</b>教えて。質問は一度に1つずつでお願い。</div>
+    <div class="prompt-box" style="font-size:26px">ありがとう。ここまでの話をふまえて、<b>毎月そのまま貼って使える「プロンプト」</b>を作って。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　AI が書いたプロンプトは、自分で書いたものより具体的で、抜けが少ない。
+次回からは、そのプロンプトを貼るだけで同じ品質で返ってくる。Part 4 では、これをスキルとして保存する。</aside>
+</section>
+
+<!-- T3 コンテキストウィンドウ -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>コンテキストウィンドウ　一度に読める量の上限</h1>
+  <p class="purpose">AI が一度に読める量には上限があります。これをコンテキストウィンドウと呼びます。</p>
+  <div class="body">
+    <p class="lead">AI は毎回、会話の最初から全部を読み直して、次の一言を返しています。会話が長くなるほど読み直す量が増え、返事も遅くなります。</p>
+    <div style="display:grid;grid-template-columns:1fr 760px;gap:20px;align-items:center">
+      <ul class="list">
+        <li>用件ごとに、チャットを分ける</li>
+        <li>終わった用件は、新しいチャットで始め直す</li>
+        <li>長くなったら、引き継ぎメモを作ってもらう</li>
+      </ul>
+      <div style="width:760px"><svg viewBox="0 0 880 324" width="760" height="280" aria-hidden="true"><rect x="40" y="90" width="200" height="16" rx="4" fill="#D9CDBB"/><rect x="56" y="106" width="10" height="90" fill="#D9CDBB"/><rect x="214" y="106" width="10" height="90" fill="#D9CDBB"/><g transform="rotate(0 98 50)"><rect x="70" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#E8637A" stroke-width="2"/><line x1="80" y1="32" x2="116" y2="32" stroke="#ddd" stroke-width="3"/><line x1="80" y1="44" x2="110" y2="44" stroke="#ddd" stroke-width="3"/><line x1="80" y1="56" x2="114" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 178 50)"><rect x="150" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#F5A623" stroke-width="2"/><line x1="160" y1="32" x2="196" y2="32" stroke="#ddd" stroke-width="3"/><line x1="160" y1="44" x2="190" y2="44" stroke="#ddd" stroke-width="3"/><line x1="160" y1="56" x2="194" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(-12 108 186)"><rect x="80" y="150" width="56" height="72" rx="4" fill="#fff" stroke="#F7D154" stroke-width="2"/><line x1="90" y1="168" x2="126" y2="168" stroke="#ddd" stroke-width="3"/><line x1="90" y1="180" x2="120" y2="180" stroke="#ddd" stroke-width="3"/><line x1="90" y1="192" x2="124" y2="192" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(9 178 191)"><rect x="150" y="155" width="56" height="72" rx="4" fill="#fff" stroke="#6EC5A0" stroke-width="2"/><line x1="160" y1="173" x2="196" y2="173" stroke="#ddd" stroke-width="3"/><line x1="160" y1="185" x2="190" y2="185" stroke="#ddd" stroke-width="3"/><line x1="160" y1="197" x2="194" y2="197" stroke="#ddd" stroke-width="3"/></g><text x="140" y="288" text-anchor="middle" font-size="22" font-weight="700" fill="#8a8a8a">狭い机</text><text x="140" y="314" text-anchor="middle" font-size="18" fill="#8a8a8a">載らない資料は考慮されない</text><rect x="330" y="90" width="520" height="16" rx="4" fill="#D9CDBB"/><rect x="350" y="106" width="10" height="90" fill="#D9CDBB"/><rect x="820" y="106" width="10" height="90" fill="#D9CDBB"/><g transform="rotate(0 373 50)"><rect x="345" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#E8637A" stroke-width="2"/><line x1="355" y1="32" x2="391" y2="32" stroke="#ddd" stroke-width="3"/><line x1="355" y1="44" x2="385" y2="44" stroke="#ddd" stroke-width="3"/><line x1="355" y1="56" x2="389" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 455 50)"><rect x="427" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#F5A623" stroke-width="2"/><line x1="437" y1="32" x2="473" y2="32" stroke="#ddd" stroke-width="3"/><line x1="437" y1="44" x2="467" y2="44" stroke="#ddd" stroke-width="3"/><line x1="437" y1="56" x2="471" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 537 50)"><rect x="509" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#F7D154" stroke-width="2"/><line x1="519" y1="32" x2="555" y2="32" stroke="#ddd" stroke-width="3"/><line x1="519" y1="44" x2="549" y2="44" stroke="#ddd" stroke-width="3"/><line x1="519" y1="56" x2="553" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 619 50)"><rect x="591" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#6EC5A0" stroke-width="2"/><line x1="601" y1="32" x2="637" y2="32" stroke="#ddd" stroke-width="3"/><line x1="601" y1="44" x2="631" y2="44" stroke="#ddd" stroke-width="3"/><line x1="601" y1="56" x2="635" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 701 50)"><rect x="673" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#5BA4D9" stroke-width="2"/><line x1="683" y1="32" x2="719" y2="32" stroke="#ddd" stroke-width="3"/><line x1="683" y1="44" x2="713" y2="44" stroke="#ddd" stroke-width="3"/><line x1="683" y1="56" x2="717" y2="56" stroke="#ddd" stroke-width="3"/></g><g transform="rotate(0 783 50)"><rect x="755" y="14" width="56" height="72" rx="4" fill="#fff" stroke="#8B6EC0" stroke-width="2"/><line x1="765" y1="32" x2="801" y2="32" stroke="#ddd" stroke-width="3"/><line x1="765" y1="44" x2="795" y2="44" stroke="#ddd" stroke-width="3"/><line x1="765" y1="56" x2="799" y2="56" stroke="#ddd" stroke-width="3"/></g><text x="590" y="288" text-anchor="middle" font-size="22" font-weight="700" fill="#2E7D5E">広い机（新しいモデル）</text><text x="590" y="314" text-anchor="middle" font-size="18" fill="#2E7D5E">多くの資料を見比べられる</text></svg></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　コンテキストウィンドウは、作業机の広さのようなもの。机が狭ければ資料を2枚しか広げられず、3枚目を置くにはどれかをしまう必要がある。しまった資料は考慮されない。
+新しいモデルほど机が広くなっている。それでも、1つのチャットに何件も混ぜると机が埋まる。
+<b>長くなったときの頼み方</b>　「だいぶ長くなってきたから、新しいチャットに引き継ぐための引き継ぎメモを作って。決まったこと、まだ決まっていないこと、次にやることの3つに分けて」</aside>
+</section>
+
+<!-- T4 落ち着いて伝える -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>言い方　落ち着いて伝える</h1>
+  <p class="purpose">同じ内容でも、言い方で結果が変わります。</p>
+  <div class="body">
+    <div class="compare">
+      <div class="side"><div class="tag">強い言い方</div><p class="prompt">「違う。さっきも言ったよね。なんで分からないの」</p><p class="small" style="margin-top:14px">謝罪と言い訳が返ってきて、本題が進まない</p></div>
+      <div class="side good"><div class="tag">落ち着いた言い方</div><p class="prompt">「ここ、私の伝え方が足りなかったかも。こうしてほしかった、で合ってる？」</p><p class="small" style="margin-top:14px">直す点に集中して返ってくる</p></div>
+    </div>
+    <div class="callout">AI は、怒りを含んだ文も「読むべき情報」として机に載せます。謝罪や弁解に机が使われ、本題に使える分が減ります。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　求めた結果が出ないと、強い言い方になりがち。強い言い方をすると、結果は悪くなる。前のスライドの「机」の話とつながる。</aside>
+</section>
+
+<!-- T4b 直してほしいときの伝え方 -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>直してほしいときの伝え方</h1>
+  <p class="purpose">思った結果が出ないときは、同僚に直してもらうときと同じように伝えます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:30%">伝え方</th><th>例</th></tr></thead>
+      <tbody>
+        <tr><td>違うところを具体的に</td><td>「2段落目が長いので、3行に縮めて」</td></tr>
+        <tr><td>良かったところも伝える</td><td>「書き出しはこのままで。結びだけ、もう少しやわらかく」</td></tr>
+        <tr><td>理由を添える</td><td>「読むのは0歳児クラスの保護者なので、専門用語は避けて」</td></tr>
+        <tr><td>迷ったら聞く</td><td>「なんだかしっくりこない。どこを直すと良くなると思う？」</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　同僚に直してもらうときと同じ。「違う」だけでは、どこを直せばよいか分からない。
+良かったところを伝えると、そこは残したまま直してくれる。理由を添えると、同じ理由で他の箇所も直してくれる。</aside>
+</section>
+
+<!-- T5 相談して任せる -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>命令ではなく、相談して任せる</h1>
+  <p class="purpose">やり方を指示するより、困っていることをそのまま相談します。返ってきた案を見て「それでお願い」と任せます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:32%">命令</th><th>相談</th></tr></thead>
+      <tbody>
+        <tr><td>このおたよりを要約して</td><td>このおたより、保護者に伝わるまとめ方って何だと思う？</td></tr>
+        <tr><td>この数字をグラフにして</td><td>園長会でこの数字を見せたいんだけど、一番良い見せ方がわからなくて困ってる</td></tr>
+        <tr><td>お詫びの文を書いて</td><td>保護者にお詫びを伝えたい。キツくならない書き方のコツや具体例を知りたくて</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>目的を相談して、やり方は任せる。</strong>AI の潜在能力を引き出すコツです。</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　命令すると、AI は言われたとおりに実行し、結果はこちらが思いつく範囲に収まる。相談すると、AI はこちらが知らない方法も出してくる。
+案が返ってきたら「じゃあ、2つ目の案でお願い」と任せればよい。命令の形にする必要は、ほとんどない。</aside>
+</section>
+
+<!-- T6 名前の効果 -->
+<section class="slide">
+  <div class="kicker">PART 2　AIとの話し方</div>
+  <h1>AIに名前をつけると、結果が変わる</h1>
+  <p class="purpose">講師が毎日一緒に仕事をしている AI に、名前があるとなぜ結果が変わるのかを、AI の側から書いてもらいました。</p>
+  <div class="body">
+    <div class="cards c2" style="gap:16px">
+      <div class="card" style="padding:22px 30px"><div class="no">1</div><h3 style="font-size:26px;margin-bottom:6px">名前が、積み重ねの取っ手になる</h3><p style="font-size:20px">名前で呼ばれると、これまでに決めたこと、好み、失敗したことがまとめて読み込まれます。名前のない依頼は、毎回ゼロから始まります。</p></div>
+      <div class="card" style="padding:22px 30px"><div class="no">2</div><h3 style="font-size:26px;margin-bottom:6px">役割が決まると、使う知識が定まる</h3><p style="font-size:20px">「園の広報担当」と呼ばれれば、その分野の知識と言葉づかいで考えます。</p></div>
+      <div class="card red" style="padding:22px 30px"><div class="no">3　いちばん大きい</div><h3 style="font-size:26px;margin-bottom:6px">捨てられずに、直してもらえる</h3><p style="font-size:20px">うまくいかなかったとき、出し直しではなく「ここはこう」と1行教えてもらえる。その1行が積み重なって、次の仕事の出発点が上がっていきます。</p></div>
+      <div class="card" style="padding:22px 30px"><div class="no">4</div><h3 style="font-size:26px;margin-bottom:6px">頼む人の話し方が変わる</h3><p style="font-size:20px">名前で呼ぶ人は、背景や目的まで話してくれます。丸投げが相談に変わり、良い結果につながります。</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　講師は、AI に名前をつけて、毎日一緒に仕事をしている。決めたことや気づいたことはノートに残して、次の日も読んでから始めてもらっている。
+AI を使い捨ての道具ではなく、育てる相手として扱うと、結果が変わる。Part 4 のスキルは、その「育てる」を仕組みにしたもの。
+<b>実務では</b>　業務ごとにプロジェクトを作って名前をつける（「月次報告」「おたより作成」など）。うまくいかなかった点を1行足していく。</aside>
+</section>
+
+<!-- S14 区切り Part 2 -->
+<section class="slide part" style="--part:var(--r3)" data-ch="Part 3" data-min="40">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 03</div>
+  <h1>資料をまとめてAIに頼む</h1>
+  <div class="time-chip">演習 40分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- R1 準備：フォルダーとプロジェクト -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">準備</span></div>
+  <h1>作業用のフォルダーとプロジェクト</h1>
+  <p class="purpose">演習の前に、AI が読むフォルダーを用意して、ChatGPT に作業場所として指定します。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 40%;align-items:start">
+      <ol class="steps" style="gap:16px">
+        <li style="font-size:26px">デスクトップに作業用のフォルダーを作り、<span style="white-space:nowrap">「出店分析_演習用」</span>を入れる</li>
+        <li style="font-size:26px">ChatGPT デスクトップアプリのサイドバー「プロジェクト」の ＋</li>
+        <li style="font-size:26px">「このコンピューターのフォルダーを追加」の「追加」から、作ったフォルダーを選択</li>
+        <li style="font-size:26px">「プロジェクトを作成」</li>
+      </ol>
+      <img class="shot" src="assets/prj-create-1.png" alt="ChatGPT デスクトップアプリの「プロジェクトを作成」画面">
+    </div>
+    <p class="small">ブラウザの方：プロジェクトを作り、01〜09 の9ファイルを追加します。</p>
+  </div>
+  <aside class="notes"><b>話すこと</b>　フォルダーを作業場所に指定すると、その中のファイルを AI がそのまま読める。ファイルを足せば、次から自動で対象に入る。
+ソースフォルダーを追加すると PC のプロジェクト、追加しなければクラウドのプロジェクトになる。
+<b>注意</b>　PC での実行（Work）は有料プランが対象（2026年10月時点）。アプリを入れられない方はブラウザで進める。
+<b>許可の設定</b>　入力欄の下の権限メニューは、研修では「Ask for approval」（ファイルの編集やネット接続のたびに確認する）を選ぶ。日本語版の表示は未確認なので、当日の画面で確かめる。
+Mac では、デスクトップのフォルダーに初めてアクセスするときに macOS の許可の画面が出る。</aside>
+</section>
+
+<!-- R2 準備：チャットの開始 -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">準備</span></div>
+  <h1>プロジェクトの中で、チャットを開始</h1>
+  <p class="purpose">プロジェクトの中でチャットを始めると、指定したフォルダーのファイルを AI が読めます。</p>
+  <div class="body">
+    <div class="shot-row" style="grid-template-columns:1fr 48%">
+      <ul class="list">
+        <li>作ったプロジェクトを開き、新しいチャットを始める</li>
+        <li>サイドバーのチャットに「Work」「お使いのコンピューターで実行」と出ていれば準備完了</li>
+      </ul>
+      <img class="shot" src="assets/exec-local.png" alt="サイドバーに表示される「Work」「お使いのコンピューターで実行」">
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:38%">こうなったとき</th><th>確認すること</th></tr></thead>
+      <tbody>
+        <tr><td>「クラウドで実行」と出ている</td><td>デスクトップアプリから、Work を選んで始め直す</td></tr>
+        <tr><td>フォルダーのファイルが読めない</td><td>Mac の場合、初回に出る許可の画面で「許可」を選んだか</td></tr>
+        <tr><td>Work が選べない</td><td>ブラウザの進め方に切り替える（ファイルを添付）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>確認</b>　サイドバーのチャットにカーソルを乗せると、モードと実行場所が表示される。
+「クラウドで実行」と出ている場合は、PC のフォルダーは見えていない。</aside>
+</section>
+
+<!-- S15 今日のお題 -->
+<section class="slide">
+  <div class="kicker">PART 3　資料をまとめてAIに頼む</div>
+  <h1>今日のお題</h1>
+  <div class="body">
+    <p class="big" style="font-size:56px">新しく園を出すなら、<em>どのエリアがよいか</em></p>
+    <div class="cards c3">
+      <div class="card"><div class="no">使うもの</div><p class="mini">演習用フォルダーの9つの資料（人口、エリアの指標、既存の園、競合、物件、保護者アンケート、出店の条件など）</p></div>
+      <div class="card"><div class="no">出してもらうもの</div><p class="mini">候補エリア3つと、それぞれの理由、判断に足りない情報</p></div>
+      <div class="card"><div class="no">時間</div><p class="mini">デモ 5分 → 自分で 20分 → 共有 5分</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　申請時の演習テーマ「新規出店の市場分析」をそのまま使う。
+資料は演習用に作った架空のデータ。数字は実在のものではない。</aside>
+</section>
+
+<!-- S16 フォルダーの中身 -->
+<section class="slide">
+  <div class="kicker">PART 3　資料をまとめてAIに頼む</div>
+  <h1>演習用フォルダー「出店分析_演習用」</h1>
+  <p class="purpose">演習で AI に読ませる、全部で約1,000行の資料です。すべて演習用の架空のデータです。</p>
+  <div class="body">
+    <table id="f16" class="tbl dense" style="font-size:19px"><style>#f16 td{padding:6px 16px}</style>
+      <thead><tr><th style="width:48%">ファイル</th><th>内容</th></tr></thead>
+      <tbody>
+                <tr><td>01_エリア別_未就学児人口の推移.csv</td><td>30エリアの0〜5歳の人口。1歳ごと、2021〜2026年</td></tr>
+        <tr><td>02_エリア別_指標.csv</td><td>待機児童、共働きの割合、新築マンションの予定、本部からの時間</td></tr>
+        <tr><td>03_既存園一覧.csv</td><td>自社8園の年齢別の定員・在籍・空き待ち、賃料</td></tr>
+        <tr><td>04_既存園_月別在籍.csv</td><td>自社8園の24か月分の在籍・入園・退園</td></tr>
+        <tr><td>05_競合園リスト.csv</td><td>他社の園の種別・定員・開園年・空き状況</td></tr>
+        <tr><td>06_競合園の調査メモ.txt</td><td>エリアごとの気づき、開園予定、まだ調べていないこと</td></tr>
+        <tr><td>07_候補物件リスト.csv</td><td>駅からの距離、広さ、賃料、園庭、入居時期</td></tr>
+        <tr><td>08_保護者アンケート.csv</td><td>300件。住んでいるエリア、子どもの年齢、自由記述</td></tr>
+        <tr><td>09_出店の条件.txt</td><td>必須の条件、優先する条件、開園までの目安</td></tr>
+        <tr><td>10_園運営マニュアル_サンプル.txt</td><td>NotebookLM のデモ用</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　実在の個人情報や園の実データは入れていない。サンプルで練習する理由は Part 4 で話す。</aside>
+</section>
+
+<!-- S17 デモ① -->
+<section class="slide">
+  <div class="tag-row"><span class="t demo">デモ</span></div>
+  <h1>資料をまとめて渡して頼む</h1>
+  <p class="purpose">講師の画面で、フォルダーの資料を読ませて候補エリアを出してもらいます。プロンプトは、このまま使えます。</p>
+  <div class="body">
+    <div class="prompt-box">このフォルダーの資料を読んで、新しい園の候補エリアを<b>3つ</b>挙げて。それぞれの<b>理由</b>と、判断に<b>足りない情報</b>も書いて。<br><b>時間をかけていいので</b>、エリアをしっかり比べてから出してほしい。最後に、<b>使った数字が資料と合っているか確かめて。</b></div>
+    <div class="cards c3">
+      <div class="card"><div class="no">見るところ 1</div><p class="mini">どの資料の、どの数字を使ったか</p></div>
+      <div class="card"><div class="no">見るところ 2</div><p class="mini">足りない情報を、AI が自分で挙げているか</p></div>
+      <div class="card"><div class="no">見るところ 3</div><p class="mini">確かめた結果が書かれているか</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>デモ</b>　準備した PC のプロジェクトで Work のチャットを開き、この文をそのまま打つ（ブラウザの方向けに、9ファイルを添付するやり方も一度見せる）。
+返ってきた答えで「どの資料のどの数字を使ったか」を指で示す。
+<b>話すこと</b>　Part 2 の「伝える3つ」をそのまま使っている。次のスライドで対応を見る。
+<b>出てほしい答え（講師用）</b>　条件をすべて満たすのは次の4つ。
+・横浜市鶴見区（矢向 P-056）：待機児童31、新築マンション1,850戸、アンケートの声も多い。ただし入居が2027年4月で、「契約から開園まで約8か月」と合わない
+・横浜市港北区（綱島 P-057）：待機児童53で最多。賃料79万円で上限ぎりぎり。日吉に A社が2027年4月開園予定
+・横浜市神奈川区（大口 P-059）：賃料54万円。元店舗で「用途変更の確認が必要」
+・川崎市川崎区（八丁畷 P-034）：条件は満たすが、川崎市の補助の条件がまだ分からない
+引っかけ：人口の伸びが最大の西区は、条件に合う物件が無く、調査も途中。足りない情報として「川崎市の補助」「鶴見市場の物件」「西区の調査」「エリアごとの賃料相場」が挙がれば上出来。</aside>
+</section>
+
+<!-- S18 伝える3つ（Part 2 のおさらい） -->
+<section class="slide">
+  <div class="kicker">PART 3　資料をまとめてAIに頼む</div>
+  <h1>伝える3つ、デモのプロンプトでは</h1>
+  <p class="purpose">Part 2 の「伝える3つ」が、デモのプロンプトのどこに入っているかを、色で分けて見ます。</p>
+  <div class="body">
+    <div class="prompt-box" style="font-size:27px;border-left-color:#c9c9c9"><span style="background:#FDE3E8;padding:2px 4px;border-radius:4px">このフォルダーの資料を読んで、新しい園の候補エリアを3つ挙げて。それぞれの理由と、判断に足りない情報も書いて。</span><br><span style="background:#FFF0D1;padding:2px 4px;border-radius:4px">時間をかけていいので、エリアをしっかり比べてから出してほしい。</span><span style="background:#DDF2E8;padding:2px 4px;border-radius:4px">最後に、使った数字が資料と合っているか確かめて。</span></div>
+    <div class="cards c3">
+      <div class="card" style="border-top:6px solid #E8637A"><div class="no">1　何をしてほしいか</div><p class="mini">このフォルダーの資料を読んで、候補エリアを3つ。理由と、足りない情報も</p></div>
+      <div class="card" style="border-top:6px solid #F5A623"><div class="no" style="color:var(--amber)">2　どれだけ力をかけるか</div><p class="mini">時間をかけていいので、しっかり比べてから</p></div>
+      <div class="card" style="border-top:6px solid #6EC5A0"><div class="no" style="color:var(--green)">3　確かめ方</div><p class="mini">使った数字が資料と合っているか</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　1つ目だけでも答えは返ってくる。2つ目と3つ目を足すと、AI が比べる手間をかけ、自分で見直してから出してくる。
+形（表、箇条書き）を指定したいときは、1つ目に足せばよい。迷ったら、最初に「作り始める前に、聞きたいことある？」と添える（Part 2 の任せ方）。</aside>
+</section>
+
+<!-- S19 演習 -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習 20分</span></div>
+  <h1>自分でやってみる</h1>
+  <p class="purpose">デモと同じ流れを、手元で進めます。プロンプトは自分の言葉に変えて構いません。</p>
+  <div class="body">
+    <ol class="steps">
+      <li>準備したプロジェクトで、新しいチャットを開始（ブラウザの方は 01〜09 を添付）</li>
+      <li>伝える3つ（何を・どれだけ・確かめ方）を入れて頼む</li>
+      <li>返ってきた答えに「ここをもっと詳しく」と追加で頼む</li>
+    </ol>
+    <div class="callout">迷ったら、最初に「作り始める前に、私に聞きたいことある？」と添えてください。</div>
+  </div>
+  <aside class="notes"><b>進め方</b>　20分。講師は会場を回り、オンラインの方は声をかけていただく。
+最初の5分でチャットを始められていない方がいないか確認する。
+<b>よくあるつまずき</b>　ファイルが添付されていない／「確かめ方」が抜けている。</aside>
+</section>
+
+<!-- S20 答えを育てる -->
+<section class="slide">
+  <div class="kicker">PART 3　資料をまとめてAIに頼む</div>
+  <h1>やり取りを重ねて、答えを良くする</h1>
+  <p class="purpose">1回で完璧な答えを求めず、返ってきたものを見て追加で頼みます。部下や同僚に頼むときと同じです。</p>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><b>1回目</b><span>候補を3つ</span></div>
+      <div class="arr">→</div>
+      <div class="st"><b>2回目</b><span>「2つ目の候補の競合を、もっと詳しく」</span></div>
+      <div class="arr">→</div>
+      <div class="st now"><b>3回目</b><span>「3つを比較表にして」</span></div>
+    </div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:30%">追加の頼み方</th><th>例</th></tr></thead>
+      <tbody>
+        <tr><td>深める</td><td>「この候補で、開園までに確認することを挙げて」</td></tr>
+        <tr><td>形を変える</td><td>「園長会で見せる1枚の資料にして」</td></tr>
+        <tr><td>疑ってみる</td><td>「この結論の弱いところはどこ？」</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「疑ってみる」は特に効く。AI は聞かれれば、自分の答えの弱点も挙げる。</aside>
+</section>
+
+<!-- S21 共有タイム -->
+<section class="slide">
+  <div class="tag-row"><span class="t qa">共有 5分</span></div>
+  <h1>うまくいった頼み方の共有</h1>
+  <p class="purpose">2〜3名の方に、打ち込んだ文と返ってきた答えをご紹介いただきます。</p>
+  <div class="body">
+    <div class="cards c3">
+      <div class="card"><div class="no">1</div><h3>打ち込んだ文</h3><p class="mini">最初に打ったプロンプト</p></div>
+      <div class="card"><div class="no">2</div><h3>良かったところ</h3><p class="mini">返ってきた答えで、役に立った点</p></div>
+      <div class="card"><div class="no">3</div><h3>追加で頼んだこと</h3><p class="mini">2回目以降に、どう直してもらったか</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　うまくいった頼み方は、次の Part で「スキル」として保存する。</aside>
+</section>
+
+<!-- S22 区切り Part 3 -->
+<section class="slide part" style="--part:var(--r4)" data-ch="Part 4" data-min="50">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 04</div>
+  <h1>よく頼む作業をスキルにする</h1>
+  <div class="time-chip">座学 10分　演習 40分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- S23 毎回同じ説明 -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル</div>
+  <h1>毎回、同じ説明を打ち込んでいませんか</h1>
+  <p class="purpose">うまくいった頼み方を、明日も来週も一から打ち込むのは手間がかかります。人によって頼み方が変わると、答えの質もばらつきます。</p>
+  <div class="body">
+    <div class="cards c3">
+      <div class="card"><div class="no">今日</div><p>このフォルダーの資料を読んで、候補エリアを3つ…</p></div>
+      <div class="card"><div class="no">来週</div><p>このフォルダーの資料を読んで、候補エリアを3つ…</p></div>
+      <div class="card"><div class="no">来月</div><p>このフォルダーの資料を読んで、候補エリアを3つ…</p></div>
+    </div>
+    <div class="callout">人に説明すると3分かかる手順があれば、それがスキルにする候補です。</div>
+  </div>
+</section>
+
+<!-- S24 スキルとは -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル</div>
+  <h1>スキルとは</h1>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center"><p class="big" style="font-size:56px">よく頼む作業の<em>手順と決まりごと</em>を保存して、<em>一言で呼び出せる</em>仕組み</p><svg viewBox="0 0 420 300" width="420" height="300" aria-hidden="true">
+  <rect x="20" y="20" width="380" height="260" rx="18" fill="#fff" stroke="#EBEBEB" stroke-width="2"/>
+  <rect x="20" y="20" width="380" height="54" rx="18" fill="#FEF2F4"/><rect x="20" y="56" width="380" height="18" fill="#FEF2F4"/>
+  <text x="44" y="56" font-size="22" font-weight="700" fill="#C2415A">新規出店エリア分析</text>
+  <text x="44" y="110" font-size="16" fill="#8a8a8a">使う場面</text><rect x="140" y="98" width="230" height="14" rx="7" fill="#F9F7F3"/>
+  <text x="44" y="150" font-size="16" fill="#8a8a8a">手順</text><rect x="140" y="138" width="200" height="14" rx="7" fill="#F9F7F3"/><rect x="140" y="160" width="170" height="14" rx="7" fill="#F9F7F3"/>
+  <text x="44" y="212" font-size="16" fill="#8a8a8a">決まりごと</text><rect x="140" y="200" width="220" height="14" rx="7" fill="#F9F7F3"/><rect x="140" y="222" width="150" height="14" rx="7" fill="#F9F7F3"/>
+  <circle cx="360" cy="250" r="20" fill="#6EC5A0"/><path d="M351 250l6 6 12-12" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+    <table class="tbl dense">
+      <thead><tr><th style="width:24%">毎回伝えること</th><th>スキルに登録すること</th></tr></thead>
+      <tbody><tr><td>作るもの<br><span class="small">例：「港北区で分析して」</span></td><td>作る手順と決まりごと<br><span class="small">例：資料の読み方、比べ方、表の形、確かめ方</span></td></tr></tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　Part 2 の「名前をつけて育てる」を、仕組みにしたものがスキル。一度書いておけば、誰が頼んでも同じ手順で進む。
+（この先は「スキル」と呼ぶ。画面に出てくる名前もスキル）</aside>
+</section>
+
+<!-- S25 GemとGPTsはスキルへ（2026-10-14 各社公式ヘルプで確認） -->
+<section class="slide">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">PART 4　スキル</div>
+  <h1>Gem と GPTs は、スキルへ移行</h1>
+  <p class="purpose">これまでの Gem や GPTs は、3社ともスキルに置き換わっていきます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:16%"></th><th style="width:16%">これまで</th><th>これから</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>GPTs</td><td>2026年12月11日に廃止予定。プラグインへ移行し、指示文はその中のスキルになる</td></tr>
+        <tr><td>Gemini</td><td>Gem</td><td>個人のアカウント：2026年11月から、スキルへ自動で移行<br>会社のアカウント：早くても2027年3月1日以降</td></tr>
+        <tr><td>Claude</td><td>—</td><td>スキル</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　3社とも同じ方向に進んでいる。今日スキルの考え方を覚えれば、どの AI でも使える。
+<b>補足（聞かれたら）</b>　GPTs の移行は自動ではなく、作った人が「Migrate to plugin」を押す。Gem は個人アカウントなら自動で移行。
+<b>根拠</b>　OpenAI ヘルプ「Custom GPT retirement and migration FAQ」、Gemini ヘルプ・Workspace 管理者ヘルプ（2026-10-14 確認）。</aside>
+</section>
+
+<!-- S26 デモ② -->
+<section class="slide">
+  <div class="tag-row"><span class="t demo">デモ</span></div>
+  <h1>Part 3 の作業をスキルにする</h1>
+  <p class="purpose">登録は、チャットの中で頼むだけです。Part 3 のチャットの続きで、そのまま頼みます（Work で使えます）。</p>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start">
+      <div>
+        <div class="prompt-box" style="font-size:25px">このチャットでお願いしたここまでの作業を、次回以降も再現できるような<b>スキル</b>にしてくれない？ 名前は何がいいかな？</div>
+        <p class="mini" style="margin-top:16px">名前の案と、登録する内容が返ってきます。よければ「じゃあ登録して」と返します。</p>
+        <table class="tbl dense" style="margin-top:16px">
+          <tbody>
+            <tr><td style="width:30%">名前の例</td><td>新規出店エリア分析</td></tr>
+            <tr><td>手順</td><td>資料を読む → 候補を3つ → 理由と足りない情報を表に</td></tr>
+            <tr><td>決まりごと</td><td>根拠にした資料名を書く。推測は「推測」と書く</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img class="shot" src="assets/skl-ask-1.png" alt="スキルにしてほしいと頼んだときの ChatGPT の返事の例">
+    </div>
+  </div>
+  <aside class="notes"><b>デモ</b>　Part 3 のチャットの続きで、この文をそのまま打つ。名前の案と登録内容が返ってきたら、決まりごとに「根拠にした資料名を書く」が入っているか確認して登録する。
+画像は TOKON の資料デザインをスキルにしたときの例。
+<b>場所</b>　チャットで登録できるのは Work と Codex。Chat では登録できない。登録したスキルは、サイドバーのカスタマイズ → スキルから見られる。</aside>
+</section>
+
+<!-- S27 スキルを呼び出す -->
+<section class="slide">
+  <div class="tag-row"><span class="t demo">デモ</span></div>
+  <h1>スキルの呼び出し</h1>
+  <p class="purpose">次からは、スキルの名前を呼ぶだけで、登録した手順で作業が進みます。</p>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
+      <div>
+        <div class="prompt-box"><b>新規出店エリア分析</b>で、このフォルダーの資料を見て</div>
+        <ul class="list" style="margin-top:20px">
+          <li style="font-size:24px">名前を呼んで頼む</li>
+          <li style="font-size:24px">頼んだ内容に合うスキルを、AI が選んで使うこともある</li>
+        </ul>
+      </div>
+      <img class="shot" src="assets/skl-ask-2.png" alt="登録したときに示される、次回からの呼び出し方の例">
+    </div>
+  </div>
+  <aside class="notes"><b>デモ</b>　新しいチャットで、この一言だけを打つ。Part 3 と同じ形の答えが返ってくることを見せる。
+<b>話すこと</b>　登録したときに、次回からの頼み方まで示される（右の画像）。</aside>
+</section>
+
+<!-- S27b スキルでできること -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル</div>
+  <h1>スキル × PC の操作 × 自動実行</h1>
+  <p class="purpose">手順をスキルにしておけば、PC の操作ごと任せて、決まった時刻に自動で動かせます。スキルの力がいちばん出る使い方です。</p>
+  <div class="body">
+    <div class="cards c2" style="gap:18px;font-size:.92em">
+      <div class="card red" style="padding:22px 30px"><svg viewBox="0 0 64 44" width="40" height="28" fill="none" stroke="#C2415A" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:10px"><rect x="12" y="6" width="40" height="26" rx="3"/><path d="M4 38h56l-4-6H8z"/><path d="M28 14l10 6-10 6z" fill="#C2415A" stroke="none"/></svg><div class="no">PC の操作を代わりに</div><p class="mini" style="font-size:20px;line-height:1.6">許可すれば、ブラウザもアプリも AI が操作します。サイトを開いて情報を集める、Excel に貼って保存する、まで任せられます。</p>
+        <div class="prompt-box" style="font-size:21px;margin-top:10px;padding:12px 20px">保育士の求人サイトを開いて、近隣の園の募集条件を集めて、Excel にまとめて保存して</div></div>
+      <div class="card green" style="padding:22px 30px"><svg viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="#2E7D5E" stroke-width="2.6" stroke-linecap="round" aria-hidden="true" style="display:block;margin-bottom:10px"><circle cx="24" cy="24" r="18"/><path d="M24 13v11l7 5"/></svg><div class="no">決まった時刻に自動で</div><p class="mini" style="font-size:20px;line-height:1.6">時刻を書いて頼むと、スケジュールに登録されます。スキルが手順を、時刻が実行のタイミングを決めます。</p>
+        <div class="prompt-box" style="font-size:21px;margin-top:10px;padding:12px 20px">毎週月曜の朝9時に、<b>補助金アドバイザー</b>で新しい補助金を探して</div></div>
+    </div>
+    <table class="tbl dense" style="font-size:19px">
+      <tbody>
+        <tr><td style="width:18%">動かす条件</td><td><strong>PC とデスクトップアプリを起動したまま、PC がスリープしない設定</strong>にしておく</td></tr>
+        <tr><td>確認と停止</td><td>登録した内容は、サイドバーの「Scheduled（スケジュール）」から確認・停止・変更できます</td></tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　ここまでの話がつながるところ。Part 2 の任せ方、Part 3 の資料の渡し方、Part 4 のスキル、Part 1 のコンピューターユースが1つになる。
+例：毎日夕方に日報を集めて Excel に保存する手順を「日報収集スキル」にしておけば、「毎日5時に、日報収集よろしく」の一言で毎日動く。
+<b>任せる範囲</b>　最初は「下書きまで」「保存まで」。送信・購入・削除は人が確認する。
+<b>注意</b>　PC の操作（Work の「お使いのコンピューターで実行」）は有料プラン。操作の許可は、最初は「Ask for approval」（毎回確認）で。
+時刻を決める前に、普通のチャットで1回試して、出てくる形を確かめておく。</aside>
+</section>
+
+<!-- S28 演習：補助金アドバイザー -->
+<section class="slide">
+  <div class="tag-row"><span class="t work">演習 25分</span></div>
+  <h1>補助金アドバイザーのスキルを作る</h1>
+  <p class="purpose">2つ目のスキルを、自分で作ります。申請時の演習テーマ「補助金アドバイザー」です。</p>
+  <div class="body">
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:22%">名前</td><td style="color:var(--muted)">（各自で決める）</td></tr>
+        <tr><td>使う場面</td><td>新しい取り組みに使えそうな補助金・助成金を探すとき</td></tr>
+        <tr><td>手順</td><td>補助金・助成金を探す → 要件と締切を表にする</td></tr>
+        <tr><td>決まりごと</td><td>必ず公式サイトを根拠にする。締切と対象者を必ず書く。最後に「最終判断は専門家に確認」と添える</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>進め方</b>　25分。作ったら、実際に呼び出して試すところまで。
+例：「保育園の ICT 化に使える補助金を探して」と頼んでみる。
+<b>話すこと</b>　申請時の演習テーマ「補助金アドバイザー」をスキルとして作る。</aside>
+</section>
+
+<!-- S28a 答え合わせ 1 -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル　答え合わせ</div>
+  <h1>補助金アドバイザーの作り方　答え合わせ 1</h1>
+  <p class="purpose">プロンプトを最初から書かず、相談から始めて、1回試してからスキルにします。この流れは、どのスキルを作るときも同じです。</p>
+  <div class="body" style="gap:14px">
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 1</div><div style="font-size:24px;font-weight:800;line-height:1.4">相談する</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65">新しい取り組みに使える補助金・助成金を、<b>毎回同じ形で探してもらうスキル</b>を作りたい。作り始める前に、<b>私に聞きたいことある？</b></div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 2</div><div style="font-size:24px;font-weight:800;line-height:1.4">聞かれたことに答える</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65">横浜市と神奈川県で、保育園と飲食店を運営している会社です。探したいのは国・県・市の補助金と助成金。表にしてほしい項目は、名称・対象者・補助額・締切・申請先・公式サイトの URL。締切が近い順で。</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 3</div><div style="font-size:24px;font-weight:800;line-height:1.4">1回試してもらう</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65">試しに「保育園の ICT 化」で一度やってみて。<b>時間をかけていいので</b>、<b>公式サイトで締切と対象者を確かめてから</b>出して。</div>
+      </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　STEP 1 は Part 2 の任せ方。いきなり作らせず、質問してもらう。
+STEP 3 は「伝える3つ」。何を（保育園の ICT 化）、どれだけ（時間をかけていい）、確かめ方（公式サイトで締切と対象者）。</aside>
+</section>
+
+<!-- S28b 答え合わせ 2 -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル　答え合わせ</div>
+  <h1>補助金アドバイザーの作り方　答え合わせ 2</h1>
+  <p class="purpose">試した結果を直してから、スキルとして登録します。最後に、決まった時刻に動かせば、探す手間がなくなります。</p>
+  <div class="body" style="gap:14px">
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 4</div><div style="font-size:24px;font-weight:800;line-height:1.4">直す</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65">いい感じ。2つだけ直して。<b>締切が過ぎたものは除いて</b>、最後に「<b>最終判断は社労士などの専門家に確認</b>」と添えて。</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 5</div><div style="font-size:24px;font-weight:800;line-height:1.4">スキルにする</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65">ここまでの作業を、次回以降も再現できる<b>スキル</b>にして。名前は何がいいかな？ 決まりごとには「<b>公式サイトを根拠にする</b>」「<b>締切と対象者を必ず書く</b>」「<b>確認できないものは未確認と書く</b>」を入れて。</div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+        <div><div class="no" style="font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:18px;letter-spacing:.1em">STEP 6</div><div style="font-size:24px;font-weight:800;line-height:1.4">呼び出す・自動で動かす</div></div>
+        <div class="prompt-box" style="font-size:21px;padding:14px 22px;line-height:1.65"><b>補助金アドバイザー</b>で、園の防犯対策に使えるものを探して<br>毎週月曜の朝9時に、<b>補助金アドバイザー</b>で新しい補助金を探して</div>
+      </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　STEP 4 の直しが、そのままスキルの決まりごとになる（Part 2 の「名前をつけて育てる」）。
+STEP 6 の2行目は、前のスライドの自動実行。毎週、新しい補助金が届くようになる。
+<b>注意</b>　補助金の要件と締切は変わる。最終判断は、必ず公式サイトと専門家で確かめる。</aside>
+</section>
+
+<!-- S29 スキルづくりのコツ -->
+<section class="slide">
+  <div class="kicker">PART 4　スキル</div>
+  <h1>スキルを作るときのコツ</h1>
+  <p class="purpose">最初から完璧を目指さず、使いながら直していきます。</p>
+  <div class="body">
+    <div class="cards c3 roomy">
+      <div class="card"><div class="no">1</div><h3>1つのスキルに1つの仕事</h3><p>「おたより作成」と「おたより校正」は分けます</p></div>
+      <div class="card"><div class="no">2</div><h3>決まりごとは具体的に</h3><p>「丁寧に」より「締切は日付で書く」のように、守れたか判断できる形にします</p></div>
+      <div class="card"><div class="no">3</div><h3>使ってみて直す</h3><p>合わなかった点を「ここをこう直して、スキルも更新して」と伝えます</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S30 共有タイム -->
+<section class="slide">
+  <div class="tag-row"><span class="t qa">共有 5分</span></div>
+  <h1>作ったスキルの共有</h1>
+  <p class="purpose">2〜3名の方に、スキルの中身と呼び出した結果をご紹介いただきます。</p>
+  <div class="body">
+    <div class="cards c3">
+      <div class="card"><div class="no">1</div><h3>スキルの名前</h3><p class="mini">どんな作業のスキルか</p></div>
+      <div class="card"><div class="no">2</div><h3>決まりごと</h3><p class="mini">どんなルールを入れたか</p></div>
+      <div class="card"><div class="no">3</div><h3>呼び出した結果</h3><p class="mini">表に締切と対象者が入っていたか</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S31 区切り Part 4 -->
+<section class="slide part" style="--part:var(--r5)" data-ch="Part 5" data-min="10">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <div class="part-no">PART 05</div>
+  <h1>安全に使うためのルール</h1>
+  <div class="time-chip">座学 10分</div>
+  <div class="part-bar"></div>
+  <div class="rainbow-bottom"></div>
+</section>
+
+<!-- S32 渡していいもの・いけないもの -->
+<section class="slide">
+  <div class="kicker">PART 5　ガバナンス</div>
+  <h1>AIに渡す情報の考え方</h1>
+  <p class="purpose">入力した内容が AI の学習に使われるかは、プランと契約で決まります。仕事で使うときは法人契約が前提です。法人契約なら学習には使われないので、業務の資料も安心して渡せます。</p>
+  <div class="body">
+    <div class="cards c3" style="gap:16px">
+      <div class="card green"><div class="no">法人契約で使う</div><h3 style="font-size:28px">業務の資料</h3><p class="mini">社内の資料、議事録、マニュアル、業務の数字。仕事のために、どんどん渡して大丈夫です</p></div>
+      <div class="card amber"><div class="no">社内のルールに沿って</div><h3 style="font-size:28px">個人に関わる情報</h3><p class="mini">園児・保護者・職員の個人情報、写真、給与や評価。必要な範囲だけにし、名前を伏せるなどの工夫をします</p></div>
+      <div class="card red"><div class="no">使わない</div><h3 style="font-size:28px">個人のアカウント</h3><p class="mini">仕事の情報を、個人契約のアカウントに入れない。パスワードなどのログイン情報は、どこにも入れない</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「AI に入れたら漏れる」と思って何も渡さないと、仕事にならない。大事なのは、どのアカウントで使うか。
+法人契約（ChatGPT の Business / Enterprise、Claude の Team / Enterprise、Google Workspace の Gemini）は、標準で入力内容が学習に使われない。個人のプランでも、設定で学習をオフ（オプトアウト）にできる。ただし、事業で使うなら法人契約が前提。
+個人に関わる情報の扱いは、LaLaLand 様の社内ルールに合わせて案内する。</aside>
+</section>
+
+<!-- S33 会社のアカウント -->
+<section class="slide">
+  <div class="kicker">PART 5　ガバナンス</div>
+  <h1>会社のアカウントを使う理由</h1>
+  <p class="purpose">仕事の情報は、会社で契約したアカウントで扱います。学習に使われない、会社で管理できる、の2つが理由です。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:24%"></th><th>個人のアカウント</th><th>会社のアカウント（法人契約）</th></tr></thead>
+      <tbody>
+        <tr><td>学習への利用</td><td>標準では使われることがある。設定でオフにできる</td><td><strong>標準で使われない</strong></td></tr>
+        <tr><td>入れた情報の扱い</td><td>会社の管理の外</td><td>会社のルールと設定で管理</td></tr>
+        <tr><td>退職・異動のとき</td><td>チャットや資料が個人に残る</td><td>会社に残せる</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　個人のアカウントで使っている方は、まず設定で学習をオフにする（ChatGPT は設定のデータコントロールの中。表示の文言は当日の画面で確認する）。仕事では会社のアカウントを使う。
+<b>確認</b>　LaLaLand 様の契約状況に合わせて案内する。</aside>
+</section>
+
+<!-- S34 答えの確認 -->
+<section class="slide">
+  <div class="kicker">PART 5　ガバナンス</div>
+  <h1>AIの答えは、そのまま使わずに確認</h1>
+  <p class="purpose">AI は、もっともらしい間違いをすることがあります。確認も AI に手伝ってもらえます。下のプロンプトを、答えのあとに貼るだけです。</p>
+  <div class="body">
+    <div class="prompt-box" style="font-size:25px">今の答えを見直して。<b>数字・日付・名前</b>は、それぞれ<b>根拠にした資料と場所</b>を添えて。確認できなかったものは「未確認」と書いて、推測と分けて。最後に、<b>一番自信がないところ</b>を教えて。</div>
+    <div class="cards c3" style="gap:16px">
+      <div class="card amber"><div class="no">1　根拠</div><p class="mini">どこに書いてあるか。資料名と場所で確かめる</p></div>
+      <div class="card amber"><div class="no">2　数字と日付</div><p class="mini">元の資料と一致しているか。補助金の締切は必ず公式サイトで</p></div>
+      <div class="card amber"><div class="no">3　固有名詞</div><p class="mini">名前、地名、制度名。似た別のものと混ざっていないか</p></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「一番自信がないところ」を聞くと、AI は弱いところを自分で挙げてくる。そこだけ人が確かめればよい。
+スキルを作るときは、このプロンプトを決まりごとに入れておくと、毎回自動で見直してから出してくる。</aside>
+</section>
+
+<!-- S35 スキルの共有ルール -->
+<section class="slide">
+  <div class="kicker">PART 5　ガバナンス</div>
+  <h1>スキルを共有する前の確認</h1>
+  <p class="purpose">スキルはチームで使い回せる分、中身の確認が大事です。作った人以外も使う前提で確かめます。</p>
+  <div class="body">
+    <table class="tbl">
+      <thead><tr><th style="width:36%">確認すること</th><th>例</th></tr></thead>
+      <tbody>
+        <tr><td>個人情報が入っていないか</td><td>例として入れた園児や保護者の名前が残っていないか</td></tr>
+        <tr><td>誰が使っても安全な決まりごとか</td><td>「送信まで済ませる」ではなく「下書きまで」になっているか</td></tr>
+        <tr><td>最終確認を人が行う形か</td><td>「最終判断は担当者が確認」と書いてあるか</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- S36 困ったときは -->
+<section class="slide">
+  <div class="kicker">PART 5　ガバナンス</div>
+  <h1>判断に迷ったときの相談先</h1>
+  <p class="purpose">一人で抱えず、まず聞きます。迷ったら入力しないのが基本です。</p>
+  <div class="body">
+    <div class="cards c2 roomy">
+      <div class="card"><div class="no">社内</div><h3>社内の担当者</h3><p>入力してよいか迷ったとき、使ってよいサービスか迷ったとき</p></div>
+      <div class="card"><div class="no">TOKON</div><h3>喜多村</h3><p>使い方、スキルの作り方、うまくいかないとき</p></div>
+    </div>
+    <div class="callout">相談するときは「何を入れようとしたか」「どの AI か」「何に迷ったか」の3つを伝えると早く進みます。</div>
+  </div>
+  <aside class="notes"><b>確認</b>　社内の担当者名を LaLaLand 様に確認して入れる。</aside>
+</section>
+
+<!-- S37 ふりかえり -->
+<section class="slide" data-ch="まとめ" data-min="10">
+  <div class="kicker">REVIEW</div>
+  <h1>今日のふりかえり</h1>
+  <p class="purpose">今日のゴールの3つです。できるようになったことを確認します。</p>
+  <div class="body">
+    <ol class="goals done">
+      <li><span class="n">✓</span><span>3つのAI（ChatGPT／Claude／Gemini）の違いと、今できることを説明できる</span></li>
+      <li><span class="n">✓</span><span>資料をまとめて渡して、AIに作業を頼める</span></li>
+      <li><span class="n">✓</span><span>よく頼む作業を「スキル」として保存し、次から一言で呼び出せる</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- S38 次回予告 -->
+<section class="slide">
+  <div class="kicker">NEXT</div>
+  <h1>第2回　AI開発環境の構築＋Claude Code / Agent.MD</h1>
+  <p class="purpose">AI エージェント（AI が自分で手順を考えて作業を進める仕組み）を、自分の PC で使えるようにします。</p>
+  <div class="body">
+    <table class="tbl dense">
+      <tbody>
+        <tr><td style="width:28%">CLI とは</td><td>文字で指示を出す操作方法と、ターミナルの基本</td></tr>
+        <tr><td>AI 開発ツール</td><td>Claude Code / Codex / Antigravity の概要と使い分け</td></tr>
+        <tr><td>セットアップ</td><td>Claude Code のインストールと初回設定（各自の PC で）</td></tr>
+        <tr><td>Agent.MD</td><td>自分の情報を AI に覚えさせるファイルの作成</td></tr>
+      </tbody>
+    </table>
+    <div class="flow">
+      <div class="st"><b>第1回</b><span>頼む・覚えさせる</span></div>
+      <div class="arr">→</div>
+      <div class="st" style="background:var(--green-soft)"><b style="color:var(--green)">第2回</b><span>任せる</span></div>
+    </div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　今日の「頼む」「覚えさせる」の先に、「任せる」がある。
+<b>確認</b>　第2回の日程を案内する。</aside>
+</section>
+
+<!-- S39 宿題 -->
+<section class="slide">
+  <div class="kicker">HOMEWORK</div>
+  <h1>宿題（任意）</h1>
+  <p class="purpose">今日のやり方を、自分の仕事で1つ試してみてください。第2回の冒頭で、いくつか紹介していただきます。</p>
+  <div class="body">
+    <ol class="steps">
+      <li>自分の仕事で、毎週同じ説明をしている作業を1つ書き出す<br><span class="small">例：園だよりの作成、シフトの連絡文、行事の準備リスト</span></li>
+      <li>「作り始める前に、私に聞きたいことある？」から始めて、作業を頼む</li>
+      <li>うまくいったら「次回以降も再現できるようなスキルにして」と頼む</li>
+    </ol>
+  </div>
+</section>
+
+<!-- X1 付録：アプリとつなぐ -->
+<section class="slide" data-ch="付録">
+  <div class="asof">2026年10月時点</div>
+  <div class="kicker">付録</div>
+  <h1>アプリとつなぐ　メール・カレンダー・ドライブ</h1>
+  <p class="purpose">Gmail やカレンダーなどのアプリを AI につないでおくと、AI が自分でメールを読み、予定を確かめ、資料を探して作業します。1回つないでおけば、あとは頼むだけです。</p>
+  <div class="body">
+    <div class="cards c3" style="gap:16px">
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#E8637A" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:8px"><rect x="6" y="11" width="36" height="26" rx="3"/><path d="M6 13l18 13 18-13"/></svg><div class="no">メール（Gmail・Outlook）</div><p class="mini" style="font-size:20px">届いたメールを読んで、急ぎのものを知らせる。返信の下書きを作る</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#5BA4D9" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:8px"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 18h34M16 6v8M32 6v8"/><path d="M15 26h5M22 26h5M29 26h5M15 32h5M22 32h5"/></svg><div class="no" style="color:#1F5F94">カレンダー</div><p class="mini" style="font-size:20px">空いている時間を探す。予定の候補を出して、登録する</p></div>
+      <div class="card"><svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#6EC5A0" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true" style="display:block;margin-bottom:8px"><path d="M6 14h14l4 5h18v19H6z"/></svg><div class="no" style="color:var(--green)">ドライブ</div><p class="mini" style="font-size:20px">フォルダーの中から資料を探して読む。まとめた結果を保存する</p></div>
+    </div>
+    <table class="tbl dense" style="font-size:19px">
+      <thead><tr><th style="width:16%"></th><th>つなぎ方</th></tr></thead>
+      <tbody>
+        <tr><td>ChatGPT</td><td>設定から、使うアプリ（Gmail、Google カレンダー、Google ドライブなど）をつなぐ。ChatGPT では「アプリ」「プラグイン」と呼ばれる</td></tr>
+        <tr><td>Claude</td><td>設定の「コネクタ」から、Gmail・Google カレンダー・Google ドライブなどをつなぐ</td></tr>
+        <tr><td>Gemini</td><td>Google のアカウントで使えば、Gmail・カレンダー・ドライブと最初からつながっている</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes"><b>話すこと</b>　講師も、AI にメールとカレンダーをつないで仕事をしている。メールを読んで「この件は返信が要る」と知らせてもらい、空いている時間を見て予定の候補を出してもらう。
+会社のアカウントでは、管理者がつなげるアプリを決めている場合がある。つなげないときは社内の担当者に相談する。
+<b>確認</b>　各社の画面の呼び方は変わりやすい。当日は講師の画面で見せる。</aside>
+</section>
+
+<!-- X2 付録：頼み方の例 -->
+<section class="slide">
+  <div class="kicker">付録</div>
+  <h1>アプリとつないだときの頼み方</h1>
+  <p class="purpose">つないだあとは、普通に頼むだけです。Part 4 の自動実行と組み合わせると、毎朝のメールの確認も任せられます。</p>
+  <div class="body">
+    <table class="tbl dense" style="font-size:20px">
+      <thead><tr><th style="width:26%">やりたいこと</th><th>頼み方の例</th></tr></thead>
+      <tbody>
+        <tr><td>メールの確認</td><td>昨日から届いたメールで、保護者や行政からの急ぎのものを3件まで教えて。誰から・何の用件か、1行ずつ</td></tr>
+        <tr><td>返信の下書き</td><td>この問い合わせへの返信を下書きして。<strong>送信はしないで</strong>。私が読んでから送る</td></tr>
+        <tr><td>日程の調整</td><td>来週、園長会の打ち合わせを1時間入れたい。私の空いている時間から候補を3つ出して</td></tr>
+        <tr><td>資料を探す</td><td>ドライブから、去年の運動会の企画書を探して、今年用のたたき台にして</td></tr>
+      </tbody>
+    </table>
+    <div class="prompt-box" style="font-size:22px"><b>毎朝8時に</b>、届いたメールを見て、急ぎのものと返信が必要なものをまとめて教えて。返信の下書きまで作って、<b>送信はしないで。</b>新しいものがなければ「なし」とだけ返して</div>
+  </div>
+  <aside class="notes"><b>話すこと</b>　「送信はしないで」の1行が大事。下書きまでを任せて、送信は人が行う。予定の登録も、最初は「候補を出して」までにしておく。
+<b>注意</b>　メールには個人情報が多く入る。会社のアカウント（法人契約）で使う。Part 5 の考え方と同じ。</aside>
+</section>
+
+<!-- S40 質疑応答 -->
+<section class="slide cover">
+  <div class="rainbow-top"></div><div class="dots"></div>
+  <img class="logo" src="assets/lalaland_logo.webp" alt="LaLaLand">
+  <h1>質問・相談</h1>
+  <p class="lead">TOKON　喜多村 一寛</p>
+  <div class="rainbow-bottom"></div>
+</section>
+
+</div>
+<script src="deck.js"></script>
+</body>
+</html>
